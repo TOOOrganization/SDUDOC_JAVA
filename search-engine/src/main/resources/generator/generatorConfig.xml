@@ -29,7 +29,7 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
         <!--生成实体类（注意修改包路径）-->
-        <javaModelGenerator targetPackage="cn.edu.sdu.sdudocdoc.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cn.edu.sdu.sdudoc.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -39,7 +39,7 @@
         </sqlMapGenerator>
 
         <!--生成mapper.java（注意修改包路径）-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.sdu.sdudocdoc.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.sdu.sdudoc.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
