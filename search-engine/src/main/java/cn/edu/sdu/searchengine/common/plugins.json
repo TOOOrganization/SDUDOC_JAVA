@@ -1,0 +1,59 @@
+
+{
+  "document_info":{
+    "name":"文章名称",
+    "Author": "作者名称",
+    "dynasty": "朝代",
+    "sections": ["Section.id", "Section.id", "Section.id", "......"],
+    "......": "......"
+  },
+  "data":{
+    "Page": [
+      {
+        "id": "",
+        "image": ""
+      }
+    ],
+    "Char": [
+      {
+        "id": "",
+        "page": "Page.id",
+        "points": [[0,0],[0,0],"..."],
+        "x":0,
+        "y":0,
+        "word":"",
+        "sentence":"",
+        "paragraph":"",
+        "section":""
+      }
+    ],
+    "Word": [
+      {
+        "id": "",
+        "page": "Page.id",
+        "chars": ["Char.id", "Char.id", "Char.id", "......"]
+      }
+    ],
+    "Sentence": [
+      {
+        "id": "",
+        "page": "Page.id",
+        "words": ["Word.id", "Word.id", "Word.id", "......"]
+      }
+    ],
+    "Paragraph": [
+      {
+        "id": "",
+        "page": "Page.id",
+        "sentences": ["Sentence.id", "Sentence.id", "Sentence.id", "......"]
+      }
+    ],
+    "Section": [
+      {
+        "id": "",
+        "page": "Page.id",
+        "paragraphs": ["Paragraph.id", "Paragraph.id", "Paragraph.id", "......"]
+      }
+    ]
+  }
+}

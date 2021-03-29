@@ -32,6 +32,7 @@
     <poi.version>4.1.2</poi.version>
     <commons-net.version>3.8.0</commons-net.version>
     <commons-logging.version>1.2</commons-logging.version>
+    <fastjson.version>1.2.75</fastjson.version>
   </properties>
 
   <dependencyManagement>
@@ -77,19 +78,9 @@
         <version>${spring-version}</version>
       </dependency>
       <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-        <version>${jackson.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-annotations</artifactId>
-        <version>${jackson.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>${jackson.version}</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
       <dependency>
         <groupId>org.mybatis</groupId>
@@ -125,6 +116,11 @@
         <groupId>com.alibaba</groupId>
         <artifactId>druid</artifactId>
         <version>${druid.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-fileupload</groupId>
