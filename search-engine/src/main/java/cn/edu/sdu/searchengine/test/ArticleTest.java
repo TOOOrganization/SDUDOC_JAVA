@@ -23,17 +23,6 @@ public class ArticleTest {
     private ArticleService articleService;
 
     @Test
-    public void findAll() {
-        String s = JSONObject.toJSONString(articleService.findAll());
-        System.out.println(s);
-    }
-
-    @Test
-    public void findBybookname(){
-        System.out.println(JSONObject.toJSONString(articleService.findBybookname("123")));
-    }
-
-    @Test
     public void insertOne(){
         Article article = new Article();
         article.setBookname("qqq");
@@ -50,6 +39,27 @@ public class ArticleTest {
         articles.add(article1);
         articles.add(article2);
         articleService.saveAll(articles);
+    }
+
+    @Test
+    public void findAll() {
+        String s = JSONObject.toJSONString(articleService.findAll());
+        System.out.println(s);
+    }
+
+    @Test
+    public void findBybookname(){
+        System.out.println(JSONObject.toJSONString(articleService.findBybookname("123")));
+    }
+
+    @Test
+    public void findByTitle(){
+        System.out.println(JSONObject.toJSONString(articleService.findByTitle("test")));
+    }
+
+    @Test
+    public void findByArticleAuthor(){
+        System.out.println(JSONObject.toJSONString(articleService.findByArticleAuthor("李白")));
     }
 
 }

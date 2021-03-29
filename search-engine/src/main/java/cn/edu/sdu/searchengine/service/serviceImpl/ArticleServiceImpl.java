@@ -25,6 +25,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> saveAll(List articles){
+        return articleRepository.saveAll(articles);
+    }
+
+    @Override
     public void delete(String id) {
         articleRepository.deleteById(id);
     }
@@ -61,8 +66,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> saveAll(List articles){
-        return articleRepository.saveAll(articles);
+    public List<Article> findByTitle(String title){
+        return articleRepository.findByTitle(title);
+    }
+
+    @Override
+    public List<Article> findByArticleAuthor(String articleAuthor){
+        return articleRepository.findByArticleAuthor(articleAuthor);
     }
 
 }

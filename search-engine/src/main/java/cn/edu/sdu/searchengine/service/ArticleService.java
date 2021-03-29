@@ -8,6 +8,8 @@ public interface ArticleService {
 
     void save(Article article);
 
+    List<Article> saveAll(List articles);
+
     void delete(String id);
 
     void update(Article article);
@@ -16,5 +18,7 @@ public interface ArticleService {
 
     List<Article> findBybookname(String bookname);
 
-    List<Article> saveAll(List articles);
+    List<Article> findByTitle(String title);
+
+    List<Article> findByArticleAuthor(String articleAuthor);
 }
