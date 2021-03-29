@@ -4,13 +4,8 @@ import cn.edu.sdu.searchengine.entity.Article;
 import cn.edu.sdu.searchengine.repository.ArticleRepository;
 import cn.edu.sdu.searchengine.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Component
@@ -22,6 +17,11 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void save(Article article) {
         articleRepository.save(article);
+    }
+
+    @Override
+    public List<Article> saveAll(List articles){
+        return articleRepository.saveAll(articles);
     }
 
     @Override
@@ -56,13 +56,18 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> findBybookname(String bookname) {
-        return articleRepository.findBybookname(bookname);
+    public List<Article> findByBookname(String bookname) {
+        return articleRepository.findByBookname(bookname);
     }
 
     @Override
-    public List<Article> saveAll(List articles){
-        return articleRepository.saveAll(articles);
+    public List<Article> findByTitle(String title){
+        return articleRepository.findByTitle(title);
+    }
+
+    @Override
+    public List<Article> findByArticleAuthor(String articleAuthor){
+        return articleRepository.findByArticleAuthor(articleAuthor);
     }
 
 }

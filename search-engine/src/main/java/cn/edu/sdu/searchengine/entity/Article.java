@@ -1,9 +1,12 @@
 package cn.edu.sdu.searchengine.entity;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import java.io.Serializable;
 
 @Document(collection = "article")

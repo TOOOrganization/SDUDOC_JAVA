@@ -7,11 +7,14 @@ import java.util.List;
 
 public interface ArticleRepository extends MongoRepository<Article,String> {
 
-    List<Article> findAll();
-
-    List<Article> findBybookname(String bookname);
-
     List<Article> saveAll(Iterable articles);
 
+    List<Article> findAll();
+
+    List<Article> findByBookname(String bookname);
+
+    List<Article> findByTitle(String title);
+
+    List<Article> findByArticleAuthor(String articleAuthor);
 
 }
