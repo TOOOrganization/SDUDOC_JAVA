@@ -8,13 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="search-engine" />
-        <module name="sdudoc-security" />
         <module name="sdudoc-doc" />
+        <module name="sdudoc-security" />
+        <module name="sdudoc-dao" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="sdudoc-dao" options="" />
       <module name="sdudoc-doc" options="" />
     </option>
   </component>
