@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.test;
+package cn.edu.sdu.sdudoc;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
