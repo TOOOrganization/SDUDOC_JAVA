@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="search-engine" />
         <module name="sdudoc-doc" />
-        <module name="sdudoc-security" />
         <module name="sdudoc-dao" />
+        <module name="sdudoc-security" />
       </profile>
     </annotationProcessing>
   </component>

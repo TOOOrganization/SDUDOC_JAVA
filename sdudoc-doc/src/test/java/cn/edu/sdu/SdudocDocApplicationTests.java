@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudocdoc;
+package cn.edu.sdu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
