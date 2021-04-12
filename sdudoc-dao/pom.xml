@@ -8,12 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.edu.sdu.sdudoc</groupId>
     <artifactId>sdudoc-dao</artifactId>
     <name>sdudoc-dao</name>
 
     <properties>
-        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.complier.source>8</maven.complier.source>
         <maven.complier.target>8</maven.complier.target>
@@ -52,11 +50,7 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.2</version>
-        </dependency>
+
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
@@ -99,6 +93,12 @@
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-core</artifactId>
                         <version>1.3.7</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                        <scope>runtime</scope>
                     </dependency>
                 </dependencies>
             </plugin>

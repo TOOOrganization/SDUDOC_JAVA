@@ -12,7 +12,7 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
-        <commentGenerator type="cn.edu.sdu.sdudoc.CommentGenerator">
+        <commentGenerator type="cn.edu.sdu.sdudoc.sdudocdao.CommentGenerator">
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
             <property name="addRemarkComments" value="true"/>
@@ -31,18 +31,18 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
         <!--生成实体类（注意修改包路径）-->
-        <javaModelGenerator targetPackage="cn.edu.sdu.sdudoc.sdudocdao.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cn.edu.sdu.sdudoc.sdudocdao.entity" targetProject="sdudoc-dao/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成mapper.xml-->
-        <sqlMapGenerator targetPackage="./mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="./mapper" targetProject="sdudoc-dao/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--生成mapper.java（注意修改包路径）-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edusdu.sdudoc.sdudocdao.mapper"
-                             targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.sdu.sdudoc.sdudocdao.mapper"
+                             targetProject="sdudoc-dao/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
