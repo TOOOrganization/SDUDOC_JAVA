@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc.sdudocdao.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.entity.*;
-import cn.edu.sdu.sdudoc.repository.*;
+import cn.edu.sdu.sdudoc.sdudocdao.entity.*;
+import cn.edu.sdu.sdudoc.sdudocdao.repository.*;
 import cn.edu.sdu.sdudoc.sdudocdao.entity.Article;
 import cn.edu.sdu.sdudoc.sdudocdao.repository.ArticleRepository;
 import cn.edu.sdu.sdudoc.sdudocdao.service.ArticleService;
