@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="search-engine" />
         <module name="sdudoc-doc" />
+        <module name="sdudoc-mysql" />
         <module name="sdudoc-dao" />
         <module name="sdudoc-security" />
       </profile>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sdudoc-dao" options="" />
       <module name="sdudoc-doc" options="" />
+      <module name="sdudoc-mysql" options="" />
     </option>
   </component>
 </project>
