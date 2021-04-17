@@ -12,7 +12,6 @@
         <option value="$PROJECT_DIR$/sdudoc-doc/pom.xml" />
         <option value="$PROJECT_DIR$/sdudoc-security/pom.xml" />
         <option value="$PROJECT_DIR$/search-engine/pom.xml" />
-        <option value="$PROJECT_DIR$/sdudoc-dao/pom.xml" />
         <option value="$PROJECT_DIR$/sdudoc-mysql/pom.xml" />
         <option value="$PROJECT_DIR$/sdudoc-mbg/pom.xml" />
       </list>

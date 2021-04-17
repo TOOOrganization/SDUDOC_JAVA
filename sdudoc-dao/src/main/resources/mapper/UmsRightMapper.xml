@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRightMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight">
+<mapper namespace="cn.edu.sdu.sdudoc.mapper.UmsRightMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.sdu.sdudoc.entity.UmsRight">
     <id column="right_id" jdbcType="INTEGER" property="rightId" />
     <result column="parent_tight_id" jdbcType="INTEGER" property="parentTightId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     right_id, parent_tight_id, name, description
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRightExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from ums_right
     where right_id = #{rightId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample">
+  <delete id="deleteByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRightExample">
     delete from ums_right
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight">
+  <insert id="insert" parameterType="cn.edu.sdu.sdudoc.entity.UmsRight">
     insert into ums_right (right_id, parent_tight_id, name, 
       description)
     values (#{rightId,jdbcType=INTEGER}, #{parentTightId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight">
+  <insert id="insertSelective" parameterType="cn.edu.sdu.sdudoc.entity.UmsRight">
     insert into ums_right
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rightId != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRightExample" resultType="java.lang.Long">
     select count(*) from ums_right
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.sdudoc.entity.UmsRight">
     update ums_right
     <set>
       <if test="parentTightId != null">
@@ -186,7 +186,7 @@
     </set>
     where right_id = #{rightId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.sdudoc.entity.UmsRight">
     update ums_right
     set parent_tight_id = #{parentTightId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.SmsArticleHead;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.SmsArticleHeadExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.SmsArticleHeadMapper;
+import cn.edu.sdu.sdudoc.entity.SmsArticleHead;
+import cn.edu.sdu.sdudoc.entity.SmsArticleHeadExample;
+import cn.edu.sdu.sdudoc.mapper.SmsArticleHeadMapper;
 
 import java.util.List;
 

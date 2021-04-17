@@ -1,9 +1,9 @@
 package cn.edu.sdu.util;
 
-import cn.edu.sdu.sdudoc.sdudocdao.annonations.PasswordToken;
-import cn.edu.sdu.sdudoc.sdudocdao.annonations.UserLoginToken;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserMapper;
+import cn.edu.sdu.sdudoc.annonations.PasswordToken;
+import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
+import cn.edu.sdu.service.UmsUserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -17,10 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.Optional;
 
 public class AuthenticationInterceptor implements HandlerInterceptor {
     @Autowired
-    UmsUserMapper userService;
+    UmsUserService service;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
@@ -53,12 +54,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401");
                 }
-                UmsUser user = userService.selectByPrimaryKey(userId);
+                Optional<UmsUser> user = service.findById(userId);
                 if (user == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
                 // 验证 token
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.get().getPassword())).build();
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {

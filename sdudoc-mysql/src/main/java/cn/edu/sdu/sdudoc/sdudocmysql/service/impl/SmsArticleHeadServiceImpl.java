@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service.impl;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.SmsArticleHead;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.SmsArticleHeadExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.SmsArticleHeadMapper;
+import cn.edu.sdu.sdudoc.entity.SmsArticleHead;
+import cn.edu.sdu.sdudoc.entity.SmsArticleHeadExample;
+import cn.edu.sdu.sdudoc.mapper.SmsArticleHeadMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.SmsArticleHeadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.Img;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.ImgExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.ImgMapper;
+import cn.edu.sdu.sdudoc.entity.Img;
+import cn.edu.sdu.sdudoc.entity.ImgExample;
+import cn.edu.sdu.sdudoc.mapper.ImgMapper;
 
 import java.util.List;
 

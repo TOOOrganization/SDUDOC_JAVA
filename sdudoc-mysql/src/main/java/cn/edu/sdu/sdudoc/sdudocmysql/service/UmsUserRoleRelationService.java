@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUserRoleRelation;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUserRoleRelationExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserRoleRelationMapper;
+import cn.edu.sdu.sdudoc.entity.UmsUserRoleRelation;
+import cn.edu.sdu.sdudoc.entity.UmsUserRoleRelationExample;
+import cn.edu.sdu.sdudoc.mapper.UmsUserRoleRelationMapper;
 
 import java.util.List;
 

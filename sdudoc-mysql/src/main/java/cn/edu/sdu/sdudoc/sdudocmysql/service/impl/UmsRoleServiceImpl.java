@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service.impl;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRole;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRoleMapper;
+import cn.edu.sdu.sdudoc.entity.UmsRole;
+import cn.edu.sdu.sdudoc.entity.UmsRoleExample;
+import cn.edu.sdu.sdudoc.mapper.UmsRoleMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

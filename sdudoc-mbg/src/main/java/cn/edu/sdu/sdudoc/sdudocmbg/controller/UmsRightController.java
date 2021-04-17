@@ -40,13 +40,13 @@ public class UmsRightController {
 
     @RequestMapping("/delete")
     @ResponseBody
-    void delete(String rid){
+    void delete(Integer rid){
         repository.deleteById(rid);
     }
 
     @RequestMapping("/find_by_id")
     @ResponseBody
-    Optional<UmsRight> findById(String rid){
+    Optional<UmsRight> findById(Integer rid){
         return repository.findById(rid);
     }
 }

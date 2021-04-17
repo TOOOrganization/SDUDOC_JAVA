@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service.impl;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRightMapper;
+import cn.edu.sdu.sdudoc.entity.UmsRight;
+import cn.edu.sdu.sdudoc.entity.UmsRightExample;
+import cn.edu.sdu.sdudoc.mapper.UmsRightMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsRightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRoleRightRelationMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation">
+<mapper namespace="cn.edu.sdu.sdudoc.mapper.UmsRoleRightRelationMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation">
     <id column="rrid" jdbcType="INTEGER" property="rrid" />
     <result column="rid" jdbcType="INTEGER" property="rid" />
     <result column="right_id" jdbcType="INTEGER" property="rightId" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     rrid, rid, right_id, right_type
   </sql>
-  <select id="selectByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from ums_role_right_relation
     where rrid = #{rrid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelationExample">
+  <delete id="deleteByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelationExample">
     delete from ums_role_right_relation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation">
+  <insert id="insert" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation">
     insert into ums_role_right_relation (rrid, rid, right_id, 
       right_type)
     values (#{rrid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{rightId,jdbcType=INTEGER}, 
       #{rightType,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation">
+  <insert id="insertSelective" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation">
     insert into ums_role_right_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rrid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelationExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelationExample" resultType="java.lang.Long">
     select count(*) from ums_role_right_relation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation">
     update ums_role_right_relation
     <set>
       <if test="rid != null">
@@ -186,7 +186,7 @@
     </set>
     where rrid = #{rrid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation">
     update ums_role_right_relation
     set rid = #{rid,jdbcType=INTEGER},
       right_id = #{rightId,jdbcType=INTEGER},

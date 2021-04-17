@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRight;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRightMapper;
+import cn.edu.sdu.sdudoc.entity.UmsRight;
+import cn.edu.sdu.sdudoc.entity.UmsRightExample;
+import cn.edu.sdu.sdudoc.mapper.UmsRightMapper;
 
 import java.util.List;
 

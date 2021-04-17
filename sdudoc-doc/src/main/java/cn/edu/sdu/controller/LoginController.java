@@ -1,36 +1,38 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.sdudoc.sdudocdao.annonations.UserLoginToken;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserMapper;
+import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
 import cn.edu.sdu.service.TokenService;
-import cn.hutool.json.JSONObject;
+import cn.edu.sdu.service.UmsUserService;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
 public class LoginController {
 
     @Autowired
-    UmsUserMapper userMapper;
+    UmsUserService service;
     @Autowired
     TokenService tokenService;
 
     @PostMapping("/login")
     public Object login(@RequestBody UmsUser user) {
         JSONObject jsonObject = new JSONObject();
-        UmsUser userForBase = userMapper.selectByPrimaryKey(user.getUid());
+        Optional<UmsUser> userForBase = service.findById(user.getUid());
 
-        if (userForBase == null) {
+        if (userForBase.get() == null) {
             jsonObject.put("message", "登录失败，用户不存在");
             return jsonObject;
         } else {
-            if (!userForBase.getPassword().equals(user.getPassword())) {
+            if (!userForBase.get().getPassword().equals(user.getPassword())) {
                 jsonObject.put("message", "登录失败，密码错误");
                 return jsonObject;
             } else {
-                String token = tokenService.getToken(userForBase);
+                String token = tokenService.getToken(userForBase.get());
                 jsonObject.put("token", token);
                 jsonObject.put("user", userForBase);
                 return jsonObject;

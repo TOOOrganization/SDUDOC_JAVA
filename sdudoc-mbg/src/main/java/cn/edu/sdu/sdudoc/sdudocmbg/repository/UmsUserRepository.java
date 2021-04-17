@@ -4,6 +4,7 @@ import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,5 +22,6 @@ public interface UmsUserRepository extends JpaRepository<UmsUser,String> {
 
     List<UmsUser> findByPhone(String phone);
 
-    List<UmsUser> findByLogintime(String logintime);
+    List<UmsUser> findByLoginTime(Date loginTime);
+
 }

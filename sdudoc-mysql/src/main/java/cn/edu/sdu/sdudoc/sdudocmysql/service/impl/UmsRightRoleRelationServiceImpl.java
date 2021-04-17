@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.sdudocmysql.service.impl;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelation;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleRightRelationExample;
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRoleRightRelationMapper;
+import cn.edu.sdu.sdudoc.entity.UmsRoleRightRelation;
+import cn.edu.sdu.sdudoc.entity.UmsRoleRightRelationExample;
+import cn.edu.sdu.sdudoc.mapper.UmsRoleRightRelationMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsRoleRightRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
