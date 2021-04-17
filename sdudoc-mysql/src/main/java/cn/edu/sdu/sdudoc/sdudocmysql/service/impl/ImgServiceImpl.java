@@ -5,9 +5,11 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.ImgExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.ImgMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.ImgService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ImgServiceImpl implements ImgService {
 
     @Autowired

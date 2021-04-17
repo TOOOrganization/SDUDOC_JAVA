@@ -5,9 +5,11 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRightExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRightMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsRightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UmsRightServiceImpl implements UmsRightService {
 
     @Autowired

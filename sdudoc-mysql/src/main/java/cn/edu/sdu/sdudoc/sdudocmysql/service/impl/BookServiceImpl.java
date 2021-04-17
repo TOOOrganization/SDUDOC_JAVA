@@ -5,10 +5,12 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.BookExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.BookMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired

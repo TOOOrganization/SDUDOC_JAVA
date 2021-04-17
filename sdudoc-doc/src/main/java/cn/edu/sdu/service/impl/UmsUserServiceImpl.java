@@ -1,9 +1,9 @@
-package cn.edu.sdu.sdudoc.sdudocmysql.service.impl;
+package cn.edu.sdu.service.impl;
 
 import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUser;
 import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUserExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserMapper;
-import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsUserService;
+import cn.edu.sdu.service.UmsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

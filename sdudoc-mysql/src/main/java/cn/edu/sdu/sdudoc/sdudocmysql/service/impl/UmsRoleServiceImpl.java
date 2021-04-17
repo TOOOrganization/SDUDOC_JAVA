@@ -5,9 +5,11 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsRoleExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsRoleMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UmsRoleServiceImpl implements UmsRoleService {
 
     @Autowired

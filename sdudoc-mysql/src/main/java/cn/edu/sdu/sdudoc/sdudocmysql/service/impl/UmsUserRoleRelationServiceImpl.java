@@ -5,9 +5,11 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.UmsUserRoleRelationExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserRoleRelationMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.UmsUserRoleRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UmsUserRoleRelationServiceImpl implements UmsUserRoleRelationService {
 
     @Autowired

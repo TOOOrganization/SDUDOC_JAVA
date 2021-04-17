@@ -5,9 +5,11 @@ import cn.edu.sdu.sdudoc.sdudocdao.entity.SmsArticleHeadExample;
 import cn.edu.sdu.sdudoc.sdudocdao.mapper.SmsArticleHeadMapper;
 import cn.edu.sdu.sdudoc.sdudocmysql.service.SmsArticleHeadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SmsArticleHeadServiceImpl implements SmsArticleHeadService {
 
     @Autowired
