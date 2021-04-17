@@ -1,6 +1,5 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsRight;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsRightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ums_right")
@@ -38,4 +38,15 @@ public class UmsRightController {
         return repository.saveAll(list);
     }
 
+    @RequestMapping("/delete")
+    @ResponseBody
+    void delete(String rid){
+        repository.deleteById(rid);
+    }
+
+    @RequestMapping("/find_by_id")
+    @ResponseBody
+    Optional<UmsRight> findById(String rid){
+        return repository.findById(rid);
+    }
 }

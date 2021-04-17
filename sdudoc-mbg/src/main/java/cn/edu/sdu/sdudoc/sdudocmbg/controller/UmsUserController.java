@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ums_user")
@@ -37,7 +38,39 @@ public class UmsUserController {
         return repository.saveAll(list);
     }
 
-//    @RequestMapping("/delete")
-//    @ResponseBody
-//    void delete()
+    @RequestMapping("/delete")
+    @ResponseBody
+    void delete(String uid){
+        repository.deleteById(uid);
+    }
+
+    @RequestMapping("/find_by_id")
+    @ResponseBody
+    Optional<UmsUser> findById(String uid){
+        return repository.findById(uid);
+    }
+
+    @RequestMapping("/find_by_username")
+    @ResponseBody
+    List<UmsUser> findByUsername(String username){
+        return repository.findByUsername(username);
+    }
+
+    @RequestMapping("/find_by_email")
+    @ResponseBody
+    List<UmsUser> findByEmail(String email){
+        return repository.findByEmail(email);
+    }
+
+    @RequestMapping("/find_by_phone")
+    @ResponseBody
+    List<UmsUser> findByPhone(String phone){
+        return repository.findByPhone(phone);
+    }
+
+    @RequestMapping("/find_by_logintime")
+    @ResponseBody
+    List<UmsUser> findByLogintime(String logintime){
+        return repository.findByLogintime(logintime);
+    }
 }

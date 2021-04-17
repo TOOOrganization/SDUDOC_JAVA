@@ -38,4 +38,12 @@ public class BookController {
         return repository.saveAll(list);
     }
 
+    @RequestMapping("/delete")
+    @ResponseBody
+    void delete(String uid){
+        repository.deleteById(uid);
+    }
+
+
+
 }
