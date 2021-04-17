@@ -1,7 +1,10 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsUserRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsRight;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsRole;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsRightRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ums_user")
-public class UmsUserController {
+@RequestMapping("/ums_role")
+public class UmsRoleController {
     @Autowired
-    private UmsUserRepository repository;
+    private UmsRoleRepository repository;
 
     @RequestMapping("/find_all")
     @ResponseBody
-    List<UmsUser> findAll() {
+    List<UmsRole> findAll() {
         return repository.findAll();
     }
 
@@ -27,17 +30,14 @@ public class UmsUserController {
 
     @RequestMapping("/save")
     @ResponseBody
-    UmsUser save(UmsUser entity){
+    UmsRole save(UmsRole entity){
         return repository.save(entity);
     }
 
     @RequestMapping("/save_all")
     @ResponseBody
-    List<UmsUser> saveAll(List<UmsUser> list){
+    List<UmsRole> saveAll(List<UmsRole> list){
         return repository.saveAll(list);
     }
 
-//    @RequestMapping("/delete")
-//    @ResponseBody
-//    void delete()
 }
