@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocdao.entity;
+package cn.edu.sdu.sdudoc.sdudocmbg.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 

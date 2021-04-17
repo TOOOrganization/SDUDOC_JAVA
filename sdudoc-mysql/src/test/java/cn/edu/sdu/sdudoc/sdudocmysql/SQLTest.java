@@ -1,17 +1,20 @@
 package cn.edu.sdu.sdudoc.sdudocmysql;
 
-import cn.edu.sdu.sdudoc.sdudocdao.mapper.UmsUserMapper;
+import cn.edu.sdu.sdudoc.sdudocdao.repository.UmsUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 public class SQLTest {
 
     @Autowired
-    UmsUserMapper mapper;
+    private UmsUserRepository umsUserRepository;
     @Test
     public void select() {
-        System.out.println(mapper.selectByPrimaryKey("1"));
+        System.out.println(umsUserRepository.findAll());
     }
+
 }

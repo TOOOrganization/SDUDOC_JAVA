@@ -12,6 +12,7 @@
         <module name="sdudoc-mysql" />
         <module name="sdudoc-dao" />
         <module name="sdudoc-security" />
+        <module name="sdudoc-mbg" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sdudoc-dao" options="" />
       <module name="sdudoc-doc" options="" />
+      <module name="sdudoc-mbg" options="" />
       <module name="sdudoc-mysql" options="" />
     </option>
   </component>
