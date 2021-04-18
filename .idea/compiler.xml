@@ -12,9 +12,11 @@
         <module name="sdudoc-mysql" />
         <module name="sdudoc-security" />
         <module name="sdudoc-mbg" />
-        <module name="sdudoc-dao" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sdudoc-dao" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

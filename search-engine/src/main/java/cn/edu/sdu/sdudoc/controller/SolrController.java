@@ -12,12 +12,13 @@ import java.io.IOException;
 
 
 @RestController
+@RequestMapping("/solr")
 public class SolrController {
 
     @Autowired
     private SolrService solrService;
 
-    @RequestMapping("/solr/queryHead")
+    @RequestMapping("/queryHead")
     @ResponseBody
     public JSONArray queryHead(String type,String keyword) throws IOException, SolrServerException {
         return solrService.queryHead(type,keyword);
