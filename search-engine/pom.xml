@@ -10,11 +10,13 @@
 
     <artifactId>search-engine</artifactId>
     <name>search-engine</name>
+    <packaging>war</packaging>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.complier.source>8</maven.complier.source>
         <maven.complier.target>8</maven.complier.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <dependencies>
@@ -156,7 +158,6 @@
             <groupId>cn.edu.sdu</groupId>
             <artifactId>sdudoc-mbg</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
@@ -172,8 +173,27 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>cn.edu.sdu.sdudoc.SearchEngineApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
         </plugins>
+        <finalName>search-engine</finalName>
     </build>
 
 </project>
