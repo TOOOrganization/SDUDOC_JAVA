@@ -2,8 +2,10 @@ package cn.edu.sdu.sdudoc.controller;
 
 import cn.edu.sdu.sdudoc.service.SolrService;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +20,10 @@ public class SolrController {
     @Autowired
     private SolrService solrService;
 
-    @RequestMapping("/queryHead")
+    @RequestMapping("/query_head")
     @ResponseBody
     public JSONArray queryHead(String type,String keyword) throws IOException, SolrServerException {
-        return solrService.queryHead(type,keyword);
+        return solrService.queryHead(type, keyword);
     }
 
 }
