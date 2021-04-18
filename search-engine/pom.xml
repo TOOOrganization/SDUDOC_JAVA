@@ -151,11 +151,6 @@
         </dependency>
         <dependency>
             <groupId>cn.edu.sdu</groupId>
-            <artifactId>sdudoc-dao</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.edu.sdu</groupId>
             <artifactId>sdudoc-mbg</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -173,6 +168,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+<<<<<<< HEAD
                 <configuration>
                     <mainClass>cn.edu.sdu.sdudoc.SearchEngineApplication</mainClass>
                 </configuration>
@@ -191,7 +187,25 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
+=======
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中 -->
+                        </goals>
+                    </execution>
+                </executions>
+>>>>>>> 57a145c20c61f451aecf063c192aa0aaa19f01a8
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
         </plugins>
         <finalName>search-engine</finalName>
     </build>
