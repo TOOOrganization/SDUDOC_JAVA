@@ -55,7 +55,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     throw new RuntimeException("401");
                 }
                 Optional<UmsUser> user = service.findById(userId);
-                if (user == null) {
+                if (user.isPresent()) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
                 // 验证 token
