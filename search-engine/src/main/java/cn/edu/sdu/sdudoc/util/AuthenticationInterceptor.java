@@ -1,9 +1,9 @@
-package cn.edu.sdu.util;
+package cn.edu.sdu.sdudoc.util;
 
-import cn.edu.sdu.annonations.PasswordToken;
-import cn.edu.sdu.annonations.UserLoginToken;
+import cn.edu.sdu.sdudoc.annonations.PasswordToken;
+import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.service.UmsUserService;
+import cn.edu.sdu.sdudoc.service.UmsUserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

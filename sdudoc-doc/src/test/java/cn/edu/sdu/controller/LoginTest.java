@@ -20,23 +20,24 @@ public class LoginTest {
 
     @Test
     public void getLogin() {
-//        Optional<UmsUser> user = repository.findById("111");
-//        if (user.isPresent()) {
-//            JSONObject result = (JSONObject) login.login(user.get());
-//            System.out.println(result.get("token"));
-//            System.out.println(result);
-//        }else {
-//            System.out.println("sb");
-//        }
-        UmsUser user = new UmsUser();
-        user.setUid("123");
-        user.setUsername("222");
-        user.setPassword("222");
-        user.setStatus(0);
-        user.setCount(0);
-        JSONObject result = (JSONObject) login.login(user);
-        System.out.println(result);
-        System.out.println(login.getMessage());
+        Optional<UmsUser> user = repository.findById("1");
+        if (user.isPresent()) {
+            JSONObject result = (JSONObject) login.login(user.get());
+            System.out.println(result.get("token"));
+            System.out.println(result);
+        }else {
+            System.out.println("sb");
+        }
+//        UmsUser user = new UmsUser();
+//        user.setUid("123");
+//        user.setUsername("222");
+//        user.setPassword("222");
+//        user.setStatus(0);
+//        user.setCount(0);
+//        JSONObject result = (JSONObject) login.login(user);
+//        System.out.println(result);
+//        System.out.println(result.get("token"));
+//        System.out.println(login.getMessage());
 
 //        System.out.println(LoginController.login(user.get()));
 //        System.out.println(hello.hello());

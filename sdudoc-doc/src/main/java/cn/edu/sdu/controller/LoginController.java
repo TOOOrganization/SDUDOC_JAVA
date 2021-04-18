@@ -1,6 +1,6 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
+import cn.edu.sdu.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
 import cn.edu.sdu.service.TokenService;
 import cn.edu.sdu.service.UmsUserService;
@@ -23,6 +23,7 @@ public class LoginController {
     public Object login(@RequestBody UmsUser user) {
         JSONObject jsonObject = new JSONObject();
         Optional<UmsUser> userForBase = service.findById(user.getUid());
+
         if (userForBase.isPresent()) {
             if (!userForBase.get().getPassword().equals(user.getPassword())) {
                 jsonObject.put("message", "登录失败，密码错误");
@@ -31,11 +32,11 @@ public class LoginController {
                 jsonObject.put("token", token);
                 jsonObject.put("user", userForBase);
             }
-            return jsonObject;
         }else{
             jsonObject.put("message", "登录失败，用户不存在");
-            return jsonObject;
         }
+
+        return jsonObject;
     }
 
     @UserLoginToken

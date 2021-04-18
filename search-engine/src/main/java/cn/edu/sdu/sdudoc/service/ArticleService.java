@@ -1,6 +1,6 @@
 package cn.edu.sdu.sdudoc.service;
 
-import cn.edu.sdu.sdudoc.entity.Article;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
 
 import java.util.List;
 

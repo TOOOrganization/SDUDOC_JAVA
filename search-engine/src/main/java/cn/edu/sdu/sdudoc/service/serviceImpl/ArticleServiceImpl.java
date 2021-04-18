@@ -1,9 +1,7 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.*;
-import cn.edu.sdu.sdudoc.sdudocdao.repository.*;
-import cn.edu.sdu.sdudoc.entity.Article;
-import cn.edu.sdu.sdudoc.repository.ArticleRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ArticleRepository;
 import cn.edu.sdu.sdudoc.service.ArticleService;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +16,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void save(Article article) {
-        articleRepository.save(article);
+
     }
 
     @Override
