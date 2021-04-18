@@ -23,20 +23,18 @@ public class LoginController {
     public Object login(@RequestBody UmsUser user) {
         JSONObject jsonObject = new JSONObject();
         Optional<UmsUser> userForBase = service.findById(user.getUid());
-
-        if (userForBase.get() == null) {
-            jsonObject.put("message", "登录失败，用户不存在");
-            return jsonObject;
-        } else {
+        if (userForBase.isPresent()) {
             if (!userForBase.get().getPassword().equals(user.getPassword())) {
                 jsonObject.put("message", "登录失败，密码错误");
-                return jsonObject;
             } else {
                 String token = tokenService.getToken(userForBase.get());
                 jsonObject.put("token", token);
                 jsonObject.put("user", userForBase);
-                return jsonObject;
             }
+            return jsonObject;
+        }else{
+            jsonObject.put("message", "登录失败，用户不存在");
+            return jsonObject;
         }
     }
 
