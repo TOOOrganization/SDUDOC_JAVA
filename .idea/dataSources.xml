@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - @localhost" uuid="cad60d89-758f-4977-ad35-b75832957d9e">
+    <data-source source="LOCAL" name="@localhost" uuid="cad60d89-758f-4977-ad35-b75832957d9e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
@@ -11,22 +11,17 @@
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="@localhost [2]" uuid="5d14042f-74f7-439f-b826-7643add1b9fa">
+    <data-source source="LOCAL" name="sdudoc-mysql/Hibernate" uuid="4073d4d6-b337-4fb4-b9c4-5ceb5831f13b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/sdudoc?useUnicode=true&amp;characterEncoding=utf-8</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost [3]" uuid="038707ed-6cd8-4868-bcf7-61dc163ce2a1">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

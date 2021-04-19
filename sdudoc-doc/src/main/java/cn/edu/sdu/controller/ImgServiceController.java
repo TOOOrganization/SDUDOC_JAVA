@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/img")
-public class ImgController {
+public class ImgServiceController {
 
     @Autowired
     ImgService service;
 
     @RequestMapping(value = "/get_latest_id", method = RequestMethod.POST)
-    public Long getLatestId() {
-        return service.getLatestId();
+    public Long getLatestNewId() {
+        return service.getLatestId() + 1;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -24,7 +24,7 @@ public class ImgController {
     }
 
     @RequestMapping(value = "/get_url_base64", method = RequestMethod.GET)
-    public String getUrlBase64(Integer id) {
-        return service.getUrlBase64(id);
+    public String getImgBase64FromUrl(Long id) {
+        return service.getImgBase64ById(id);
     }
 }
