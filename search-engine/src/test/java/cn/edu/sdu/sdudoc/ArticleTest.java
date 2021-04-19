@@ -1,28 +1,37 @@
 package cn.edu.sdu.sdudoc;
 
-import cn.edu.sdu.sdudoc.service.ArticleService;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
+import cn.edu.sdu.sdudoc.service.DmsArticleService;
+import cn.edu.sdu.sdudoc.service.serviceImpl.SolrInput;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Resource;
+import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SearchEngineApplication.class)
 public class ArticleTest {
     @Autowired
-    private ArticleService articleService;
+    private DmsArticleService dmsArticleService;
 
-//    @Test
-//    public void insertOne(){
-//        Article article = new Article();
-//        article.setBookname("qqq");
-//        articleService.save(article);
-//    }
+
+    @Autowired
+    public SolrInput solrInput;
+
+
+    @Test
+    public void insertOne(){
+        DmsArticle article = new DmsArticle();
+        article.setBookname("qqq");
+        dmsArticleService.save(article);
+    }
 //
 //    @Test
 //    public void insertMany(){
@@ -38,23 +47,33 @@ public class ArticleTest {
 
     @Test
     public void findAll() {
-        String s = JSONObject.toJSONString(articleService.findAll());
+        String s = JSONObject.toJSONString(dmsArticleService.findAll());
         System.out.println(s);
     }
 
     @Test
     public void findBybookname(){
-        System.out.println(JSONObject.toJSONString(articleService.findBybookname("123")));
+        System.out.println(JSONObject.toJSONString(dmsArticleService.findBybookname("123")));
     }
 
     @Test
     public void findByTitle(){
-        System.out.println(JSONObject.toJSONString(articleService.findByTitle("test")));
+        System.out.println(JSONObject.toJSONString(dmsArticleService.findByTitle("test")));
     }
 
     @Test
     public void findByArticleAuthor(){
-        System.out.println(JSONObject.toJSONString(articleService.findByArticleAuthor("李白")));
+        System.out.println(JSONObject.toJSONString(dmsArticleService.findByArticleAuthor("李白")));
+    }
+
+
+    @Resource
+    private DmsArticleRepository dmsArticleRepository;
+
+    @Test
+    public void addData() throws SolrServerException, IOException {
+        solrInput.addData();
+
     }
 
 }

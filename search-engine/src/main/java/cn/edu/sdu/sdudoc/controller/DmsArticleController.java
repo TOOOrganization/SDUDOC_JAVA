@@ -1,8 +1,8 @@
 package cn.edu.sdu.sdudoc.controller;
 
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
-import cn.edu.sdu.sdudoc.service.ArticleService;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,15 +12,15 @@ import java.util.List;
 
 @RestController
 //@EnableAutoConfiguration
-public class ArticleController {
+public class DmsArticleController {
 
     @Resource
-    private ArticleService articleService;
+    private DmsArticleService dmsArticleService;
 
     @RequestMapping("/findAll")
     @ResponseBody
-    List<Article> findAll() {
-        return articleService.findAll();
+    List<DmsArticle> findAll() {
+        return dmsArticleService.findAll();
     }
 
 }
