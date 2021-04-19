@@ -40,13 +40,13 @@ public class ImgController {
 
     @RequestMapping("/delete")
     @ResponseBody
-    void delete(Integer id){
+    void delete(Long id){
         repository.deleteById(id);
     }
 
     @RequestMapping("/find_by_id")
     @ResponseBody
-    Optional<Img> findById(Integer id){
+    Optional<Img> findById(Long id){
         return repository.findById(id);
     }
 

@@ -10,7 +10,6 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>sdudoc-doc</module>
-    <module>sdudoc-dao</module>
     <module>sdudoc-security</module>
     <module>search-engine</module>
     <module>sdudoc-mysql</module>
