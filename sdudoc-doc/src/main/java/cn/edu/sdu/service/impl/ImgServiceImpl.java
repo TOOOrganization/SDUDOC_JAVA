@@ -45,16 +45,16 @@ public class ImgServiceImpl implements ImgService {
             String randomName = RandomPicNameUtil.getRandomName(filename);
 
             String imgFilePath = System.getProperty("user.dir");
-            File dir = new File(imgFilePath + "\\webapps\\assets\\picture\\");
+            File dir = new File(imgFilePath + "/webapps/assets/picture/");
             if (!dir.exists() && !dir.mkdirs()) {
                 return "生成图片存储路径失败";
             }
 
-            imgFilePath = imgFilePath + "\\webapps\\assets\\picture\\" + randomName;
+            imgFilePath = imgFilePath + "/webapps/assets/picture/" + randomName;
 
             // 写入数据库
             Img img = new Img();
-            img.setId(getLatestId() + 1);
+            img.setId(getLatestId() + 1L);
             img.setUrl(imgFilePath);
             repository.save(img);
 

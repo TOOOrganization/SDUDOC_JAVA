@@ -1,22 +1,12 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="sdudoc-doc:war exploded">
-    <output-path>$PROJECT_DIR$/sdudoc-doc/target/sdudoc</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>sdudoc-doc</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+    <output-path>$PROJECT_DIR$/out/artifacts/sdudoc_doc_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="sdudoc-doc" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="sdudoc-mbg-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="sdudoc-mbg" />
-          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-mongodb:2.4.3" />
           <element id="library" level="project" name="Maven: org.mongodb:mongodb-driver-sync:4.1.1" />
           <element id="library" level="project" name="Maven: org.mongodb:bson:4.1.1" />
@@ -66,6 +56,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-devtools:2.4.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.4.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.3" />
           <element id="library" level="project" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" />
@@ -112,9 +103,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.75" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/sdudoc-doc/target/sdudoc/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="sdudoc-doc/web/Web" />
     </root>
