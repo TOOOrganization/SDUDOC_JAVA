@@ -3,7 +3,6 @@ package cn.edu.sdu.sdudoc.service.serviceImpl;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,13 @@ public class SolrInput {
     @Autowired
     public DataOutput dataOutput;
 
-    public void addData() throws SolrServerException, IOException {
-        List<DmsArticle> l = dataOutput.findAll();
-        for(DmsArticle article :l){
-            System.out.println(article);
-            solrClient.addBean("dms_article",article);
+    public void addDataDmsArticle() throws SolrServerException, IOException {
+        List<DmsArticle> l = dataOutput.findAllDmsArticle();
+        for(DmsArticle dmsArticle :l){
+            System.out.println(dmsArticle);
+            solrClient.addBean("dms_article",dmsArticle);
             solrClient.commit("dms_article");
-            System.out.println("添加成功"+article);
+            System.out.println("添加成功"+dmsArticle);
         }
     }
 }

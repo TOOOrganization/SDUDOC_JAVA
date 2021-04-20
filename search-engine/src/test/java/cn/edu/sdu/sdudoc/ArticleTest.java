@@ -74,10 +74,8 @@ public class ArticleTest {
     private DmsArticleRepository dmsArticleRepository;
 
     @Test
-    public void addData() throws SolrServerException, IOException {
-        //System.out.println(dataOutput.findAll());
-        solrInput.addData();
-        //System.out.println(dataOutput.findAll());
+    public void addDataDmsArticle() throws SolrServerException, IOException {
+        solrInput.addDataDmsArticle();
     }
 
 }
