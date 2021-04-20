@@ -3,13 +3,14 @@ package cn.edu.sdu.sdudoc.util;
 import cn.edu.sdu.sdudoc.annonations.PasswordToken;
 import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.sdudoc.service.UmsUserService;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsUserRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,9 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.Optional;
 
+@Service
 public class AuthenticationInterceptor implements HandlerInterceptor {
     @Autowired
-    UmsUserService service;
+    UmsUserRepository service;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {

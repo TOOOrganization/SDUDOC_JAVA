@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Component
-public class DmsDmsArticleServiceImpl implements DmsArticleService {
+public class DmsArticleServiceImpl implements DmsArticleService {
 
     @Resource
     private DmsArticleRepository dmsArticleRepository;
