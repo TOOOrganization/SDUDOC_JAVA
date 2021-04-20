@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="sdudoc@localhost">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.21">
+    <root id="1">
+      <ServerVersion>4.4.4</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="JD"/>
+    <schema id="3" parent="1" name="SDUDOC">
+      <Current>1</Current>
+    </schema>
+    <schema id="4" parent="1" name="admin"/>
+    <schema id="5" parent="1" name="config"/>
+    <schema id="6" parent="1" name="local"/>
+    <schema id="7" parent="1" name="test"/>
+    <table id="8" parent="3" name="dms_article"/>
+    <table id="9" parent="3" name="dms_words"/>
+    <column id="10" parent="8" name="_id">
+      <Position>1</Position>
+      <DataType>ObjectId|12s</DataType>
+    </column>
+    <column id="11" parent="8" name="articleAuthor">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="12" parent="8" name="dynasty">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="13" parent="8" name="notes">
+      <Position>1</Position>
+      <DataType>list|4999545s</DataType>
+    </column>
+    <column id="14" parent="8" name="title">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="15" parent="8" name="notes.annotation">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="16" parent="8" name="XML">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="17" parent="8" name="bookname">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="18" parent="8" name="imgurl">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="19" parent="8" name="notes.label">
+      <Position>2</Position>
+      <DataType>list|4999545s</DataType>
+    </column>
+    <column id="20" parent="8" name="_class">
+      <Position>3</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="21" parent="8" name="content">
+      <Position>3</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="22" parent="8" name="notes.location">
+      <Position>3</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="23" parent="8" name="annotation">
+      <Position>4</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="24" parent="8" name="notes.pronunciation">
+      <Position>4</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="25" parent="8" name="notes.word">
+      <Position>5</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="26" parent="8" name="page">
+      <Position>6</Position>
+      <DataType>Double|8s</DataType>
+    </column>
+    <column id="27" parent="9" name="_id">
+      <Position>1</Position>
+      <DataType>ObjectId|12s</DataType>
+    </column>
+    <column id="28" parent="9" name="article">
+      <Position>1</Position>
+      <DataType>list|4999545s</DataType>
+    </column>
+    <column id="29" parent="9" name="diff_form">
+      <Position>1</Position>
+      <DataType>list|4999545s</DataType>
+    </column>
+    <column id="30" parent="9" name="imgurl">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="31" parent="9" name="notes">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="32" parent="9" name="pronunciation">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="33" parent="9" name="word">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="34" parent="9" name="meaning">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="35" parent="9" name="article.id">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="36" parent="9" name="diff_form.id">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="37" parent="9" name="diff_pron">
+      <Position>3</Position>
+      <DataType>list|4999545s</DataType>
+    </column>
+    <column id="38" parent="9" name="diff_pron.id">
+      <Position>4</Position>
+      <DataType>String|12s</DataType>
+    </column>
+  </database-model>
+</dataSource>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="sdudoc@211.87.232.200">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.21">
+    <root id="1">
+      <ServerVersion>4.4.4</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="sdudoc">
+      <Current>1</Current>
+    </schema>
+    <table id="3" parent="2" name="dms_article"/>
+    <table id="4" parent="2" name="dms_words"/>
+    <column id="5" parent="3" name="_id">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="6" parent="3" name="articleAuthor">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="7" parent="3" name="notes">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="8" parent="3" name="_class">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="9" parent="3" name="bookname">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="10" parent="3" name="page">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="11" parent="3" name="content">
+      <Position>3</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="12" parent="3" name="title">
+      <Position>3</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="13" parent="4" name="_id">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="14" parent="4" name="article">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="15" parent="4" name="diff_form">
+      <Position>1</Position>
+      <DataType>String|12s</DataType>
+    </column>
+    <column id="16" parent="4" name="diff_pron">
+      <Position>2</Position>
+      <DataType>String|12s</DataType>
+    </column>
+  </database-model>
+</dataSource>
