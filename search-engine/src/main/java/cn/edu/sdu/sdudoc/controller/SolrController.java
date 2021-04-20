@@ -18,8 +18,8 @@ public class SolrController {
     @Autowired
     private SolrService solrService;
 
-    @ResponseBody
     @RequestMapping("/query_head")
+    @ResponseBody
     public JSONArray queryHead(String corename,String field,String keyword) throws IOException, SolrServerException {
         return solrService.queryHead(corename,field, keyword);
     }

@@ -14,7 +14,7 @@ public class DataOutput {
     @Autowired
     private DmsArticleService dmsArticleService;
 
-    public  List<DmsArticle> findAll(){
+    public  List<DmsArticle> findAllDmsArticle(){
         return dmsArticleService.findAll();
     }
 }
