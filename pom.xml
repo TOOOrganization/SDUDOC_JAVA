@@ -38,6 +38,7 @@
     <commons-net.version>3.8.0</commons-net.version>
     <commons-logging.version>1.2</commons-logging.version>
     <fastjson.version>1.2.75</fastjson.version>
+    <mongo.version>3.2.2</mongo.version>
   </properties>
 
   <dependencyManagement>
@@ -131,6 +132,11 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongo-java-driver</artifactId>
+        <version>${mongo.version}</version>
       </dependency>
       <dependency>
         <groupId>com.alibaba</groupId>

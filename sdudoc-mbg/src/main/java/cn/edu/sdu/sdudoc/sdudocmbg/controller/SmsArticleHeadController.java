@@ -1,6 +1,5 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.Article;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.SmsArticleHead;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.SmsArticleHeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;

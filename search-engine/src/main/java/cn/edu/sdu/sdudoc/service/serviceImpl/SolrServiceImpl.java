@@ -31,7 +31,7 @@ public class SolrServiceImpl implements SolrService {
         //针对多属性进行查询(注意多条件连接时，之间要有空格)
         //solrQuery.setQuery("gname:手机 || ginfo:苹果");
         solrQuery.setQuery(type+":"+keyword);
-        QueryResponse queryResponse = solrClient.query(solrQuery);
+        QueryResponse queryResponse = solrClient.query("dms_article",solrQuery);
         SolrDocumentList results = queryResponse.getResults();
         JSONArray jsonArray = new JSONArray();
         for (SolrDocument document:results) {

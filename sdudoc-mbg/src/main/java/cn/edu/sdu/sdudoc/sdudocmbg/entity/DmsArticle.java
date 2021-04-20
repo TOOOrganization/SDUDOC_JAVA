@@ -1,47 +1,63 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.entity;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.apache.solr.client.solrj.beans.Field;
 
 import java.io.Serializable;
 
-@Document(collection = "article")
-public class Article implements Serializable {
+@Document("dms_article")
+public class DmsArticle implements Serializable {
 
     @Id
+    @Field("_id")
     @ApiModelProperty(value = "文章id")
     private String id;
 
+    @Field("articleAuthor")
     @ApiModelProperty(value = "文章作者")
     private String articleAuthor;
 
+    @Field("bookname")
     @ApiModelProperty(value = "书名")
     private String bookname;
 
+    @Field("content")
     @ApiModelProperty(value = "内容")
     private String content;
 
+    @Field("imgurl")
     @ApiModelProperty(value = "图片链接")
     private String imgUrl;
 
+    @Field("page")
     @ApiModelProperty(value = "页码")
     private long page;
 
+    @Field("title")
     @ApiModelProperty(value = "标题")
     private String title;
 
+    @Field("XML")
     @ApiModelProperty(value = "xml文档")
     private String xml;
 
-    @ApiModelProperty(value = "注解")
+    @Field("annotation")
+    @ApiModelProperty(value = "文章注解")
     private String annotation;
 
-    @ApiModelProperty(value = "详细注解")
-    private JSONObject jsonObject;
+    @Field("dynasty")
+    @ApiModelProperty(value = "朝代")
+    private String dynasty;
 
-    // getter and setter
+    @Field("notes")
+    @ApiModelProperty(value = "详细注解")
+    private JSONArray notes;
+
+// getter and setter
 
     public String getId() {
         return id;
@@ -115,12 +131,36 @@ public class Article implements Serializable {
         this.annotation = annotation;
     }
 
-    public JSONObject getJsonObject() {
-        return jsonObject;
+    public String getDynasty() {
+        return dynasty;
     }
 
-    public void setJsonObject(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
+    public void setDynasty(String dynasty) {
+        this.dynasty = dynasty;
     }
 
+    public JSONArray getNotes() {
+        return notes;
+    }
+
+    public void setNotes(JSONArray notes) {
+        this.notes = notes;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id='" + id + '\'' +
+                ", articleAuthor='" + articleAuthor + '\'' +
+                ", bookname='" + bookname + '\'' +
+                ", content='" + content + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", page=" + page +
+                ", title='" + title + '\'' +
+                ", xml='" + xml + '\'' +
+                ", annotation='" + annotation + '\'' +
+                ", dynasty='" + dynasty + '\'' +
+                ", notes=" + notes +
+                '}';
+    }
 }

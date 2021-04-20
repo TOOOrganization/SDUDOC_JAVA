@@ -1,10 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="war" name="sdudoc-doc:war">
     <output-path>$PROJECT_DIR$/sdudoc-doc/target</output-path>
-    <root id="archive" name="sdudoc-doc_war.war">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/sdudoc-doc/target/META-INF/MANIFEST.MF" />
-      </element>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sdudoc-doc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="sdudoc.war">
       <element id="artifact" artifact-name="sdudoc-doc:war exploded" />
     </root>
   </artifact>
