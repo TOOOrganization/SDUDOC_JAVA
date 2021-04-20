@@ -3,6 +3,7 @@ package cn.edu.sdu.sdudoc;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
+import cn.edu.sdu.sdudoc.service.serviceImpl.DataOutput;
 import cn.edu.sdu.sdudoc.service.serviceImpl.SolrInput;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -21,15 +22,17 @@ public class ArticleTest {
     @Autowired
     private DmsArticleService dmsArticleService;
 
-
     @Autowired
     public SolrInput solrInput;
+
+    @Autowired
+    public DataOutput dataOutput;
 
 
     @Test
     public void insertOne(){
         DmsArticle article = new DmsArticle();
-        article.setBookname("qqq");
+        article.setBookname("123456");
         dmsArticleService.save(article);
     }
 //
@@ -72,8 +75,9 @@ public class ArticleTest {
 
     @Test
     public void addData() throws SolrServerException, IOException {
+        //System.out.println(dataOutput.findAll());
         solrInput.addData();
-
+        //System.out.println(dataOutput.findAll());
     }
 
 }

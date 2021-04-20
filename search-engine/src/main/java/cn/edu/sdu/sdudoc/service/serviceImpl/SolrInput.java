@@ -22,8 +22,8 @@ public class SolrInput {
         List<DmsArticle> l = dataOutput.findAll();
         for(DmsArticle article :l){
             System.out.println(article);
-            UpdateResponse updateResponse = solrClient.addBean(article);
-            solrClient.commit();
+            solrClient.addBean("dms_article",article);
+            solrClient.commit("dms_article");
             System.out.println("添加成功"+article);
         }
     }

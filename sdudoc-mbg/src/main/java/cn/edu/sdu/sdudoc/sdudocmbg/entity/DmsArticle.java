@@ -9,7 +9,7 @@ import org.apache.solr.client.solrj.beans.Field;
 
 import java.io.Serializable;
 
-@Document(collection = "dms_article")
+@Document("dms_article")
 public class DmsArticle implements Serializable {
 
     @Id
