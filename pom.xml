@@ -39,6 +39,7 @@
     <commons-logging.version>1.2</commons-logging.version>
     <fastjson.version>1.2.75</fastjson.version>
     <mongo.version>3.2.2</mongo.version>
+    <solrj.vsesion>8.5.2</solrj.vsesion>
   </properties>
 
   <dependencyManagement>
@@ -172,6 +173,11 @@
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
         <version>${commons-logging.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.solr</groupId>
+        <artifactId>solr-solrj</artifactId>
+        <version>${solrj.vsesion}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
