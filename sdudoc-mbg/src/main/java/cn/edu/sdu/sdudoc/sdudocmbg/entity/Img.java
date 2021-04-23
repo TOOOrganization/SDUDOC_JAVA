@@ -15,6 +15,9 @@ public class Img implements Serializable {
     @ApiModelProperty(value = "图片连接")
     private String url;
 
+    @ApiModelProperty(value = "图片文件校验和")
+    private String sha256;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -31,6 +34,14 @@ public class Img implements Serializable {
 
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
+    }
+
+    public String getSha256() {
+        return sha256;
+    }
+
+    public void setSha256(String sha256) {
+        this.sha256 = sha256;
     }
 
     @Override

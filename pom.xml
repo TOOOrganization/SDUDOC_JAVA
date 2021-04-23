@@ -40,6 +40,8 @@
     <fastjson.version>1.2.75</fastjson.version>
     <mongo.version>3.2.2</mongo.version>
     <solrj.vsesion>8.5.2</solrj.vsesion>
+    <auth0.version>3.15.0</auth0.version>
+    <apache-commons.version>1.15</apache-commons.version>
   </properties>
 
   <dependencyManagement>

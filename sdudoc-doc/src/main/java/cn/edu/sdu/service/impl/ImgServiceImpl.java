@@ -4,6 +4,7 @@ import cn.edu.sdu.sdudoc.sdudocmbg.entity.Img;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ImgRepository;
 import cn.edu.sdu.service.ImgService;
 import cn.edu.sdu.util.Base64Util;
+import cn.edu.sdu.util.FileChecksum;
 import cn.edu.sdu.util.RandomPicNameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -52,20 +53,30 @@ public class ImgServiceImpl implements ImgService {
 
             imgFilePath = imgFilePath + "/webapps/assets/picture/" + randomName;
 
-            // 写入数据库
-            Img img = new Img();
-            img.setId(getLatestId() + 1L);
-            img.setUrl(imgFilePath);
-            repository.save(img);
-
-            // 写入file
+            // 比对校验和，如果数据库里没有，则写入数据库
             try {
-                OutputStream out = new FileOutputStream(imgFilePath);
-                out.write(bs);
-                out.flush();
-                out.close();
+                String checksum = FileChecksum.checksumSHA256(bs);
+                Img img;
+                if ((img = fileChecksumExist(checksum)) == null) {
+                    img = new Img();
+                    img.setId(getLatestId() + 1L);
+                    img.setUrl(imgFilePath);
+                    img.setSha256(checksum);
+                    repository.save(img);
 
-                return randomName;
+                    // 写入file
+                    OutputStream out = new FileOutputStream(imgFilePath);
+                    out.write(bs);
+                    out.flush();
+                    out.close();
+
+                    return randomName;
+                } else {
+                    // 数据库里有，则返回图片地址
+                    String url = img.getUrl();
+                    randomName = url.substring(url.lastIndexOf('/'));
+                    return randomName;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 return "图片上传失败";
@@ -108,6 +119,19 @@ public class ImgServiceImpl implements ImgService {
             e.printStackTrace();
             return "图片读取失败".getBytes(StandardCharsets.UTF_8);
         }
+    }
+
+    /**
+     * 返回校验和是否存在
+     * 存在返回Img，不存在返回null
+     * */
+    @Override
+    public Img fileChecksumExist(String checksum) {
+        Img img = new Img();
+        img.setSha256(checksum);
+        Optional<Img> one = repository.findOne(Example.of(img));
+
+        return one.orElse(null);
     }
 
     public static void main(String[] args) {
