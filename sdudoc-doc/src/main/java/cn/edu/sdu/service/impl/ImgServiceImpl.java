@@ -65,7 +65,7 @@ public class ImgServiceImpl implements ImgService {
                 out.flush();
                 out.close();
 
-                return imgFilePath;
+                return randomName;
             } catch (IOException e) {
                 e.printStackTrace();
                 return "图片上传失败";
@@ -73,6 +73,11 @@ public class ImgServiceImpl implements ImgService {
         } else {
             return "图片格式不正确";
         }
+    }
+
+    @Override
+    public Long save(byte[] data) {
+        return null;
     }
 
     @Override

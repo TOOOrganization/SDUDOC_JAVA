@@ -24,8 +24,9 @@ public class ImgTest {
         String url = "E:/media/picture/4c0d4e2f68a04f463605a5b695baf7e8.jpeg";
         String base64 = "data:image/jpeg;base64," + new String(service.getImgBase64(url));
         String filename = "4c0d4e2f68a04f463605a5b695baf7e8.jpeg";
-
+//
         System.out.println(service.save(base64, filename));
+//        System.out.println(base64);
     }
 
     @Test
