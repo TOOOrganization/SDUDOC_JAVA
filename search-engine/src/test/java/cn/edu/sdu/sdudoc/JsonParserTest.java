@@ -8,20 +8,40 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import cn.edu.sdu.sdudoc.common.JsonParser;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsCharacterRepository;
+import cn.edu.sdu.sdudoc.service.DmsCharacterService;
+import com.alibaba.fastjson.JSONObject;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.junit.Test;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SearchEngineApplication.class)
 public class JsonParserTest {
 
     @Test
     public void parseComplexObject() throws IOException, URISyntaxException{
-        URL url = new ClassPathResource("/static/example.json").getURL();
+        URL url = new ClassPathResource("/static/Untitled.sdudoc").getURL();
         String json = readFile(url.toString().substring(6));
 //        "E:/DevelopWork/IDEAProjects/sdudoc-search/search-engine/src/main/resources/static/example.json"
         System.out.println("origin json content:{"+json+"}");
         JsonParser parser = new JsonParser(json);
         Object object = parser.parse();
         System.out.println("parsed object:{"+object+"}");
+    }
+    @Autowired
+    private DmsCharacterService dmsCharacterService;
+
+    @Test
+    public void getData(){
+        String s = JSONObject.toJSONString(dmsCharacterService.findAll());
+        System.out.println(s);
     }
 
 //    @Test

@@ -13,7 +13,10 @@ public class DmsArticle implements Serializable {
 
     @Id
     @Field("_id")
-    @ApiModelProperty(value = "文章id")
+    private String _id;
+
+    @Field("id")
+    @ApiModelProperty(value = "id")
     private String id;
 
     @Field("articleAuthor")
@@ -57,6 +60,15 @@ public class DmsArticle implements Serializable {
     private JSONArray notes;
 
 // getter and setter
+
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public String getId() {
         return id;

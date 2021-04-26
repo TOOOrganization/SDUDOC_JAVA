@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.common;
+package cn.edu.sdu.sdudoc.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class JsonParser {
-
     private final String json;
 
     public JsonParser(String json) {
