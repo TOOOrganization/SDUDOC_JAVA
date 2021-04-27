@@ -1,6 +1,7 @@
-package cn.edu.sdu.sdudoc.service.serviceImpl;
+package cn.edu.sdu.sdudoc.util;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import cn.edu.sdu.sdudoc.util.DataOutput;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;

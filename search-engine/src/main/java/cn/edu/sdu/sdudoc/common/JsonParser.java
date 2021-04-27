@@ -28,6 +28,7 @@ public class JsonParser {
         List<Property> properties = processProperties(newRange(range.start + 1, range.end - 1));
         Map<String, Object> object = new HashMap<>();
         properties.forEach(prop -> object.put(prop.name, prop.value));
+        //System.out.println(object);
         return object;
     }
 
@@ -42,7 +43,7 @@ public class JsonParser {
                 CharsRange valueSegment = findNextValue(newRange(++i, range.end), readCursor);
                 i = readCursor.intValue() + 1;
                 nameStartMark = i;
-                System.out.println("nameToken:"+nameToken+",valueSegment:"+valueSegment);
+                //System.out.println("nameToken:"+nameToken+",valueSegment:"+valueSegment);
                 //TODO::valid nameToken is start and end with '"'
                 final String name = newRange(nameToken.start + 1, nameToken.end - 1).toString();
                 final Object value = processValue(valueSegment);

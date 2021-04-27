@@ -1,9 +1,9 @@
 package cn.edu.sdu.sdudoc.service;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 public interface DmsArticleService {
 
     void save(DmsArticle dmsArticle);
