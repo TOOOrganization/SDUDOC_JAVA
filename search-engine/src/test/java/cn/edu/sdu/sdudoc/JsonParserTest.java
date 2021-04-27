@@ -6,16 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import cn.edu.sdu.sdudoc.common.JsonParser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsCharacterRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.service.DmsCharacterService;
-import cn.edu.sdu.sdudoc.util.MongoInput;
+import cn.edu.sdu.sdudoc.util.ParserObject;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.junit.Test;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SearchEngineApplication.class)
@@ -38,7 +33,7 @@ public class JsonParserTest {
         System.out.println("origin json content:{"+json+"}");
         JsonParser parser = new JsonParser(json);
         HashMap object = (HashMap) parser.parse();
-        MongoInput m = new MongoInput(object);
+        ParserObject m = new ParserObject(object);
         //System.out.println(object.get("Word"));
         HashMap document_info = (HashMap) object.get("document_info");
         List<Object> charcater = (List<Object>) object.get("Character");
@@ -62,8 +57,8 @@ public class JsonParserTest {
 
     @Test
     public void getData(){
-        System.out.println(dmsCharacterService);
-        String s = JSONObject.toJSONString(dmsCharacterService.findAll());
+        System.out.println(dmsArticleService);
+        String s = JSONObject.toJSONString(dmsArticleService.findAll());
         System.out.println(s);
     }
 

@@ -4,11 +4,13 @@ import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Component
+@Service
 public class DmsArticleServiceImpl implements DmsArticleService {
 
     @Resource
