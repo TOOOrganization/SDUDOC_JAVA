@@ -12,37 +12,34 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.HashMap;
 import java.util.List;
 
+@Service
 public class ParserObject {
 
-    MongoInput mongoInput = new MongoInput();
+    @Autowired
+    MongoInput mongoInput;
 
-    private final HashMap object;
 
-    public ParserObject(HashMap object) {
-        this.object = object;
-    }
-
-    public HashMap getHeadInfo(){
+    public HashMap getHeadInfo(HashMap object){
         return (HashMap) object.get("document_info");
     }
 
-    public List<Object> getCharacter(){
+    public List<Object> getCharacter(HashMap object){
         return (List<Object>) object.get("Character");
     }
 
-    public List<Object> getWord(){
+    public List<Object> getWord(HashMap object){
         return (List<Object>) object.get("Word");
     }
 
-    public List<Object> getSentence(){
+    public List<Object> getSentence(HashMap object){
         return (List<Object>) object.get("Sentence");
     }
 
-    public List<Object> getParagraph(){
+    public List<Object> getParagraph(HashMap object){
         return (List<Object>) object.get("Paragraph");
     }
 
-    public void saveArticle(){
+    public void saveArticle(HashMap object){
         HashMap document_info = (HashMap) object.get("document_info");
         DmsArticle dmsArticle = new DmsArticle();
         dmsArticle.setBookname((String) document_info.get("name"));

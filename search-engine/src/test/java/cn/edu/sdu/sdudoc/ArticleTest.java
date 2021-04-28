@@ -75,7 +75,8 @@ public class ArticleTest {
 
     @Test
     public void addDataDmsArticle() throws SolrServerException, IOException {
-        solrInput.addDataDmsArticle();
+        System.out.println(dataOutput.findAllDmsArticle());
+        //solrInput.addDataDmsArticle();
     }
 
 }

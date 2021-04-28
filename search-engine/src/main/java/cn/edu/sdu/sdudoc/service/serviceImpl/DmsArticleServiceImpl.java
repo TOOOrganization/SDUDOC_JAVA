@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Component
-@Service
 public class DmsArticleServiceImpl implements DmsArticleService {
 
     @Resource

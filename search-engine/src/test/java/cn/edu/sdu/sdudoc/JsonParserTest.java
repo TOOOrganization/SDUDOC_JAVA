@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import cn.edu.sdu.sdudoc.common.JsonParser;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.service.DmsCharacterService;
 import cn.edu.sdu.sdudoc.util.ParserObject;
@@ -25,6 +26,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = SearchEngineApplication.class)
 public class JsonParserTest {
 
+    @Autowired
+    ParserObject m;
+
     @Test
     public void parseComplexObject() throws IOException, URISyntaxException{
         URL url = new ClassPathResource("/static/Untitled.sdudoc").getURL();
@@ -33,20 +37,20 @@ public class JsonParserTest {
         System.out.println("origin json content:{"+json+"}");
         JsonParser parser = new JsonParser(json);
         HashMap object = (HashMap) parser.parse();
-        ParserObject m = new ParserObject(object);
+//        ParserObject m = new ParserObject(object);
         //System.out.println(object.get("Word"));
         HashMap document_info = (HashMap) object.get("document_info");
         List<Object> charcater = (List<Object>) object.get("Character");
         List<Object> word = (List<Object>) object.get("Word");
         List<Object> sentence = (List<Object>) object.get("Sentence");
         List<Object> paragraph = (List<Object>) object.get("Paragraph");
-        System.out.println(m.getHeadInfo());
-        System.out.println(m.getCharacter());
-        System.out.println(m.getWord());
-        System.out.println(m.getSentence());
-        System.out.println(m.getParagraph());
+        System.out.println(m.getHeadInfo(object));
+        System.out.println(m.getCharacter(object));
+        System.out.println(m.getWord(object));
+        System.out.println(m.getSentence(object));
+        System.out.println(m.getParagraph(object));
         System.out.println("parsed object:{"+object+"}");
-        m.saveArticle();
+        m.saveArticle(object);
     }
 
     @Autowired
