@@ -3,6 +3,8 @@ package cn.edu.sdu.sdudoc.sdudocmbg.entity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +14,8 @@ import java.util.Date;
 public class UmsUser implements Serializable {
     @Id
     @ApiModelProperty(value = "用户id")
-    private String uid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer uid;
 
     @ApiModelProperty(value = "用户名")
     private String username;
@@ -55,12 +58,12 @@ public class UmsUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {

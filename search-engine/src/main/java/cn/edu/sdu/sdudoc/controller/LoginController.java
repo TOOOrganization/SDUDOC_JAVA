@@ -1,13 +1,16 @@
-package cn.edu.sdu.controller;
+package cn.edu.sdu.sdudoc.controller;
 
-import cn.edu.sdu.annonations.UserLoginToken;
+import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.service.TokenService;
-import cn.edu.sdu.service.UmsUserService;
+import cn.edu.sdu.sdudoc.service.TokenService;
+import cn.edu.sdu.sdudoc.service.UmsUserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 

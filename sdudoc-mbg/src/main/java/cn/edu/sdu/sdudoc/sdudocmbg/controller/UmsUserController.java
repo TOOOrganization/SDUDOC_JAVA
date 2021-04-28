@@ -41,13 +41,13 @@ public class UmsUserController {
 
     @RequestMapping("/delete")
     @ResponseBody
-    void delete(String uid){
+    void delete(Integer uid){
         repository.deleteById(uid);
     }
 
     @RequestMapping("/find_by_id")
     @ResponseBody
-    Optional<UmsUser> findById(String uid){
+    Optional<UmsUser> findById(Integer uid){
         return repository.findById(uid);
     }
 

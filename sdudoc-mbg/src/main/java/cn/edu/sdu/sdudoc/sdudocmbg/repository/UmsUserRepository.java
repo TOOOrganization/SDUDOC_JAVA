@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UmsUserRepository extends JpaRepository<UmsUser,String> {
+public interface UmsUserRepository extends JpaRepository<UmsUser,Integer> {
     //List<UmsUser> findAll();
 
     //List<UmsUser> findByUid(String uid);

@@ -20,9 +20,9 @@ public class LoginTest {
 
     @Test
     public void getLogin() {
-        Optional<UmsUser> user = repository.findById("1");
+        Optional<UmsUser> user = repository.findById(1);
         if (user.isPresent()) {
-            JSONObject result = (JSONObject) login.login(user.get());
+            JSONObject result = (JSONObject) login.login(user.get().getUsername(), user.get().getPassword());
             System.out.println(result.get("token"));
             System.out.println(result);
         }else {
@@ -41,5 +41,15 @@ public class LoginTest {
 
 //        System.out.println(LoginController.login(user.get()));
 //        System.out.println(hello.hello());
+    }
+
+    @Test
+    public void register() {
+        String username = "123";
+        String password = "123";
+        String nickname = "123";
+
+        JSONObject object = (JSONObject) login.register(username, password, nickname);
+        System.out.println(object);
     }
 }

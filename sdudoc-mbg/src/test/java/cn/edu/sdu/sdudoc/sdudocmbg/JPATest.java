@@ -33,7 +33,7 @@ public class JPATest {
 
     @Test
     public void getLogin() {
-        Optional<UmsUser> user = repository.findById("1");
+        Optional<UmsUser> user = repository.findById(1);
 //        JSONObject result = (JSONObject) login.login(user);
 //        System.out.println(result.get("token"));
         System.out.println(user.get().getPassword());
