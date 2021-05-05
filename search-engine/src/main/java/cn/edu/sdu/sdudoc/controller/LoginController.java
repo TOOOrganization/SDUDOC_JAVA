@@ -24,7 +24,7 @@ public class LoginController {
     TokenService tokenService;
 
     @PostMapping("/login")
-    public Object login(String username, String password) {
+    public JSONObject login(String username, String password) {
         JSONObject jsonObject = new JSONObject();
         UmsUser user = new UmsUser();
         user.setUsername(username);
@@ -41,7 +41,7 @@ public class LoginController {
                 jsonObject.put("user", userForBase);
             }
         }else{
-            jsonObject.put("message", "登录失败，用户不存在");
+            jsonObject.put("message", "登录失败，用户不存在或密码错误");
         }
 
         return jsonObject;
@@ -49,15 +49,24 @@ public class LoginController {
 
     @PostMapping("/register")
     public Object register(String username, String password, String nickname) {
-        UmsUser user = new UmsUser();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setNickname(nickname);
-        user.setStatus(1);
-        user.setCount(1);
+        JSONObject jsonObject = new JSONObject();
+        UmsUser fuser = new UmsUser();
+        fuser.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(fuser));
 
-        service.save(user);
-        return login(username, password);
+        if (one.isPresent()) {
+            jsonObject.put("message", "用户已存在");
+        } else {
+            fuser.setPassword(password);
+            fuser.setNickname(nickname);
+            fuser.setStatus(1);
+            fuser.setCount(1);
+
+            service.save(fuser);
+            jsonObject = login(username, password);
+        }
+
+        return jsonObject;
     }
 
     @UserLoginToken
@@ -66,3 +75,4 @@ public class LoginController {
         return "通过验证";
     }
 }
+
