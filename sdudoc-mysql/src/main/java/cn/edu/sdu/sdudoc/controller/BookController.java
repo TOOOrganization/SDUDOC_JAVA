@@ -1,8 +1,7 @@
-package cn.edu.sdu.sdudoc.sdudocmysql.controller;
+package cn.edu.sdu.sdudoc.controller;
 
 import cn.edu.sdu.sdudoc.entity.Book;
 import cn.edu.sdu.sdudoc.entity.BookExample;
-import cn.edu.sdu.sdudoc.sdudocmysql.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

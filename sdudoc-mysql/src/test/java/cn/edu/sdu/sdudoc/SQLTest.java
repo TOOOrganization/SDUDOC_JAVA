@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmysql;
+package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.repository.UmsUserRepository;
 import org.junit.jupiter.api.Test;
