@@ -1,7 +1,7 @@
 package cn.edusdu.sdudoc.sdudocdao.mapper;
 
-import cn.edu.sdu.sdudoc.sdudocdao.entity.Img;
-import cn.edu.sdu.sdudoc.sdudocdao.entity.ImgExample;
+import cn.edu.sdu.sdudoc.sdudocmysql.sdudocdao.entity.Img;
+import cn.edu.sdu.sdudoc.sdudocmysql.sdudocdao.entity.ImgExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
