@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/sdudoc-doc" />
     <file type="web" url="file://$PROJECT_DIR$/sdudoc-mbg" />
+    <file type="web" url="file://$PROJECT_DIR$/sdudoc-mysql" />
     <file type="web" url="file://$PROJECT_DIR$/search-engine" />
   </component>
   <component name="MavenProjectsManager">

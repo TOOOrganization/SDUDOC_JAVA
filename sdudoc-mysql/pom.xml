@@ -10,7 +10,7 @@
 
     <artifactId>sdudoc-mysql</artifactId>
     <name>sdudoc-mysql</name>
-
+    <packaging>war</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.complier.source>8</maven.complier.source>
@@ -80,8 +80,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>cn.edu.sdu.sdudoc.sdudocmysql.SdudocMysqlApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
+        <finalName>sdudoc-mysql</finalName>
     </build>
 
 </project>
