@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+
 @RestController
 @RequestMapping("/img")
 public class ImgServiceController {
@@ -26,11 +30,11 @@ public class ImgServiceController {
 
     @RequestMapping(value = "/get_url_base64", method = RequestMethod.GET)
     public String getImgBase64FromUrl(Long id) {
-        return service.getImgBase64ById(id);
+        return "data:image/jpeg;base64,"+service.getImgBase64ById(id);
     }
 
     @RequestMapping(value = "/get_img_url", method = RequestMethod.GET)
     public byte[] getImg(String url) {
-        return Base64Util.base64Decode2Bytes(service.getImgBase64("/usr/local/apache-tomcat-8.5.64/bin/webapps/assets/picture/" + url));
+        return Base64Util.base64Decode2Bytes(service.getImgBase64("" + url));
     }
 }
