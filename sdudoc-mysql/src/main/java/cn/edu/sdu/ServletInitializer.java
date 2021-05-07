@@ -1,6 +1,5 @@
-package cn.edu.sdu.sdudoc;
+package cn.edu.sdu;
 
-import cn.edu.sdu.sdudoc.sdudocmysql.SdudocMysqlApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
@@ -10,4 +9,5 @@ public class ServletInitializer extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SdudocMysqlApplication.class);
     }
+
 }

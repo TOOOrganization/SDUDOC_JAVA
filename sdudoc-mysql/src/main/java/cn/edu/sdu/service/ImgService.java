@@ -1,15 +1,16 @@
-package cn.edu.sdu.sdudoc.sdudocmysql.service;
+package cn.edu.sdu.service;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.Img;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 public interface ImgService {
 
     public Long getLatestId();
-    public String save(String base64, String filename);
+    public Long save(String base64, String filename);
     public Long save(byte[] data);
-    public String getImgBase64ById(Long id);
-    public byte[] getImgBase64(String url);
+    public byte[] getImgById(Long id);
+    public byte[] getImgByUrl(String url);
     public Img fileChecksumExist(String checksum) throws IOException;
 }

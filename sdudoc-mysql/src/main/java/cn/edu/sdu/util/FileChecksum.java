@@ -1,5 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmysql.util;
-
+package cn.edu.sdu.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

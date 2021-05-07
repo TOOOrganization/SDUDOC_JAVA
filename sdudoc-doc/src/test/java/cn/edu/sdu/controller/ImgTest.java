@@ -30,7 +30,7 @@ public class ImgTest {
     }
 
     @Test
-    public void getImgBase64FromUrl() {
+    public void getImgById() {
         System.out.println();
     }
 }

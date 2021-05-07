@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmysql.util;
+package cn.edu.sdu.util;
 
 import java.util.Base64;
 

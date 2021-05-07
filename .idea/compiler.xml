@@ -15,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="sdudoc" target="1.8" />
       <module name="sdudoc-dao" target="1.8" />
       <module name="wrapper" target="1.8" />
     </bytecodeTargetLevel>

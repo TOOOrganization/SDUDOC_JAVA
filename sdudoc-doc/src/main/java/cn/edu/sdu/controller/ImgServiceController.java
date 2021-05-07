@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/img")
@@ -25,31 +27,61 @@ public class ImgServiceController {
         return service.getLatestId() + 1;
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(String base64, String filename) {
-        return service.save(base64.replaceAll(" ", "+"), filename);
-    }
+    @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST)
+    public Long save(String base64, String filename) {
+        Map<String, String> map = new HashMap<>();
+        map.put("base64", base64);
+        map.put("filename", filename);
 
-    @RequestMapping(value = "/get_url_base64", method = RequestMethod.GET)
-    public String getImgBase64FromUrl(Long id) {
-        return service.getImgBase64ById(id);
-    }
-
-    @RequestMapping(value = "/get_img_url", method = RequestMethod.GET)
-    public void getImg(HttpServletResponse response, String url) {
+        String response;
         try {
-            OkHttpUtil.doGet("http://211.87.232.199:8080/sdudocmysql/get_img_url", "GET");
+            response = OkHttpUtil.doPost("http://211.87.232.199:8080/mysql/img/save_by_base64", map, "POST");
         } catch (HttpStatusException e) {
             e.printStackTrace();
+            response = "-2";
         }
-        byte[] buffer = Base64Util.base64Decode2Bytes(service.getImgBase64("/usr/local/apache-tomcat-8.5.64/bin/webapps/assets/picture/" + url));
+        return Long.valueOf(response);
+    }
+
+    @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
+    public void getImgById(HttpServletResponse response, Long id) {
         OutputStream os = null;
         try {
             os = response.getOutputStream();
 
+            String base64;
+            base64 = OkHttpUtil.doGet("http://211.87.232.199:8080/mysql/img/get_by_id?id=" + id, "GET");
+
+            byte[] buffer = Base64Util.base64Decode2Bytes(base64);
             os.write(buffer);
             os.flush();
-        } catch (IOException e) {
+
+        } catch (IOException | HttpStatusException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert os != null;
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @RequestMapping(value = "/get_by_url", method = RequestMethod.GET)
+    public void getImgByUrl(HttpServletResponse response, String url) {
+        OutputStream os = null;
+        try {
+            os = response.getOutputStream();
+
+            String base64;
+            base64 = OkHttpUtil.doGet("http://211.87.232.199:8080/mysql/img/get_by_url?url=" + url, "GET");
+
+            byte[] buffer = Base64Util.base64Decode2Bytes(base64);
+            os.write(buffer);
+            os.flush();
+
+        } catch (IOException | HttpStatusException e) {
             e.printStackTrace();
         } finally {
             try {
