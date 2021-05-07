@@ -1,7 +1,7 @@
 package cn.edusdu.sdudoc.sdudocdao.mapper;
 
-import cn.edu.sdu.sdudoc.sdudocmysql.sdudocdao.entity.Book;
-import cn.edu.sdu.sdudoc.sdudocmysql.sdudocdao.entity.BookExample;
+import cn.edu.sdu.sdudoc.sdudocdao.entity.Book;
+import cn.edu.sdu.sdudoc.sdudocdao.entity.BookExample;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
