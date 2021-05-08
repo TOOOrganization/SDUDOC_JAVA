@@ -2,6 +2,7 @@ package cn.edu.sdu.controller;
 
 import cn.edu.sdu.service.ImgService;
 import cn.edu.sdu.service.impl.ImgServiceImpl;
+import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +32,8 @@ public class ImgTest {
 
     @Test
     public void getImgById() {
-        System.out.println();
+        String s = "{1:1}";
+        System.out.println(JSON.parseObject(s));
+        System.out.println(JSON.parseObject(s).toJSONString());
     }
 }

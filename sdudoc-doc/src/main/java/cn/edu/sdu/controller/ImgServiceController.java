@@ -4,7 +4,9 @@ import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.service.ImgService;
 import cn.edu.sdu.util.Base64Util;
 import cn.edu.sdu.util.OkHttpUtil;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,18 +29,17 @@ public class ImgServiceController {
         return service.getLatestId() + 1;
     }
 
-    @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST)
-    public Long save(String base64, String filename) {
+    @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST, produces = "application/json")
+    public Long save(@RequestBody JSONObject data) {
         Map<String, String> map = new HashMap<>();
-        map.put("base64", base64);
-        map.put("filename", filename);
+        map.put("data", data.toJSONString());
 
         String response;
         try {
-            response = OkHttpUtil.doPost("http://211.87.232.199:8080/mysql/img/save_by_base64", map, "POST");
+            response = OkHttpUtil.doPost("http://211.87.232.199:8080/mysql/img/save_by_base64", data.toJSONString(), null, "POST");
         } catch (HttpStatusException e) {
             e.printStackTrace();
-            response = "-2";
+            response = "-5";
         }
         return Long.valueOf(response);
     }

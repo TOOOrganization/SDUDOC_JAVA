@@ -2,7 +2,9 @@ package cn.edu.sdu.controller;
 
 import cn.edu.sdu.util.Base64Util;
 import cn.edu.sdu.service.ImgService;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +21,9 @@ public class ImgServiceController {
         return service.getLatestId() + 1;
     }
 
-    @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST)
-    public Long save(String base64, String filename) {
-        return service.save(base64.replaceAll(" ", "+"), filename);
+    @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST, produces = "application/json")
+    public Long save(@RequestBody JSONObject data) {
+        return service.save(data.getString("base64").replaceAll(" ", "+"), data.getString("filename"));
     }
 
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
