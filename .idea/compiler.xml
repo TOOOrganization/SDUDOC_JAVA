@@ -18,6 +18,10 @@
       <module name="sdudoc" target="1.8" />
       <module name="sdudoc-dao" target="1.8" />
       <module name="wrapper" target="1.8" />
+      <module name="wrapper (1)" target="1.8" />
+      <module name="wrapper (2)" target="1.8" />
+      <module name="wrapper (3)" target="1.8" />
+      <module name="wrapper (4)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

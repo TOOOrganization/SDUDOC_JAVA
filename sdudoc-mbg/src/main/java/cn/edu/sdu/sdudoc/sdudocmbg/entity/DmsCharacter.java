@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @Document("dms_character")
 public class DmsCharacter implements Serializable {
@@ -15,11 +17,6 @@ public class DmsCharacter implements Serializable {
     @Field("_id")
     @ApiModelProperty(value = "_id")
     private String _id;
-
-
-    @Field("id")
-    @ApiModelProperty(value = "id")
-    private String id;
 
     @Field("character")
     @ApiModelProperty(value = "character")
@@ -47,7 +44,15 @@ public class DmsCharacter implements Serializable {
 
     @Field("articles")
     @ApiModelProperty(value = "articles")
-    private String[][] articles;
+    private String articles;
+
+    @Field("page")
+    @ApiModelProperty(value = "page")
+    private String page;
+
+    @Field("position")
+    @ApiModelProperty(value = "position")
+    private ArrayList position;
 
     public String get_id() {
         return _id;
@@ -55,14 +60,6 @@ public class DmsCharacter implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCharacter() {
@@ -113,11 +110,43 @@ public class DmsCharacter implements Serializable {
         this.diff_pron = diff_pron;
     }
 
-    public String[][] getArticles() {
+    public String getArticles() {
         return articles;
     }
 
-    public void setArticles(String[][] articles) {
+    public void setArticles(String articles) {
         this.articles = articles;
     }
+
+    public String getPage() {
+        return page;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
+    }
+
+    public ArrayList getPosition() {
+        return position;
+    }
+
+    public void setPosition(ArrayList position) {
+        this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "DmsCharacter{" +
+                "_id='" + _id + '\'' +
+                ", character='" + character + '\'' +
+                ", pronunciation='" + pronunciation + '\'' +
+                ", meaning='" + meaning + '\'' +
+                ", notes='" + notes + '\'' +
+                ", diff_form=" + Arrays.toString(diff_form) +
+                ", diff_pron=" + Arrays.toString(diff_pron) +
+                ", articles='" + articles + '\'' +
+                ", position=" + position +
+                '}';
+    }
 }
+

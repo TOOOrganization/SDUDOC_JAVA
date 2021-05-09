@@ -3,11 +3,13 @@ package cn.edu.sdu.sdudoc.service.serviceImpl;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class DmsArticleServiceImpl implements DmsArticleService {
@@ -16,8 +18,8 @@ public class DmsArticleServiceImpl implements DmsArticleService {
     private DmsArticleRepository dmsArticleRepository;
 
     @Override
-    public void save(DmsArticle dmsArticle) {
-        dmsArticleRepository.save(dmsArticle);
+    public DmsArticle save(DmsArticle dmsArticle) {
+        return dmsArticleRepository.save(dmsArticle);
     }
 
     @Override
@@ -50,6 +52,12 @@ public class DmsArticleServiceImpl implements DmsArticleService {
     public void update(DmsArticle dmsArticle){
         dmsArticleRepository.save(dmsArticle);
     }
+
+    @Override
+    public Optional<DmsArticle> findOne(DmsArticle dmsArticle){ return dmsArticleRepository.findOne(Example.of(dmsArticle));}
+
+    @Override
+    public Optional<DmsArticle> findById(String id){ return dmsArticleRepository.findById(id);}
 
     @Override
     public List<DmsArticle> findAll() {

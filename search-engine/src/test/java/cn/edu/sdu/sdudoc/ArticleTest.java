@@ -3,6 +3,7 @@ package cn.edu.sdu.sdudoc;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
+import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.DataOutput;
 import cn.edu.sdu.sdudoc.util.SolrInput;
 import com.alibaba.fastjson.JSONObject;
@@ -77,6 +78,14 @@ public class ArticleTest {
     public void addDataDmsArticle() throws SolrServerException, IOException {
         System.out.println(dataOutput.findAllDmsArticle());
         //solrInput.addDataDmsArticle();
+    }
+
+    @Autowired
+    SolrService solrService;
+
+    @Test
+    public void getSVG() throws SolrServerException, IOException {
+        solrService.getSVG("60973c77a17e0d7165506cb3","李克","515");
     }
 
 }
