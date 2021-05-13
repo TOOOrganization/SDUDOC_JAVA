@@ -42,9 +42,9 @@ public class DmsCharacter implements Serializable {
     @ApiModelProperty(value = "diff_pron")
     private String[] diff_pron;
 
-    @Field("articles")
-    @ApiModelProperty(value = "articles")
-    private String articles;
+    @Field("article")
+    @ApiModelProperty(value = "article")
+    private String article;
 
     @Field("page")
     @ApiModelProperty(value = "page")
@@ -110,12 +110,12 @@ public class DmsCharacter implements Serializable {
         this.diff_pron = diff_pron;
     }
 
-    public String getArticles() {
-        return articles;
+    public String getArticle() {
+        return article;
     }
 
-    public void setArticles(String articles) {
-        this.articles = articles;
+    public void setArticle(String articles) {
+        this.article = articles;
     }
 
     public String getPage() {
@@ -144,7 +144,7 @@ public class DmsCharacter implements Serializable {
                 ", notes='" + notes + '\'' +
                 ", diff_form=" + Arrays.toString(diff_form) +
                 ", diff_pron=" + Arrays.toString(diff_pron) +
-                ", articles='" + articles + '\'' +
+                ", article='" + article + '\'' +
                 ", position=" + position +
                 '}';
     }

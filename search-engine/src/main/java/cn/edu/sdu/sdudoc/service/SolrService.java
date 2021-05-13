@@ -16,4 +16,6 @@ public interface SolrService {
     String insertSdudoc(JSONObject json) throws SolrServerException, IOException;
 
     String getSVG(String aid, String keyword, String width) throws SolrServerException, IOException;
+
+    String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException;
 }

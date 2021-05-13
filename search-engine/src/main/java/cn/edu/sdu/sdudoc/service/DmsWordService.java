@@ -6,7 +6,7 @@ import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
 import java.util.List;
 
 public interface DmsWordService {
-    void save(DmsWord dmsWord);
+    DmsWord save(DmsWord dmsWord);
 
     List<DmsWord> saveAll(List dmsWords);
 

@@ -95,7 +95,7 @@ public class SolrServiceImpl implements SolrService {
         System.out.println(field+":"+keyword);
         SolrQuery solrQuery=new SolrQuery();
         StringBuilder query = new StringBuilder();
-        query.append("articles:").append(article).append(" && (");
+        query.append("article:").append(article).append(" && (");
         for(int i=0;i<keyword.length();i++){
             query.append(field).append(":").append(keyword.charAt(i));
             if(i<keyword.length()-1){
@@ -103,6 +103,23 @@ public class SolrServiceImpl implements SolrService {
             }
         }
         query.append(")");
+        System.out.println(String.valueOf(query));
+        solrQuery.setQuery(String.valueOf(query));
+        QueryResponse queryResponse = solrClient.query(corename,solrQuery);
+        SolrDocumentList results = queryResponse.getResults();
+        JSONArray jsonArray = new JSONArray();
+        for (SolrDocument document:results) {
+            System.out.println(document);
+            jsonArray.add(document);
+        }
+        return jsonArray;
+    }
+
+    public JSONArray queryWord(String corename,String field, String keyword, String article) throws SolrServerException, IOException {
+        System.out.println(field+":"+keyword);
+        SolrQuery solrQuery=new SolrQuery();
+        StringBuilder query = new StringBuilder();
+        query.append("article:").append(article).append(" && (").append(field).append(":").append(keyword).append(")");
         System.out.println(String.valueOf(query));
         solrQuery.setQuery(String.valueOf(query));
         QueryResponse queryResponse = solrClient.query(corename,solrQuery);
@@ -134,16 +151,16 @@ public class SolrServiceImpl implements SolrService {
             characterss[count++] = m.saveCharacter(h,article);
         }
         //article存入solr
-        solrInput.addData(article);
+        solrInput.addData("dms_article", article);
         //character存入solr
         for(DmsCharacter c : characterss){
-            solrInput.addData(c);
+            solrInput.addData("",c);
         }
         return "文章添加成功";
     }
 
     private ArrayList<HashMap<String, String>> getPageInfo(ArrayList list){
-        ArrayList<HashMap<String, String>> output = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> output = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             String str = (String)list.get(i);
             HashMap<String, String> map = new HashMap<String, String>();
@@ -189,11 +206,9 @@ public class SolrServiceImpl implements SolrService {
         JSONArray article_array = this.queryArticle("dms_article","_id", aid);
         SolrDocument article = (SolrDocument) article_array.get(0);
 
-        JSONObject article_map =  article_array.getJSONObject(0);
-        JSONArray page_array = article_map.getJSONArray("page");
 
         ArrayList<HashMap<String, String>> list = this.getPageInfo((ArrayList)article.get("page"));
-        ArrayList<PageInfo> page_list = new ArrayList<PageInfo>();
+        ArrayList<PageInfo> page_list = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             PageInfo info = new PageInfo(list.get(i));
             info.setScale(width, (Double.parseDouble(width)/info.getWidth() * info.getHeight())+"");
@@ -223,6 +238,113 @@ public class SolrServiceImpl implements SolrService {
         System.out.println(page_list.toString());
 
         return page_list.toString();
+    }
+
+//    @Override
+//    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
+//
+//        //获取aid对应的文章
+//        JSONArray article_array = this.queryArticle("dms_article","_id", aid);
+//        SolrDocument article = (SolrDocument) article_array.get(0);
+//
+//        //得到文章对应的page列表
+//        ArrayList<HashMap<String, String>> list = this.getPageInfo((ArrayList)article.get("page"));
+//        ArrayList<PageInfo> page_list = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            PageInfo info = new PageInfo(list.get(i));
+//            //进行缩放的操作
+//            info.setScale(width, height);
+//            page_list.add(info);
+//        }
+//
+//        //每一个字的信息
+//        JSONArray char_array = this.queryCharacter("dms_character","character", keyword, aid);
+//        List<SolrDocument> char_list = new ArrayList<>();
+//        for(Object o : char_array){
+//            char_list.add((SolrDocument) o);
+//        }
+//        for(SolrDocument s : char_list){
+//            String page = (String)((ArrayList)s.get("page")).get(0);
+//            ArrayList<String> position = (ArrayList)s.get("position");
+//            for(PageInfo page_info : page_list){
+//                if(page_info.getId().equals(page)){
+//                    page_info.addPolygon(position);
+//                }
+//            }
+//        }
+//        System.out.println(page_list.toString());
+//        return page_list.toString();
+//    }
+
+    @Override
+    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
+
+        //获取aid对应的文章
+        JSONArray article_array = this.queryArticle("dms_article","_id", aid);
+        SolrDocument article = (SolrDocument) article_array.get(0);
+
+        //得到文章对应的page列表
+        ArrayList<HashMap<String, String>> list = this.getPageInfo((ArrayList)article.get("page"));
+        ArrayList<PageInfo> page_list = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            PageInfo info = new PageInfo(list.get(i));
+            //进行缩放的操作
+            info.setScale(width, height);
+            page_list.add(info);
+        }
+
+        //获取词的信息
+        JSONArray word_array = this.queryWord("dms_word","word", keyword, aid);
+        if(!word_array.isEmpty()){
+            List<SolrDocument> word_list = new ArrayList<>();
+            for(Object o : word_array){
+                word_list.add((SolrDocument) o);
+            }
+            for(SolrDocument s:word_list){
+                ArrayList<String> point_list = (ArrayList) s.get("position");
+                for(String p : point_list){
+                    String[] point_array = p.split("\\|");
+                    String page = point_array[0];
+                    for(int i = 1; i < point_array.length; i++){
+                        ArrayList<String> position = new ArrayList<>();
+                        String[] points = point_array[i].split(";");
+                        for(String point : points){
+                            String[] point_i = point.split(":");
+                            position.add(point_i[0]);
+                            position.add(point_i[1]);
+                        }
+                        for(PageInfo page_info : page_list){
+                            if(page_info.getId().equals(page)){
+                                page_info.addPolygon(position);
+                            }
+                        }
+                    }
+                }
+            }
+        }else{
+            //每一个字的信息
+            JSONArray char_array = this.queryCharacter("dms_character","character", keyword, aid);
+            List<SolrDocument> char_list = new ArrayList<>();
+            for(Object o : char_array){
+                char_list.add((SolrDocument) o);
+            }
+            for(SolrDocument s : char_list){
+                String page = (String)((ArrayList)s.get("page")).get(0);
+                ArrayList<String> position = (ArrayList)s.get("position");
+                for(PageInfo page_info : page_list){
+                    if(page_info.getId().equals(page)){
+                        page_info.addPolygon(position);
+                    }
+                }
+            }
+        }
+
+        System.out.println(page_list.toString());
+        return page_list.toString();
+    }
+
+    public String getSVG_char(String aid, String keyword, String width, String height){
+        return "";
     }
 
 }

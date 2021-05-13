@@ -1,12 +1,15 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.entity;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Document("dms_word")
 public class DmsWord implements Serializable {
@@ -16,17 +19,21 @@ public class DmsWord implements Serializable {
     @ApiModelProperty(value = "_id")
     private String _id;
 
-    @Field("id")
-    @ApiModelProperty(value = "id")
-    private String id;
-
     @Field("word")
     @ApiModelProperty(value = "word")
     private String word;
 
-    @Field("articles")
-    @ApiModelProperty(value = "articles")
-    private String[][] articles;
+    @Field("article")
+    @ApiModelProperty(value = "article")
+    private String article;
+
+    @Field("page")
+    @ApiModelProperty(value = "page")
+    private ArrayList page;
+
+    @Field("position")
+    @ApiModelProperty(value = "position")
+    private ArrayList position;
 
     public String get_id() {
         return _id;
@@ -34,14 +41,6 @@ public class DmsWord implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getWord() {
@@ -52,11 +51,38 @@ public class DmsWord implements Serializable {
         this.word = word;
     }
 
-    public String[][] getArticles() {
-        return articles;
+    public String getArticle() {
+        return article;
     }
 
-    public void setArticles(String[][] articles) {
-        this.articles = articles;
+    public void setArticle(String article) {
+        this.article = article;
+    }
+
+    public ArrayList getPage() {
+        return page;
+    }
+
+    public void setPage(ArrayList page) {
+        this.page = page;
+    }
+
+    public ArrayList getPosition() {
+        return position;
+    }
+
+    public void setPosition(ArrayList position) {
+        this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "DmsWord{" +
+                "_id='" + _id + '\'' +
+                ", word='" + word + '\'' +
+                ", article='" + article + '\'' +
+                ", page=" + page +
+                ", position=" + position +
+                '}';
     }
 }

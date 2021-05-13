@@ -1,10 +1,7 @@
 package cn.edu.sdu.sdudoc.util;
 
 import cn.edu.sdu.sdudoc.SearchEngineApplication;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.Img;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.SmsArticleHead;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.*;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.runner.RunWith;
@@ -14,10 +11,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ParserObject {
@@ -66,6 +60,8 @@ public class ParserObject {
         dmsArticle.setArticleAuthor((String) header.get("author"));
         dmsArticle.setBookname((String) header.get("book"));
         dmsArticle.setDynasty((String) header.get("dynasty"));
+
+
         dmsArticle.setPage((ArrayList<HashMap<String,String>>) object.get("Page"));
         ArrayList<String> doclist = (ArrayList) object.get("Document");
         StringBuilder document = new StringBuilder();
@@ -74,6 +70,7 @@ public class ParserObject {
         }
         dmsArticle.setContent(String.valueOf(document));
         DmsArticle result;
+        //如果文章已存在，则返回null
         if(this.fileChecksumExist(dmsArticle) == null){
             result = mongoInput.saveArticle(dmsArticle);
         }else{
@@ -90,6 +87,7 @@ public class ParserObject {
         smsArticleHead.setTitle((String) header.get("title"));
         smsArticleHead.setArticleauthor((String) header.get("author"));
         smsArticleHead.setBookname((String) header.get("book"));
+
         smsArticleHead.setDynasty((String) object.get("dynasty"));
         SmsArticleHead result = mongoInput.saveArticleHead(smsArticleHead);
         System.out.println(result);
@@ -99,7 +97,7 @@ public class ParserObject {
     public DmsCharacter saveCharacter(HashMap object,DmsArticle article){
         DmsCharacter dmsCharacter = new DmsCharacter();
         dmsCharacter.setCharacter((String) object.get("string"));
-        dmsCharacter.setArticles(article.get_id());
+        dmsCharacter.setArticle(article.get_id());
         dmsCharacter.setPosition((ArrayList) object.get("points"));
 //        ArrayList<HashMap<String,String>> pagelist = article.getPage();
 //        HashMap<String, String> pagemap = new HashMap<>();
@@ -108,8 +106,28 @@ public class ParserObject {
 //        }
         dmsCharacter.setPage((String)object.get("page"));
         DmsCharacter result = mongoInput.saveCharacter(dmsCharacter);
-        System.out.println(dmsCharacter);
+//        System.out.println(dmsCharacter);
         System.out.println(result);
         return result;
+    }
+
+    public DmsWord saveWord(HashMap object, DmsArticle article){
+        DmsWord dmsWord = new DmsWord();
+
+        List<String> char_list = (List) object.get("string");
+        StringBuilder word = new StringBuilder();
+        for(String s : char_list){
+            word.append(s);
+        }
+        System.out.println(String.valueOf(word));
+
+        dmsWord.setWord(String.valueOf(word));
+        dmsWord.setArticle(article.get_id());
+        dmsWord.setPage((ArrayList)object.get("pages"));
+        dmsWord.setPosition((ArrayList) object.get("points"));
+        DmsWord result = mongoInput.saveWord(dmsWord);
+//        System.out.println(dmsWord);
+        System.out.println(result);
+        return dmsWord;
     }
 }

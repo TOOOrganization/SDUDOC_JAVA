@@ -64,7 +64,7 @@ public class PageInfo{
                 "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
                 "x=\"0px\" y=\"0px\" width=\"" + this.max_width + "\" height=\"" + this.max_height + "\" " +
                 "viewBox=\"0 0 " + this.max_width + " " + this.max_height + "\" " +
-                "enable-background=\"new 0 0 " + this.max_width + " " + this.max_height + "\" xml:space=\"preserve\">  \n" +
+                "xml:space=\"preserve\">  \n" +
                 "<image id=\"image0\" x=\"" + this.x + "\" y=\"" + this.y + "\" width=\"" + this.scale_width +
                 "\" height=\"" + this.scale_height + "\" href=\""+ this.src+"\" />\n" +
                 this.polygons +

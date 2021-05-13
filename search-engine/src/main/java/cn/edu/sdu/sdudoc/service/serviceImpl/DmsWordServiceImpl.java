@@ -16,8 +16,8 @@ public class DmsWordServiceImpl implements DmsWordService {
     private DmsWordRepository dmsWordRepository;
 
     @Override
-    public void save(DmsWord dmsWord) {
-        dmsWordRepository.save(dmsWord);
+    public DmsWord save(DmsWord dmsWord) {
+        return dmsWordRepository.save(dmsWord);
     }
 
     @Override

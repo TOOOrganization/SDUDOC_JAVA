@@ -38,12 +38,13 @@ public class SolrController {
     }
 
     @RequestMapping(value = "/getSVG", method = RequestMethod.POST)
+    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
+        return solrService.getSVG(aid, keyword, width, height);
+    }
+
+    @RequestMapping(value = "/getSVG2", method = RequestMethod.POST)
     public String getSVG(String aid, String keyword, String width) throws SolrServerException, IOException {
-        System.out.println("开始执行getSVG");
-        String l = solrService.getSVG(aid, keyword, width);
-        System.out.println("开始输出SVG");
-        System.out.println(l);
-        return l;
+        return solrService.getSVG(aid, keyword, width);
     }
 
 }
