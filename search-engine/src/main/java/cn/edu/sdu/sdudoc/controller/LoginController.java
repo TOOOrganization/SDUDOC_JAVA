@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
 import java.util.Optional;
 
 @RestController
@@ -73,6 +75,170 @@ public class LoginController {
     @GetMapping("/get_message")
     public String getMessage() {
         return "通过验证";
+    }
+
+    @PostMapping("/set_password")
+    public String setPassword(String username, String password, String confirmPassword) {
+        if (password == null || password.equals("") || confirmPassword == null || confirmPassword.equals("")) {
+            return "密码不能为空";
+        }
+        if (!password.equals(confirmPassword)) {
+            return "两次输入密码不同";
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            if (one.get().getPassword().equals(password)) {
+                return "密码重复";
+            } else {
+                user.setPassword(password);
+                service.save(user);
+                return password;
+            }
+        } else {
+            return "用户不存在";
+        }
+    }
+
+    @PostMapping("/set_nickname")
+    public String setNickname(String username, String nickname) {
+        if (nickname == null || nickname.equals("")) {
+            return "昵称不能为空";
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            user.setNickname(nickname);
+            service.save(user);
+            return nickname;
+        } else {
+            return "用户不存在";
+        }
+    }
+
+    @PostMapping("/set_email")
+    public String setEmail(String username, String email) {
+        if (email == null || email.equals("")) {
+            return "邮箱不能为空";
+        }
+        if (email.indexOf('@') == -1) {
+            return "邮箱地址格式错误";
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            user.setEmail(email);
+            service.save(user);
+            return email;
+        } else {
+            return "用户不存在";
+        }
+    }
+
+    @PostMapping("/set_phone")
+    public String setPhone(String username, String phone) {
+        if (phone == null || phone.equals("")) {
+            return "手机号码不能为空";
+        }
+        if (phone.length() != 11) {
+            return "号码格式不正确";
+        }
+        if (phone.charAt(0) != 1 || (phone.charAt(0) == 1 && "358".indexOf(phone.charAt(1)) == -1)) {
+            return "号码格式不正确";
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            user.setPhone(Integer.valueOf(phone));
+            service.save(user);
+            return phone;
+        } else {
+            return "用户不存在";
+        }
+    }
+
+    @PostMapping("/set_sex")
+    public Integer setSex(String username, Integer sex) {
+        if (sex == null) {
+            return -1;  // 参数为空
+        }
+        if (sex != 0 && sex != 1) {
+            return -2;  // 参数不合法
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            user.setSex(sex);
+            service.save(user);
+            return sex;
+        } else {
+            return -3;  // 用户不存在
+        }
+    }
+
+    @PostMapping("/set_birthday")
+    public String setBirthday(String username, String birthday) {
+        if (birthday == null || birthday.equals("")) {
+            return "生日不能为空";
+        }
+        if (birthday.length() != 10
+                || birthday.indexOf('-') == -1
+                || birthday.substring(0, 4).matches("[0-9]*")
+                || birthday.substring(5, 7).matches("[0-9]*")
+                || birthday.substring(8).matches("[0-9]*")) {
+            return "生日格式应为 yyyy-MM-dd";
+        }
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+        if (one.isPresent()) {
+            user.setBirthday(birthday);
+            service.save(user);
+            return birthday;
+        } else {
+            return "用户不存在";
+        }
+    }
+
+    @PostMapping("/set_avatar")
+    public String setAvatar(String username, MultipartFile img) {
+        if (!img.isEmpty()) {
+            try {
+                String imgFilePath = System.getProperty("user.dir");
+                File dir = new File(imgFilePath + "/userimg/picture/");
+                if (!dir.exists() && !dir.mkdirs()) {
+                    return "生成图片存储路径失败";
+                }
+
+                UmsUser user = new UmsUser();
+                user.setUsername(username);
+                Optional<UmsUser> one = service.findOne(Example.of(user));
+                if (one.isPresent()) {
+                    imgFilePath += one.get().getUid() + ".jpg";
+                    user.setImgurl(imgFilePath);
+                    service.save(user);
+                } else {
+                    return "用户不存在";
+                }
+
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));
+                out.write(img.getBytes());
+                out.flush();
+                out.close();
+
+                return "图片写入成功";
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "图片写入失败";
+            }
+        } else {
+            return "图片为空";
+        }
     }
 }
 

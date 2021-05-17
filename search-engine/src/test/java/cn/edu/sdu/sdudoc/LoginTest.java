@@ -53,4 +53,10 @@ public class LoginTest {
         JSONObject object = (JSONObject) login.register(username, password, nickname);
         System.out.println(object);
     }
+
+    @Test
+    public void valueof() {
+//        System.out.println("1234-".substring(0, 4).matches("[0-9]*"));
+        System.out.println(System.getProperty("user.dir"));
+    }
 }
