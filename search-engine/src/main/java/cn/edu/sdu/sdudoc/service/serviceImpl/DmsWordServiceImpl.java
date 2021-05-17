@@ -19,7 +19,7 @@ public class DmsWordServiceImpl implements DmsWordService {
     }
 
     @Override
-    public List<DmsWord> saveAll(List dmsWords) {
+    public List<DmsWord> saveAll(List<DmsWord> dmsWords) {
         return dmsWordRepository.saveAll(dmsWords);
     }
 

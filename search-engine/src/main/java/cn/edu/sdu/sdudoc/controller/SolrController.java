@@ -30,19 +30,19 @@ public class SolrController {
 
     /**
      * 查询方法
-     * @param corename 查询的solr的core名称
-     * @param defaultfield 默认查询字段
+     * @param coreName 查询的solr的core名称
+     * @param defaultField 默认查询字段
      * @param query 查询关键词
      * @param sort 排序 格式：字段 asc\desc 字段与排序规则用空格分割
      * @param start 起始位置
      * @param rows 返回条数
-     * @param filterqueries 补充查询条件 格式：字段:keyword
+     * @param filterQueries 补充查询条件 格式：字段:keyword
     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
-    public SolrDocumentList query(String corename, String defaultfield, String query, String sort,
-                                  Integer start, Integer rows, String... filterqueries) throws SolrServerException, IOException {
-        return solrService.query(corename, defaultfield, query, sort, start, rows, filterqueries);
+    public SolrDocumentList query(String coreName, String defaultField, String query, String sort,
+                                  Integer start, Integer rows, String... filterQueries) throws SolrServerException, IOException {
+        return solrService.query(coreName, defaultField, query, sort, start, rows, filterQueries);
     }
 
     @RequestMapping(value = "/insert_sdudoc", method = RequestMethod.POST, produces = "application/json")

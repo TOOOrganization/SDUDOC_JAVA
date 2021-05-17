@@ -9,7 +9,7 @@ public interface DmsArticleService {
 
     DmsArticle save(DmsArticle dmsArticle);
 
-    List<DmsArticle> saveAll(List articles);
+    List<DmsArticle> saveAll(List<DmsArticle> articles);
 
     void delete(String id);
 

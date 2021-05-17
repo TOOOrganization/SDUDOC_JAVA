@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class PageInfo{
 
@@ -48,7 +49,7 @@ public class PageInfo{
         this.y = (max_height - scale_height) / 2;
     }
 
-    public void addPolygon(ArrayList<String> list){
+    public void addPolygon(List<String> list){
         this.polygons += "<polygon points=\"";
         for (int i = 0; i < list.size(); i+=2) {
             double x = this.x + Double.parseDouble(list.get(i)) * this.scale;

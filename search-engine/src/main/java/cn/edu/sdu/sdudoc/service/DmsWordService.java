@@ -7,7 +7,7 @@ import java.util.List;
 public interface DmsWordService {
     DmsWord save(DmsWord dmsWord);
 
-    List<DmsWord> saveAll(List dmsWords);
+    List<DmsWord> saveAll(List<DmsWord> dmsWords);
 
     void delete(String id);
 

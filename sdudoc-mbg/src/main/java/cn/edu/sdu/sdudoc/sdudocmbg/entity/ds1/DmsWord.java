@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Document("dms_word")
 public class DmsWord implements Serializable {
@@ -29,11 +30,11 @@ public class DmsWord implements Serializable {
 
     @Field("page")
     @ApiModelProperty(value = "page")
-    private ArrayList page;
+    private List page;
 
     @Field("position")
     @ApiModelProperty(value = "position")
-    private ArrayList position;
+    private List position;
 
     public String get_id() {
         return _id;
@@ -59,19 +60,19 @@ public class DmsWord implements Serializable {
         this.article = article;
     }
 
-    public ArrayList getPage() {
+    public List getPage() {
         return page;
     }
 
-    public void setPage(ArrayList page) {
+    public void setPage(List page) {
         this.page = page;
     }
 
-    public ArrayList getPosition() {
+    public List getPosition() {
         return position;
     }
 
-    public void setPosition(ArrayList position) {
+    public void setPosition(List position) {
         this.position = position;
     }
 

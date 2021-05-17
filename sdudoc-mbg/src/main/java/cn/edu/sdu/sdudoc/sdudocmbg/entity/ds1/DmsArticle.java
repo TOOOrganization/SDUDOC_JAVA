@@ -1,15 +1,14 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.apache.solr.client.solrj.beans.Field;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Document("dms_article")
 public class DmsArticle implements Serializable {
@@ -36,7 +35,7 @@ public class DmsArticle implements Serializable {
 
     @Field("page")
     @ApiModelProperty(value = "页码")
-    private ArrayList<HashMap<String,String>> page;
+    private List<Map<String,String>> page;
 
     @Field("title")
     @ApiModelProperty(value = "标题")
@@ -101,11 +100,11 @@ public class DmsArticle implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public ArrayList<HashMap<String,String>> getPage() {
+    public List<Map<String,String>> getPage() {
         return page;
     }
 
-    public void setPage(ArrayList<HashMap<String,String>> page) {
+    public void setPage(List<Map<String,String>> page) {
         this.page = page;
     }
 

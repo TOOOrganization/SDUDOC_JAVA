@@ -74,21 +74,9 @@ public class JsonParserTest {
         //article存入solr
         solrInput.addData("dms_article", article);
         //character存入solr
-//        for(DmsCharacter c : characterss){
-//            solrInput.addData(c);
-//        }
         solrInput.addData("dms_character", characterss);
         //word存入solr
-//        for(DmsWord w : wordss){
-//            solrInput.addData(w);
-//        }
         solrInput.addData("dms_word", wordss);
-        ArrayList list = (ArrayList) m.getArticle(object).get(0).get("string");
-        //String listString = String.join(", ", list);
-        //System.out.println(listString);
-//        System.out.println(m.getWord(object));
-//        System.out.println(m.getSentence(object));
-//        System.out.println(m.getParagraph(object));
         System.out.println("parsed object:{"+object+"}");
     }
 

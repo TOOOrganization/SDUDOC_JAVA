@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Document("dms_character")
 public class DmsCharacter implements Serializable {
@@ -52,7 +53,7 @@ public class DmsCharacter implements Serializable {
 
     @Field("position")
     @ApiModelProperty(value = "position")
-    private ArrayList position;
+    private List position;
 
     public String get_id() {
         return _id;
@@ -126,11 +127,11 @@ public class DmsCharacter implements Serializable {
         this.page = page;
     }
 
-    public ArrayList getPosition() {
+    public List getPosition() {
         return position;
     }
 
-    public void setPosition(ArrayList position) {
+    public void setPosition(List position) {
         this.position = position;
     }
 

@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface DmsCharacterService {
     DmsCharacter save(DmsCharacter dmsCharacter);
 
-    List<DmsCharacter> saveAll(List dmsCharacter);
+    List<DmsCharacter> saveAll(List<DmsCharacter> dmsCharacter);
 
     void delete(String id);
 

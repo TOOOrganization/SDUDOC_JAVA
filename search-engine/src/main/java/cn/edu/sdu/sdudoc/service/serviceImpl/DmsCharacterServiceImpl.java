@@ -21,7 +21,7 @@ public class DmsCharacterServiceImpl implements DmsCharacterService {
     }
 
     @Override
-    public List<DmsCharacter> saveAll(List dmsCharacters) {
+    public List<DmsCharacter> saveAll(List<DmsCharacter> dmsCharacters) {
         return dmsCharacterRepository.saveAll(dmsCharacters);
     }
 

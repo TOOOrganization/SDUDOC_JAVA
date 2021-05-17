@@ -22,7 +22,7 @@ public class DmsArticleServiceImpl implements DmsArticleService {
     }
 
     @Override
-    public List<DmsArticle> saveAll(List articles){
+    public List<DmsArticle> saveAll(List<DmsArticle> articles){
         return dmsArticleRepository.saveAll(articles);
     }
 

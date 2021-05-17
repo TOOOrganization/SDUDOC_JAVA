@@ -54,7 +54,7 @@ public class LoginTest {
     @Test
     public void valueof() {
 //        System.out.println("1234-".substring(0, 4).matches("[0-9]*"));
-        System.out.println(System.getProperty("user.dir"));
+//        System.out.println(System.getProperty("user.dir"));
     }
 
     @Test
