@@ -61,32 +61,50 @@ public class SolrServiceImpl implements SolrService {
 
     @Override
     public SolrDocumentList query(String corename, String defaultfield, String query, String sort,
-                                  int start, int rows, String... filterqueries) throws SolrServerException, IOException {
+                                  Integer start, Integer rows, String... filterqueries) throws SolrServerException, IOException {
 
         SolrQuery solrQuery=new SolrQuery();
 
         //设置默认查询字段与查询关键词
         solrQuery.set("df", defaultfield);
-        solrQuery.setQuery((defaultfield.equals("")) ? "*" : query);
-
-        //排序
-        if(!sort.equals("")){
-            String[] sorts = sort.split(" ");
-            switch (sorts[1]){
-                case "asc":
-                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
-                    break;
-                case "desc":
-                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
-                    break;
-                default:
-                    break;
-            }
+        try{
+            solrQuery.setQuery((defaultfield.equals("")) ? "*" : query);
+        }catch(NullPointerException e){
+            solrQuery.setQuery("*:*");
         }
 
+
+        //排序
+        try{
+            if(!sort.equals("")){
+                String[] sorts = sort.split(" ");
+                switch (sorts[1]){
+                    case "asc":
+                        solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
+                        break;
+                    case "desc":
+                        solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }catch (NullPointerException e){
+
+        }
+
+
         //起始位置与行数
-        solrQuery.setStart(start);
-        solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
+        try{
+            solrQuery.setStart(start);
+        }catch (NullPointerException e){
+            solrQuery.setStart(0);
+        }
+        try{
+            solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
+        }catch (NullPointerException e){
+            solrQuery.setRows(Integer.MAX_VALUE);
+        }
 
         //其余条件
         solrQuery.setFilterQueries(filterqueries);

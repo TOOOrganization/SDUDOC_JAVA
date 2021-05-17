@@ -13,7 +13,7 @@ public interface SolrService {
 //    JSONArray query(String corename,String field,String keyword) throws SolrServerException, IOException;
 
     SolrDocumentList query(String corename, String defaultfield, String query, String sort,
-                           int start, int rows, String... filterqueries) throws SolrServerException, IOException;
+                           Integer start, Integer rows, String... filterqueries) throws SolrServerException, IOException;
 
     String insertSdudoc(JSONObject json) throws SolrServerException, IOException;
 

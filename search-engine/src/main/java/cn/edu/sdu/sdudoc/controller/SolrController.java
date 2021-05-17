@@ -41,7 +41,7 @@ public class SolrController {
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
     public SolrDocumentList query(String corename, String defaultfield, String query, String sort,
-                                  int start, int rows, String... filterqueries) throws SolrServerException, IOException {
+                                  Integer start, Integer rows, String... filterqueries) throws SolrServerException, IOException {
         return solrService.query(corename, defaultfield, query, sort, start, rows, filterqueries);
     }
 
