@@ -1,5 +1,6 @@
 package cn.edu.sdu.sdudoc;
 
+import cn.edu.sdu.sdudoc.controller.SolrController;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
@@ -87,6 +88,9 @@ public class ArticleTest {
     }
 
     @Autowired
+    SolrController solrController;
+
+    @Autowired
     SolrService solrService;
 
     @Autowired
@@ -95,12 +99,15 @@ public class ArticleTest {
     @Test
     public void getSVG() throws SolrServerException, IOException {
 //        solrService.getSVG("60973c77a17e0d7165506cb3","李克","515");
-        solrService.getSVG("609d0b68e1c36177de7a2e57","天府国","515","916");
+        //solrService.getSVG("609de5f98b052b0d5ab049e6","斗罗","515","916");
+        //solrServiceImpl.queryOne("dms_word", "article", "609de5f98b052b0d5ab049e6");
+
+        System.out.println(solrController.query("dms_word","","","",0,5));
     }
 
     @Test
     public void queryCharacter() throws SolrServerException, IOException {
-        JSONArray word_array = solrServiceImpl.queryWord("dms_word","word","天府之国","609d0b68e1c36177de7a2e57");
+        JSONArray word_array = solrServiceImpl.queryWord("dms_word","word","唐 门","609d57b71a788c61fde33244");
         if(word_array.isEmpty())
             System.out.println("空");
         else{

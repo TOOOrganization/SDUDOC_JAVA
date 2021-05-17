@@ -3,6 +3,7 @@ package cn.edu.sdu.sdudoc.service.serviceImpl;
 import cn.edu.sdu.sdudoc.common.JsonParser;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.ParserObject;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,26 +37,66 @@ public class SolrServiceImpl implements SolrService {
     @Autowired
     SolrInput solrInput;
 
-    @Override
-    public JSONArray query(String corename,String field, String keyword) throws SolrServerException, IOException {
-        System.out.println("1");
-        switch(corename){
-            case "dms_article":
-                return queryArticle(corename, field, keyword);
-            default:
-                return queryOne(corename, field, keyword);
-        }
-    }
+//    @Override
+//    public JSONArray query(String corename,String field, String keyword) throws SolrServerException, IOException {
+//        System.out.println("1");
+//        switch(corename){
+//            case "dms_article":
+//                return queryArticle(corename, field, keyword);
+//            default:
+//                return queryOne(corename, field, keyword);
+//        }
+//    }
+//
+//    @Override
+//    public JSONArray query(String corename,String field, String keyword, String id) throws SolrServerException, IOException {
+//        System.out.println("2");
+//        switch(corename){
+//            case "dms_character":
+//                return queryCharacter(corename, field, keyword, id);
+//            default:
+//                return queryOne(corename, field, keyword);
+//        }
+//    }
 
     @Override
-    public JSONArray query(String corename,String field, String keyword, String id) throws SolrServerException, IOException {
-        System.out.println("2");
-        switch(corename){
-            case "dms_character":
-                return queryCharacter(corename, field, keyword, id);
-            default:
-                return queryOne(corename, field, keyword);
+    public SolrDocumentList query(String corename, String defaultfield, String query, String sort,
+                                  int start, int rows, String... filterqueries) throws SolrServerException, IOException {
+
+        SolrQuery solrQuery=new SolrQuery();
+
+        //设置默认查询字段与查询关键词
+        solrQuery.set("df", defaultfield);
+        solrQuery.setQuery((defaultfield.equals("")) ? "*" : query);
+
+        //排序
+        if(!sort.equals("")){
+            String[] sorts = sort.split(" ");
+            switch (sorts[1]){
+                case "asc":
+                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
+                    break;
+                case "desc":
+                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
+                    break;
+                default:
+                    break;
+            }
         }
+
+        //起始位置与行数
+        solrQuery.setStart(start);
+        solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
+
+        //其余条件
+        solrQuery.setFilterQueries(filterqueries);
+
+        System.out.println(solrQuery);
+        QueryResponse queryResponse = solrClient.query(corename,solrQuery);
+        SolrDocumentList results = queryResponse.getResults();
+        System.out.println(results);
+
+        return results;
     }
 
     public JSONArray queryOne(String corename,String field, String keyword) throws SolrServerException, IOException{
@@ -67,11 +109,14 @@ public class SolrServiceImpl implements SolrService {
         //针对多属性进行查询(注意多条件连接时，之间要有空格)
         //solrQuery.setQuery("gname:手机 || ginfo:苹果");
         solrQuery.setQuery(field+":"+keyword);
+//        solrQuery.setr
+        System.out.println(solrQuery);
         QueryResponse queryResponse = solrClient.query(corename,solrQuery);
         SolrDocumentList results = queryResponse.getResults();
+        System.out.println(results);
         JSONArray jsonArray = new JSONArray();
         for (SolrDocument document:results) {
-            System.out.println(document);
+//            System.out.println(document);
             jsonArray.add(document);
         }
         return jsonArray;
@@ -80,6 +125,7 @@ public class SolrServiceImpl implements SolrService {
     public JSONArray queryArticle(String corename,String field, String keyword) throws SolrServerException, IOException {
         System.out.println(field+":"+keyword);
         SolrQuery solrQuery=new SolrQuery();
+        solrQuery.setRows(Integer.MAX_VALUE);
         solrQuery.setQuery(field+":"+keyword);
         QueryResponse queryResponse = solrClient.query(corename,solrQuery);
         SolrDocumentList results = queryResponse.getResults();
@@ -97,13 +143,17 @@ public class SolrServiceImpl implements SolrService {
         StringBuilder query = new StringBuilder();
         query.append("article:").append(article).append(" && (");
         for(int i=0;i<keyword.length();i++){
-            query.append(field).append(":").append(keyword.charAt(i));
+            char c= keyword.charAt(i);
+            if(c == ' ')
+                continue;
+            query.append(field).append(":").append(c);
             if(i<keyword.length()-1){
                 query.append(" || ");
             }
         }
         query.append(")");
         System.out.println(String.valueOf(query));
+        solrQuery.setRows(Integer.MAX_VALUE);
         solrQuery.setQuery(String.valueOf(query));
         QueryResponse queryResponse = solrClient.query(corename,solrQuery);
         SolrDocumentList results = queryResponse.getResults();
@@ -121,6 +171,7 @@ public class SolrServiceImpl implements SolrService {
         StringBuilder query = new StringBuilder();
         query.append("article:").append(article).append(" && (").append(field).append(":").append(keyword).append(")");
         System.out.println(String.valueOf(query));
+        solrQuery.setRows(Integer.MAX_VALUE);
         solrQuery.setQuery(String.valueOf(query));
         QueryResponse queryResponse = solrClient.query(corename,solrQuery);
         SolrDocumentList results = queryResponse.getResults();
@@ -145,17 +196,26 @@ public class SolrServiceImpl implements SolrService {
         m.saveArticleHead(object,article.get_id());
         //在mongodb插入字
         List<HashMap> characters = m.getCharacter(object);
-        DmsCharacter[] characterss = new DmsCharacter[characters.size()];
+        Collection<DmsCharacter> characterss = new ArrayList<DmsCharacter>();
         int count = 0;
         for(HashMap h : characters){
-            characterss[count++] = m.saveCharacter(h,article);
+            characterss.add(m.saveCharacter(h,article));
+        }
+        //在mongodb插入词
+        List<HashMap> words = m.getWord(object);
+        Collection<DmsWord> wordss = new ArrayList<DmsWord>();
+        count = 0;
+        for(HashMap h : words){
+            if(((List)h.get("string")).size() == 1)
+                continue;
+            wordss.add(m.saveWord(h,article));
         }
         //article存入solr
         solrInput.addData("dms_article", article);
         //character存入solr
-        for(DmsCharacter c : characterss){
-            solrInput.addData("",c);
-        }
+        solrInput.addData("dms_character", characterss);
+        //word存入solr
+        solrInput.addData("dms_word", wordss);
         return "文章添加成功";
     }
 

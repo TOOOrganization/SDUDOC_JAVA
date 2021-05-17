@@ -67,6 +67,8 @@ public class JsonParserTest {
         Collection<DmsWord> wordss = new ArrayList<DmsWord>();
         count = 0;
         for(HashMap h : words){
+            if(((List)h.get("string")).size() == 1)
+                continue;
             wordss.add(m.saveWord(h,article));
         }
         //article存入solr
