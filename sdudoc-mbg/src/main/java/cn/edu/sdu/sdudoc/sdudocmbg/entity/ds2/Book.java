@@ -4,10 +4,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity(name = "ds2Book")
+@Table(name = "book")
 public class Book implements Serializable {
     @Id
     @ApiModelProperty(value = "添加时间")

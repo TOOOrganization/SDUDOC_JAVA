@@ -4,9 +4,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "ds1Img")
+@Table(name = "img")
 public class Img implements Serializable {
     @Id
     @ApiModelProperty(value = "图片id")

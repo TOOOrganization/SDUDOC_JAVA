@@ -3,14 +3,12 @@ package cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-@Entity
+@Entity(name = "ds1PmsUserScoreRelation")
+@Table(name = "pms_user_point_relation")
 public class PmsUserScoreRelation implements Serializable {
 
     @Id

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-@Repository
+@Repository(value = "ds1UmsUserRepository")
 public interface UmsUserRepository extends JpaRepository<UmsUser,Integer> {
     //List<UmsUser> findAll();
 

@@ -4,10 +4,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity(name = "ds2UmsRole")
+@Table(name = "ums_role")
 public class UmsRole implements Serializable {
     @Id
     @ApiModelProperty(value = "角色id")

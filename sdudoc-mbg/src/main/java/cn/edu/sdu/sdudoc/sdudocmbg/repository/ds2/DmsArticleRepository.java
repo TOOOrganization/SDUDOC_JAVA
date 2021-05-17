@@ -1,12 +1,12 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.DmsArticle;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository(value = "ds2DmsArticleRepository")
 public interface DmsArticleRepository extends MongoRepository<DmsArticle,String> {
 
     List<DmsArticle> saveAll(Iterable articles);

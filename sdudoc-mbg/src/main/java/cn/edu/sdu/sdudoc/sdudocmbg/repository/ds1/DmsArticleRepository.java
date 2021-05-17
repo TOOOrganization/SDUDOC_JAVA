@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository(value = "ds1DmsArticleRepository")
 public interface DmsArticleRepository extends MongoRepository<DmsArticle,String> {
 
     List<DmsArticle> saveAll(Iterable articles);

@@ -2,8 +2,8 @@ package cn.edu.sdu.sdudoc.controller;
 
 import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2.UmsUserRepository;
 import cn.edu.sdu.sdudoc.service.TokenService;
-import cn.edu.sdu.sdudoc.service.UmsUserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -24,7 +24,7 @@ import java.util.Optional;
 public class LoginController {
 
     @Autowired
-    UmsUserService service;
+    UmsUserRepository service;
     @Autowired
     TokenService tokenService;
 
@@ -95,6 +95,7 @@ public class LoginController {
             if (one.get().getPassword().equals(password)) {
                 return "密码重复";
             } else {
+                user = one.get();
                 user.setPassword(password);
                 service.save(user);
                 return password;
@@ -113,6 +114,7 @@ public class LoginController {
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
+            user = one.get();
             user.setNickname(nickname);
             service.save(user);
             return nickname;
@@ -133,6 +135,7 @@ public class LoginController {
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
+            user = one.get();
             user.setEmail(email);
             service.save(user);
             return email;
@@ -146,16 +149,17 @@ public class LoginController {
         if (phone == null || phone.equals("")) {
             return "手机号码不能为空";
         }
-        if (phone.length() != 11) {
+        if (phone.trim().length() != 11) {
             return "号码格式不正确";
         }
-        if (phone.charAt(0) != 1 || (phone.charAt(0) == 1 && "358".indexOf(phone.charAt(1)) == -1)) {
+        if (phone.charAt(0) != '1' || (phone.charAt(0) == '1' && "358".indexOf(phone.charAt(1)) == -1)) {
             return "号码格式不正确";
         }
         UmsUser user = new UmsUser();
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
+            user = one.get();
             user.setPhone(new BigInteger(phone));
             service.save(user);
             return phone;
@@ -176,6 +180,7 @@ public class LoginController {
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
+            user = one.get();
             user.setSex(sex);
             service.save(user);
             return sex;
@@ -200,6 +205,7 @@ public class LoginController {
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
+            user = one.get();
             user.setBirthday(birthday);
             service.save(user);
             return birthday;
@@ -221,20 +227,22 @@ public class LoginController {
                 UmsUser user = new UmsUser();
                 user.setUsername(username);
                 Optional<UmsUser> one = service.findOne(Example.of(user));
-                if (one.isPresent()) {
+                if (!one.isPresent()) {
+                    return "用户不存在";
+                } else {
+                    user = one.get();
                     imgFilePath += one.get().getUsername() + ".jpg";
                     user.setImgurl(imgFilePath);
+
+                    BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));
+                    out.write(img.getBytes());
+                    out.flush();
+                    out.close();
+
                     service.save(user);
-                } else {
-                    return "用户不存在";
+
+                    return "图片写入成功";
                 }
-
-                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));
-                out.write(img.getBytes());
-                out.flush();
-                out.close();
-
-                return "图片写入成功";
             } catch (IOException e) {
                 e.printStackTrace();
                 return "图片写入失败";

@@ -1,13 +1,13 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
-@Repository
+@Repository(value = "ds2UmsUserRepository")
 public interface UmsUserRepository extends JpaRepository<UmsUser,Integer> {
     //List<UmsUser> findAll();
 

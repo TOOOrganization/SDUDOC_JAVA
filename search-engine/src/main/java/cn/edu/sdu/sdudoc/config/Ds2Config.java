@@ -23,12 +23,12 @@ import java.util.Objects;
  * 第一个数据源，jpa的相关配置
  */
 @Configuration
-@EntityScan(basePackages = "cn.edu.sdu.sdudoc.sdudocmbg.entity")
+@EntityScan(basePackages = "cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2")
 //1、实体扫描
 //2、实体管理ref
 //3、事务管理
 @EnableJpaRepositories(
-        basePackages = "cn.edu.sdu.sdudoc.sdudocmbg.repository",
+        basePackages = "cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2",
         entityManagerFactoryRef = "ds2EntityManagerFactoryBean",
         transactionManagerRef = "ds2TransactionManager")
 @EnableTransactionManagement
@@ -54,13 +54,12 @@ public class Ds2Config {
      * 配置第一个实体管理工厂的bean
      */
     @Bean(name = "ds2EntityManagerFactoryBean")
-    @Primary
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         return factoryBuilder.dataSource(dataSource)
                 //这一行的目的是加入jpa的其他配置参数比如（ddl-auto: update等）
                 //当然这个参数配置可以在事务配置的时候也可以
                 .properties(hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings()))
-                .packages("cn.edu.sdu.sdudoc.sdudocmbg.entity")
+                .packages("cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2")
                 .persistenceUnit("ds2PersistenceUnit")
                 .build();
     }
@@ -69,7 +68,6 @@ public class Ds2Config {
      * EntityManager
      */
     @Bean(name = "ds2EntityManager")
-    @Primary
     public EntityManager entityManager() {
         return Objects.requireNonNull(entityManagerFactoryBean().getObject()).createEntityManager();
     }
@@ -78,7 +76,6 @@ public class Ds2Config {
      * jpa事务管理
      */
     @Bean(name = "ds2TransactionManager")
-    @Primary
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());

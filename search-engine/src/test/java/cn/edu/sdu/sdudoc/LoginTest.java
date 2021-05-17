@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.LoginController;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2.UmsUserRepository;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +55,10 @@ public class LoginTest {
     public void valueof() {
 //        System.out.println("1234-".substring(0, 4).matches("[0-9]*"));
         System.out.println(System.getProperty("user.dir"));
+    }
+
+    @Test
+    public void setPhone() {
+        System.out.println(login.setPhone("123", "18212312345"));
     }
 }

@@ -4,9 +4,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "ds2SmsArticleHead")
+@Table(name = "sms_article_head")
 public class SmsArticleHead implements Serializable {
     @Id
     @ApiModelProperty(value = "文章头id")

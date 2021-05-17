@@ -2,16 +2,14 @@ package cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
 
-@Entity
+@Entity(name = "ds1UmsUser")
+@Table(name = "ums_user")
 public class UmsUser implements Serializable {
     @Id
     @ApiModelProperty(value = "用户id")

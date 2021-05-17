@@ -4,6 +4,6 @@ import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository(value = "ds1")
 public interface BookRepository extends JpaRepository<Book, String> {
 }

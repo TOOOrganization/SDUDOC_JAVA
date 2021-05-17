@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc.controller;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.PmsUserScoreRelation;
-import cn.edu.sdu.sdudoc.service.PmsUserScoreRelationService;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.PmsUserScoreRelationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +15,12 @@ import java.util.Optional;
 public class PmsUserScoreRelationController {
 
     @Autowired
-    private PmsUserScoreRelationService pmsUserScoreRelationService;
+    private PmsUserScoreRelationRepository pmsUserScoreRelationService;
 
     @PostMapping("/find")
     public Object find(Integer uid){
         Optional<PmsUserScoreRelation> pusrs = pmsUserScoreRelationService.findById(uid);
-        if (pusrs.isPresent()) {
-            return pusrs.get();
-        }else{
-            return null;
-        }
+        return pusrs.orElse(null);
 
     }
 

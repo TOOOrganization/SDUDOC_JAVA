@@ -4,11 +4,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-@Entity
-public class PmsUserScoreRelation implements Serializable {
+@Entity(name = "ds2PmsUserScoreRelation")
+@Table(name = "pms_user_point_relation")
+public class PmsUserPointRelation implements Serializable {
 
     @Id
     @ApiModelProperty(value = "用户id")
@@ -18,11 +20,11 @@ public class PmsUserScoreRelation implements Serializable {
     private BigInteger score;
 
 
-    public PmsUserScoreRelation() {
+    public PmsUserPointRelation() {
 
     }
 
-    public PmsUserScoreRelation(Integer uid, BigInteger score) {
+    public PmsUserPointRelation(Integer uid, BigInteger score) {
         this.uid = uid;
         this.score = score;
     }

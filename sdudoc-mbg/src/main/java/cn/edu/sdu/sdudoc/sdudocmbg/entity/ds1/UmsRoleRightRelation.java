@@ -4,9 +4,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "ds1UmsRoleRightRelation")
+@Table(name = "ums_role_right_relation")
 public class UmsRoleRightRelation implements Serializable {
     @Id
     @ApiModelProperty(value = "映射id")
