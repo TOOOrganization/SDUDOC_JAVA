@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -30,7 +31,7 @@ public class UmsUser implements Serializable {
     private String email;
 
     @ApiModelProperty(value = "手机号")
-    private Integer phone;
+    private BigInteger phone;
 
     @ApiModelProperty(value = "0-男 1-女")
     private Integer sex;
@@ -98,11 +99,11 @@ public class UmsUser implements Serializable {
         this.email = email == null ? null : email.trim();
     }
 
-    public Integer getPhone() {
+    public BigInteger getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(BigInteger phone) {
         this.phone = phone;
     }
 

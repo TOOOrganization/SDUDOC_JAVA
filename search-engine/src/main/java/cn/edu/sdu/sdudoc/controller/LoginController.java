@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.math.BigInteger;
 import java.util.Optional;
 
 @RestController
@@ -153,7 +156,7 @@ public class LoginController {
         user.setUsername(username);
         Optional<UmsUser> one = service.findOne(Example.of(user));
         if (one.isPresent()) {
-            user.setPhone(Integer.valueOf(phone));
+            user.setPhone(new BigInteger(phone));
             service.save(user);
             return phone;
         } else {
@@ -219,7 +222,7 @@ public class LoginController {
                 user.setUsername(username);
                 Optional<UmsUser> one = service.findOne(Example.of(user));
                 if (one.isPresent()) {
-                    imgFilePath += one.get().getUid() + ".jpg";
+                    imgFilePath += one.get().getUsername() + ".jpg";
                     user.setImgurl(imgFilePath);
                     service.save(user);
                 } else {
@@ -238,6 +241,32 @@ public class LoginController {
             }
         } else {
             return "图片为空";
+        }
+    }
+
+    @GetMapping("/get_avatar")
+    public void getAvatar(HttpServletResponse response, String username) {
+        UmsUser user = new UmsUser();
+        user.setUsername(username);
+        Optional<UmsUser> one = service.findOne(Example.of(user));
+
+        if (one.isPresent()) {
+            try {
+                ServletOutputStream out = response.getOutputStream();
+
+                InputStream in = new FileInputStream(System.getProperty("user.dir") + "/userimg/picture/" + username + ".jpg");
+                byte[] data = new byte[in.available()];
+
+                while (in.read(data) == -1) break;
+
+                in.close();
+
+                out.write(data);
+                out.flush();
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
