@@ -1,12 +1,15 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.entity;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.apache.solr.client.solrj.beans.Field;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Document("dms_article")
 public class DmsArticle implements Serializable {
@@ -14,10 +17,6 @@ public class DmsArticle implements Serializable {
     @Id
     @Field("_id")
     private String _id;
-
-    @Field("id")
-    @ApiModelProperty(value = "id")
-    private String id;
 
     @Field("articleAuthor")
     @ApiModelProperty(value = "文章作者")
@@ -37,7 +36,7 @@ public class DmsArticle implements Serializable {
 
     @Field("page")
     @ApiModelProperty(value = "页码")
-    private long page;
+    private ArrayList<HashMap<String,String>> page;
 
     @Field("title")
     @ApiModelProperty(value = "标题")
@@ -68,14 +67,6 @@ public class DmsArticle implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getArticleAuthor() {
@@ -110,11 +101,11 @@ public class DmsArticle implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public long getPage() {
+    public ArrayList<HashMap<String,String>> getPage() {
         return page;
     }
 
-    public void setPage(long page) {
+    public void setPage(ArrayList<HashMap<String,String>> page) {
         this.page = page;
     }
 
@@ -161,7 +152,7 @@ public class DmsArticle implements Serializable {
     @Override
     public String toString() {
         return "Article{" +
-                "id='" + id + '\'' +
+                "_id='" + _id + '\'' +
                 ", articleAuthor='" + articleAuthor + '\'' +
                 ", bookname='" + bookname + '\'' +
                 ", content='" + content + '\'' +

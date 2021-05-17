@@ -1,12 +1,18 @@
 package cn.edu.sdu.sdudoc;
 
+import cn.edu.sdu.sdudoc.controller.SolrController;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
+import cn.edu.sdu.sdudoc.service.SolrService;
+import cn.edu.sdu.sdudoc.service.serviceImpl.SolrServiceImpl;
 import cn.edu.sdu.sdudoc.util.DataOutput;
+import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.SolrInput;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.common.SolrDocument;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SearchEngineApplication.class)
@@ -77,6 +85,52 @@ public class ArticleTest {
     public void addDataDmsArticle() throws SolrServerException, IOException {
         System.out.println(dataOutput.findAllDmsArticle());
         //solrInput.addDataDmsArticle();
+    }
+
+    @Autowired
+    SolrController solrController;
+
+    @Autowired
+    SolrService solrService;
+
+    @Autowired
+    SolrServiceImpl solrServiceImpl;
+
+    @Test
+    public void getSVG() throws SolrServerException, IOException {
+//        solrService.getSVG("60973c77a17e0d7165506cb3","李克","515");
+        //solrService.getSVG("609de5f98b052b0d5ab049e6","斗罗","515","916");
+        //solrServiceImpl.queryOne("dms_word", "article", "609de5f98b052b0d5ab049e6");
+
+        System.out.println(solrController.query("dms_word","","","",0,5));
+    }
+
+    @Test
+    public void queryCharacter() throws SolrServerException, IOException {
+        JSONArray word_array = solrServiceImpl.queryWord("dms_word","word","唐 门","609d57b71a788c61fde33244");
+        if(word_array.isEmpty())
+            System.out.println("空");
+        else{
+            System.out.println(word_array);
+            List<SolrDocument> word_list = new ArrayList<>();
+            for(Object o : word_array){
+                word_list.add((SolrDocument) o);
+            }
+            for(SolrDocument s:word_list){
+                System.out.println(s.get("position"));
+            }
+//            for(SolrDocument s : word_list){
+//                String page = (String)((ArrayList)s.get("page")).get(0);
+//                ArrayList<String> position = (ArrayList)s.get("position");
+//                for(PageInfo page_info : page_list){
+//                    if(page_info.getId().equals(page)){
+//                        page_info.addPolygon(position);
+//                    }
+//                }
+//            }
+        }
+
+
     }
 
 }

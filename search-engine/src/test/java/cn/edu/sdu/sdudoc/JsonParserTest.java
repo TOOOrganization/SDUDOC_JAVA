@@ -6,15 +6,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 import cn.edu.sdu.sdudoc.common.JsonParser;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.service.DmsCharacterService;
 import cn.edu.sdu.sdudoc.util.ParserObject;
+import cn.edu.sdu.sdudoc.util.SolrInput;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,28 +35,61 @@ public class JsonParserTest {
     @Autowired
     ParserObject m;
 
+    @Autowired
+    SolrInput solrInput;
+
     @Test
-    public void parseComplexObject() throws IOException, URISyntaxException{
-        URL url = new ClassPathResource("/static/Untitled.sdudoc").getURL();
+    public void parseComplexObject() throws IOException, URISyntaxException, SolrServerException {
+        URL url = new ClassPathResource("/static/Untitled(1).sdudoc").getURL();
         String json = readFile(url.toString().substring(6));
 //        "E:/DevelopWork/IDEAProjects/sdudoc-search/search-engine/src/main/resources/static/example.json"
         System.out.println("origin json content:{"+json+"}");
         JsonParser parser = new JsonParser(json);
         HashMap object = (HashMap) parser.parse();
-//        ParserObject m = new ParserObject(object);
-        //System.out.println(object.get("Word"));
-        HashMap document_info = (HashMap) object.get("document_info");
-        List<Object> charcater = (List<Object>) object.get("Character");
-        List<Object> word = (List<Object>) object.get("Word");
-        List<Object> sentence = (List<Object>) object.get("Sentence");
-        List<Object> paragraph = (List<Object>) object.get("Paragraph");
-        System.out.println(m.getHeadInfo(object));
-        System.out.println(m.getCharacter(object));
-        System.out.println(m.getWord(object));
-        System.out.println(m.getSentence(object));
-        System.out.println(m.getParagraph(object));
+        //在mongodb插入文章，获取文章id
+        DmsArticle article = m.saveArticle(object);
+        if(article == null){
+            return;
+        }
+        //在mysql插入文章头信息
+        m.saveArticleHead(object,article.get_id());
+        //在mongodb插入字
+        List<HashMap> characters = m.getCharacter(object);
+//        DmsCharacter[] characterss = new DmsCharacter[characters.size()];
+        Collection<DmsCharacter> characterss = new ArrayList<DmsCharacter>();
+        int count = 0;
+        for(HashMap h : characters){
+            characterss.add(m.saveCharacter(h,article));
+        }
+        //在mongodb插入词
+        List<HashMap> words = m.getWord(object);
+//        DmsWord[] wordss = new DmsWord[words.size()];
+        Collection<DmsWord> wordss = new ArrayList<DmsWord>();
+        count = 0;
+        for(HashMap h : words){
+            if(((List)h.get("string")).size() == 1)
+                continue;
+            wordss.add(m.saveWord(h,article));
+        }
+        //article存入solr
+        solrInput.addData("dms_article", article);
+        //character存入solr
+//        for(DmsCharacter c : characterss){
+//            solrInput.addData(c);
+//        }
+        solrInput.addData("dms_character", characterss);
+        //word存入solr
+//        for(DmsWord w : wordss){
+//            solrInput.addData(w);
+//        }
+        solrInput.addData("dms_word", wordss);
+        ArrayList list = (ArrayList) m.getArticle(object).get(0).get("string");
+        //String listString = String.join(", ", list);
+        //System.out.println(listString);
+//        System.out.println(m.getWord(object));
+//        System.out.println(m.getSentence(object));
+//        System.out.println(m.getParagraph(object));
         System.out.println("parsed object:{"+object+"}");
-        m.saveArticle(object);
     }
 
     @Autowired

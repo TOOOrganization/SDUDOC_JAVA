@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class DmsCharacterServiceImpl implements DmsCharacterService {
@@ -15,8 +16,8 @@ public class DmsCharacterServiceImpl implements DmsCharacterService {
     private DmsCharacterRepository dmsCharacterRepository;
 
     @Override
-    public void save(DmsCharacter dmsCharacter) {
-        dmsCharacterRepository.save(dmsCharacter);
+    public DmsCharacter save(DmsCharacter dmsCharacter) {
+        return dmsCharacterRepository.save(dmsCharacter);
     }
 
     @Override
@@ -33,6 +34,9 @@ public class DmsCharacterServiceImpl implements DmsCharacterService {
     public void update(DmsCharacter dmsCharacter) {
         dmsCharacterRepository.save(dmsCharacter);
     }
+
+    @Override
+    public Optional<DmsCharacter> findById(String id){ return dmsCharacterRepository.findById(id);}
 
     @Override
     public List<DmsCharacter> findAll() {
