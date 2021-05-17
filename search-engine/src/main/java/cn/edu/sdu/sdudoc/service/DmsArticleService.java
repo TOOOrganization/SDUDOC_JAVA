@@ -1,7 +1,6 @@
 package cn.edu.sdu.sdudoc.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import org.springframework.stereotype.Component;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package cn.edu.sdu.sdudoc.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.PmsUserScoreRelation;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.PmsUserScoreRelation;
 import cn.edu.sdu.sdudoc.service.PmsUserScoreRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

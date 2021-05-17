@@ -1,13 +1,12 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.SolrController;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsArticleRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.service.serviceImpl.SolrServiceImpl;
 import cn.edu.sdu.sdudoc.util.DataOutput;
-import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.SolrInput;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

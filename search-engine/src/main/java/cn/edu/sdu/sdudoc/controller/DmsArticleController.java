@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc.controller;
 
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,17 +1,12 @@
 package cn.edu.sdu.sdudoc.util;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
-import cn.edu.sdu.sdudoc.util.DataOutput;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.util.ClientUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 

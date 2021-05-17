@@ -2,7 +2,7 @@ package cn.edu.sdu.util;
 
 import cn.edu.sdu.annonations.PasswordToken;
 import cn.edu.sdu.annonations.UserLoginToken;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
 import cn.edu.sdu.service.UmsUserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

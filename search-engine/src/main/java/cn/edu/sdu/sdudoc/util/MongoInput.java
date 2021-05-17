@@ -1,10 +1,10 @@
 package cn.edu.sdu.sdudoc.util;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.SmsArticleHead;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.SmsArticleHeadRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.SmsArticleHead;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.SmsArticleHeadRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.service.DmsCharacterService;
 import cn.edu.sdu.sdudoc.service.DmsWordService;

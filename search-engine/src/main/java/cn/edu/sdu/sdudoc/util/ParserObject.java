@@ -1,15 +1,11 @@
 package cn.edu.sdu.sdudoc.util;
 
-import cn.edu.sdu.sdudoc.SearchEngineApplication;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.*;
-import cn.edu.sdu.sdudoc.service.DmsArticleService;
-import com.alibaba.fastjson.JSONObject;
-import org.junit.runner.RunWith;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.SmsArticleHead;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
 
@@ -94,7 +90,7 @@ public class ParserObject {
         return result;
     }
 
-    public DmsCharacter saveCharacter(HashMap object,DmsArticle article){
+    public DmsCharacter saveCharacter(HashMap object, DmsArticle article){
         DmsCharacter dmsCharacter = new DmsCharacter();
         dmsCharacter.setCharacter((String) object.get("string"));
         dmsCharacter.setArticle(article.get_id());

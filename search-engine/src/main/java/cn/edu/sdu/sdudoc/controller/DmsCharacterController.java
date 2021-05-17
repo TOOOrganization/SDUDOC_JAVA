@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsCharacterRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsCharacterRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;

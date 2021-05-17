@@ -1,9 +1,9 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
 import cn.edu.sdu.sdudoc.common.JsonParser;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.ParserObject;

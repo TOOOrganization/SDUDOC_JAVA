@@ -1,14 +1,11 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.LoginController;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsUserRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Optional;
 
 @SpringBootTest
 public class LoginTest {

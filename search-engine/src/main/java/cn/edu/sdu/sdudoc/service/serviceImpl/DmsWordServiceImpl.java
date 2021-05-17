@@ -1,9 +1,7 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsCharacterRepository;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.DmsWordRepository;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsWordRepository;
 import cn.edu.sdu.sdudoc.service.DmsWordService;
 import org.springframework.stereotype.Component;
 

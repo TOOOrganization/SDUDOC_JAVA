@@ -1,8 +1,7 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.PmsUserScoreRelationController;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.PmsUserScoreRelation;
-import com.alibaba.fastjson.JSONObject;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.PmsUserScoreRelation;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

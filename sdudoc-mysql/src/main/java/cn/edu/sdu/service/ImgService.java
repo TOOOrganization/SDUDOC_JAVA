@@ -1,7 +1,6 @@
 package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.Img;
-import org.springframework.stereotype.Service;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.Img;
 
 import java.io.IOException;
 

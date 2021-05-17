@@ -1,10 +1,8 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsUserRepository;
-import cn.edu.sdu.service.UmsUserService;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.catalina.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,7 @@
 package cn.edu.sdu.sdudoc.sdudocmbg;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.UmsUserRepository;
-import org.hibernate.criterion.Example;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,7 +1,6 @@
 package cn.edu.sdu.sdudoc.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.DmsWord;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 
 import java.util.List;
 
