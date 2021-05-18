@@ -52,11 +52,6 @@ public class SolrController {
         return solrService.query(coreName, defaultField, query, sortField, order, start, rows, filterQueries);
     }
 
-    @RequestMapping(value = "/insert_sdudoc", method = RequestMethod.POST, produces = "application/json")
-    public String insertSdudoc(@RequestBody JSONObject json) throws SolrServerException, IOException {
-        return solrService.insertSdudoc(json);
-    }
-
     @RequestMapping(value = "/getSVG", method = RequestMethod.POST)
     public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
         return solrService.getSVG(aid, keyword, width, height);

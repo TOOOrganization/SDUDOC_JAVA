@@ -170,40 +170,6 @@ public class SolrServiceImpl implements SolrService {
         return solrQueryCoreName(coreName, solrQuery);
     }
 
-    @Override
-    public String insertSdudoc(JSONObject json) throws SolrServerException, IOException {
-        Map<String, Object> object = JSONObject.parseObject(JSON.toJSONString(json));
-        //在mongodb插入文章，获取文章id
-        DmsArticle article = m.saveArticle(object);
-        if(article == null){
-            return "错误，文章已存在";
-        }
-        //在mysql插入文章头信息
-        m.saveArticleHead(object,article.get_id());
-        //在mongodb插入字
-        List<Map<String, Object>> characters = m.getCharacter(object);
-        Collection<DmsCharacter> characterss = new ArrayList<>();
-
-        for(Map<String, Object> h : characters){
-            characterss.add(m.saveCharacter(h,article));
-        }
-        //在mongodb插入词
-        List<Map<String, Object>> words = m.getWord(object);
-        Collection<DmsWord> wordss = new ArrayList<>();
-
-        for(Map<String, Object> h : words){
-            if(m.getList(h, "string").size() == 1)
-                continue;
-            wordss.add(m.saveWord(h,article));
-        }
-        //article存入solr
-        solrInput.addData("dms_article", article);
-        //character存入solr
-        solrInput.addData("dms_character", characterss);
-        //word存入solr
-        solrInput.addData("dms_word", wordss);
-        return "文章添加成功";
-    }
 
     private List<HashMap<String, String>> getPageInfo(List<String> list){
         List<HashMap<String, String>> output = new ArrayList<>();

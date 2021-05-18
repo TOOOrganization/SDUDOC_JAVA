@@ -126,11 +126,11 @@ public class ArticleTest {
         System.out.println("添加成功"+dmsArticle);
     }
 
-    @Test
-    public void insert_sdudoc() throws SolrServerException, IOException {
-        JSONObject json = JSONObject.parseObject("{\"Header\":{\"title\":\"\",\"author\":\"\",\"book\":\"\",\"dynasty\":\"\"},\"Document\":[\"后\"],\"Page\":[{\"id\":\"Page_1\",\"src\":\"http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2\",\"width\":1030,\"height\":1832}],\"Dot2D\":[],\"Polygon2D\":[],\"Character\":[{\"id\":\"Character_1\",\"page\":\"Page_1\",\"father\":\"Word_1\",\"string\":\"后\",\"points\":[[\"982.13\",\"307.94\"],[\"815.11\",\"318.38\"],[\"820.33\",\"180.07\"],[\"979.52\",\"180.07\"]]}],\"Word\":[{\"id\":\"Word_1\",\"pages\":[\"Page_1\"],\"children\":[\"Character_1\"],\"father\":\"\",\"string\":[\"后\"],\"points\":[\"Page_1|982.13:307.94;815.11:318.38;820.33:180.07;979.52:180.07\"]}]}");
-        solrServiceImpl.insertSdudoc(json);
-    }
+//    @Test
+//    public void insert_sdudoc() throws SolrServerException, IOException {
+//        JSONObject json = JSONObject.parseObject("{\"Header\":{\"title\":\"\",\"author\":\"\",\"book\":\"\",\"dynasty\":\"\"},\"Document\":[\"后\"],\"Page\":[{\"id\":\"Page_1\",\"src\":\"http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2\",\"width\":1030,\"height\":1832}],\"Dot2D\":[],\"Polygon2D\":[],\"Character\":[{\"id\":\"Character_1\",\"page\":\"Page_1\",\"father\":\"Word_1\",\"string\":\"后\",\"points\":[[\"982.13\",\"307.94\"],[\"815.11\",\"318.38\"],[\"820.33\",\"180.07\"],[\"979.52\",\"180.07\"]]}],\"Word\":[{\"id\":\"Word_1\",\"pages\":[\"Page_1\"],\"children\":[\"Character_1\"],\"father\":\"\",\"string\":[\"后\"],\"points\":[\"Page_1|982.13:307.94;815.11:318.38;820.33:180.07;979.52:180.07\"]}]}");
+//        solrServiceImpl.insertSdudoc(json);
+//    }
 
     @Test
     public void getSVG() throws SolrServerException, IOException {

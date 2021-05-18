@@ -1,6 +1,5 @@
 package cn.edu.sdu.sdudoc.service;
 
-import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrDocumentList;
 
@@ -15,8 +14,6 @@ public interface SolrService {
                            Integer start,
                            Integer rows,
                            String... filterQueries) throws SolrServerException, IOException;
-
-    String insertSdudoc(JSONObject json) throws SolrServerException, IOException;
 
     String getSVG(String aid, String keyword, String width) throws SolrServerException, IOException;
 
