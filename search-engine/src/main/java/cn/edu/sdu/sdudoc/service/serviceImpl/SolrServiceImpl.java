@@ -1,6 +1,6 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.common.JsonParser;
+import cn.edu.sdu.sdudoc.component.SolrQueryBuilder;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
@@ -39,49 +39,60 @@ public class SolrServiceImpl implements SolrService {
     public SolrDocumentList query(String coreName,
                                   String defaultField,
                                   String query,
-                                  String sort,
+                                  String sortField,
+                                  String order,
                                   Integer start,
                                   Integer rows,
                                   String... filterQueries) throws SolrServerException, IOException {
 
-        SolrQuery solrQuery = new SolrQuery();
+//        SolrQuery solrQuery = new SolrQuery();
+//
+//        // 设置默认查询字段与查询关键词
+//        solrQuery.set("df", defaultField);
+//        if (defaultField == null)
+//            solrQuery.setQuery("*:*");
+//        else
+//            solrQuery.setQuery((defaultField.equals("")) ? "*" : query);
+//
+//        // 排序
+//        if (sortField != null && !sortField.equals("")) {
+//            String[] sorts = sortField.split(" ");
+//            switch (sorts[1]){
+//                case "asc":
+//                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
+//                    break;
+//                case "desc":
+//                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//
+//        // 起始位置与行数
+//        try{
+//            solrQuery.setStart(start);
+//        }catch (NullPointerException e){
+//            solrQuery.setStart(0);
+//        }
+//        try{
+//            solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
+//        }catch (NullPointerException e){
+//            solrQuery.setRows(Integer.MAX_VALUE);
+//        }
+//
+//        //其余条件
+//        solrQuery.setFilterQueries(filterQueries);
 
-        // 设置默认查询字段与查询关键词
-        solrQuery.set("df", defaultField);
-        if (defaultField == null)
-            solrQuery.setQuery("*:*");
-        else
-            solrQuery.setQuery((defaultField.equals("")) ? "*" : query);
-
-        // 排序
-        if (sort != null && !sort.equals("")) {
-            String[] sorts = sort.split(" ");
-            switch (sorts[1]){
-                case "asc":
-                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
-                    break;
-                case "desc":
-                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        // 起始位置与行数
-        try{
-            solrQuery.setStart(start);
-        }catch (NullPointerException e){
-            solrQuery.setStart(0);
-        }
-        try{
-            solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
-        }catch (NullPointerException e){
-            solrQuery.setRows(Integer.MAX_VALUE);
-        }
-
-        //其余条件
-        solrQuery.setFilterQueries(filterQueries);
+        SolrQueryBuilder solrQueryBuilder = new SolrQueryBuilder();
+        SolrQuery solrQuery = solrQueryBuilder.setDefaultField(defaultField)
+                .setQuery(query)
+                .setSortField(sortField)
+                .setOrder(order)
+                .setStart(start)
+                .setRows(rows)
+                .setFilterQueries(filterQueries)
+                .build();
 
         System.out.println(solrQuery);
         QueryResponse queryResponse = solrClient.query(coreName,solrQuery);
@@ -281,6 +292,7 @@ public class SolrServiceImpl implements SolrService {
 
         //得到文章对应的page列表
         List<HashMap<String, String>> list = this.getPageInfo(o2s(JSONObject.parseArray(JSON.toJSONString(article.get("page")))));
+        list.remove(list.size()-1);
         ArrayList<PageInfo> page_list = new ArrayList<>();
         for (HashMap<String, String> stringStringHashMap : list) {
             PageInfo info = new PageInfo(stringStringHashMap);
@@ -321,6 +333,8 @@ public class SolrServiceImpl implements SolrService {
             //每一个字的信息
             solrQueryCharacter(aid, keyword, article, page_list);
         }
+
+        System.out.println(page_list);
 
         return page_list.toString();
     }

@@ -102,7 +102,7 @@ public class ParserObject {
         dmsArticle.setArticleAuthor(getString(header, Header.AUTHOR));
         dmsArticle.setBookname(getString(header, Header.BOOK));
         dmsArticle.setDynasty(getString(header, Header.DYNASTY));
-        dmsArticle.setPage(createPage(header));
+        dmsArticle.setPage(createPage(map));
 
         List<String> docList = getList(map, DOCUMENT);
         StringBuilder document = new StringBuilder();
@@ -198,10 +198,11 @@ public class ParserObject {
 
         for (Map<String, Object> stringObjectMap : listMap) {
             Map<String, String> tempMap = stringObjectMap.entrySet().stream()
-                    .collect(Collectors.toMap(Map.Entry::getKey, e -> (String) e.getValue()));
+                    .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().toString()));
 
             result.add(tempMap);
         }
+        result.add(new HashMap<>());
 
         return result;
     }

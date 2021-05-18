@@ -7,8 +7,14 @@ import org.apache.solr.common.SolrDocumentList;
 import java.io.IOException;
 
 public interface SolrService {
-    SolrDocumentList query(String corename, String defaultfield, String query, String sort,
-                           Integer start, Integer rows, String... filterqueries) throws SolrServerException, IOException;
+    SolrDocumentList query(String coreName,
+                           String defaultField,
+                           String query,
+                           String sortField,
+                           String order,
+                           Integer start,
+                           Integer rows,
+                           String... filterQueries) throws SolrServerException, IOException;
 
     String insertSdudoc(JSONObject json) throws SolrServerException, IOException;
 

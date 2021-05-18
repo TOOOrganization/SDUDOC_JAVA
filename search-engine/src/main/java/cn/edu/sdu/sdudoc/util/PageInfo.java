@@ -51,9 +51,12 @@ public class PageInfo{
 
     public void addPolygon(List<String> list){
         this.polygons += "<polygon points=\"";
-        for (int i = 0; i < list.size(); i+=2) {
-            double x = this.x + Double.parseDouble(list.get(i)) * this.scale;
-            double y = this.y + Double.parseDouble(list.get(i + 1)) * this.scale;
+        for (int i = 0; i < list.size(); i++) {
+            String b_point_xy = list.get(i).replace("\"","");
+            String a_point_xy = b_point_xy.substring(1,b_point_xy.length()-1);
+            String[] point_xy = a_point_xy.split(",");
+            double x = this.x + Double.parseDouble(point_xy[0]) * this.scale;
+            double y = this.y + Double.parseDouble(point_xy[1]) * this.scale;
             this.polygons += x + "," + y + " ";
         }
         this.polygons = this.polygons.substring(0, this.polygons.length() - 1);
