@@ -75,17 +75,17 @@ public class DocServiceImpl implements DocService {
             map.put("core", "dms_article");
             map.put("o", JSON.toJSONString(article));
             System.out.println(map);
-            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+            OkHttpUtil.doPost("http://211.87.232.198:8081/search-engine/audit/insert", map, "POST");
 
             map.clear();
             map.put("core", "dms_character");
             map.put("o", JSON.toJSONString(characterss));
-            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+            OkHttpUtil.doPost("http://211.87.232.198:8081/search-engine/audit/insert", map, "POST");
 
             map.clear();
             map.put("core", "dms_word");
             map.put("o", JSON.toJSONString(wordss));
-            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+            OkHttpUtil.doPost("http://211.87.232.198:8081/search-engine/audit/insert", map, "POST");
         } catch (HttpStatusException e) {
             e.printStackTrace();
         }
