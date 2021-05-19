@@ -5,7 +5,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 
 public class SolrQueryBuilder {
     private String defaultField = "";
-    private String query = "*";
+    private String query = "*:*";
     private String sortField = null;
     private SolrQuery.ORDER order = null;
     private Integer start = 0;
@@ -37,7 +37,7 @@ public class SolrQueryBuilder {
     }
 
     public SolrQueryBuilder setQuery(String query) {
-        if (query != null)
+        if (query != null && !query.equals("") && !query.equals("*"))
             this.query = query;
         return this;
     }

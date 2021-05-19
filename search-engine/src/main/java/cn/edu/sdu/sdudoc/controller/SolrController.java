@@ -1,5 +1,6 @@
 package cn.edu.sdu.sdudoc.controller;
 
+import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;
 import com.alibaba.fastjson.JSONArray;
@@ -41,14 +42,14 @@ public class SolrController {
     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
-    public SolrDocumentList query(String coreName,
-                                  String defaultField,
-                                  String query,
-                                  String sortField,
-                                  String order,
-                                  Integer start,
-                                  Integer rows,
-                                  String... filterQueries) throws SolrServerException, IOException {
+    public QueryResults query(String coreName,
+                              String defaultField,
+                              String query,
+                              String sortField,
+                              String order,
+                              Integer start,
+                              Integer rows,
+                              String... filterQueries) throws SolrServerException, IOException {
         return solrService.query(coreName, defaultField, query, sortField, order, start, rows, filterQueries);
     }
 

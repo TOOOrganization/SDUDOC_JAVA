@@ -1,6 +1,7 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
 import cn.edu.sdu.sdudoc.component.SolrQueryBuilder;
+import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
@@ -36,7 +37,7 @@ public class SolrServiceImpl implements SolrService {
     SolrInput solrInput;
 
     @Override
-    public SolrDocumentList query(String coreName,
+    public QueryResults query(String coreName,
                                   String defaultField,
                                   String query,
                                   String sortField,
@@ -58,9 +59,12 @@ public class SolrServiceImpl implements SolrService {
         System.out.println(solrQuery);
         QueryResponse queryResponse = solrClient.query(coreName,solrQuery);
         SolrDocumentList results = queryResponse.getResults();
-        System.out.println(results);
+        System.out.println(results.getNumFound());
 
-        return results;
+        QueryResults queryResults = new QueryResults(results.getNumFound(), results);
+        System.out.println(queryResults);
+
+        return queryResults;
     }
 
     public JSONArray queryOne(String coreName,String field, String keyword) throws SolrServerException, IOException{
