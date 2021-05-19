@@ -45,45 +45,6 @@ public class SolrServiceImpl implements SolrService {
                                   Integer rows,
                                   String... filterQueries) throws SolrServerException, IOException {
 
-//        SolrQuery solrQuery = new SolrQuery();
-//
-//        // 设置默认查询字段与查询关键词
-//        solrQuery.set("df", defaultField);
-//        if (defaultField == null)
-//            solrQuery.setQuery("*:*");
-//        else
-//            solrQuery.setQuery((defaultField.equals("")) ? "*" : query);
-//
-//        // 排序
-//        if (sortField != null && !sortField.equals("")) {
-//            String[] sorts = sortField.split(" ");
-//            switch (sorts[1]){
-//                case "asc":
-//                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.asc);
-//                    break;
-//                case "desc":
-//                    solrQuery.setSort(sorts[0], SolrQuery.ORDER.desc);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//
-//        // 起始位置与行数
-//        try{
-//            solrQuery.setStart(start);
-//        }catch (NullPointerException e){
-//            solrQuery.setStart(0);
-//        }
-//        try{
-//            solrQuery.setRows((rows == -1) ? Integer.MAX_VALUE : rows);
-//        }catch (NullPointerException e){
-//            solrQuery.setRows(Integer.MAX_VALUE);
-//        }
-//
-//        //其余条件
-//        solrQuery.setFilterQueries(filterQueries);
-
         SolrQueryBuilder solrQueryBuilder = new SolrQueryBuilder();
         SolrQuery solrQuery = solrQueryBuilder.setDefaultField(defaultField)
                 .setQuery(query)

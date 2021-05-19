@@ -103,27 +103,28 @@ public class ArticleTest {
 
     @Test
     public void insert_test() throws SolrServerException, IOException {
-        DmsArticle dmsArticle = new DmsArticle();
-        List<Map<String,String>> page = new ArrayList<>();
-        Map<String,String> m1 = new HashMap<>();
-        m1.put("id", "Page_1");
-        m1.put("src", "http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2");
-        m1.put("width", 1030+"");
-        m1.put("height", 1832+"");
-        page.add(m1);
-        Map<String,String> m2 = new HashMap<>();
-//        m2.put("id", "Page_2");
-//        m2.put("src", "http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2");
-//        m2.put("width", 1030+"");
-//        m2.put("height", 1832+"");
-        page.add(m2);
-        System.out.println(page);
-        dmsArticle.set_id("111");
-        dmsArticle.setPage(page);
-        System.out.println(dmsArticle);
-        solrClient.addBean("dms_article",dmsArticle);
-        solrClient.commit("dms_article");
-        System.out.println("添加成功"+dmsArticle);
+//        DmsArticle dmsArticle = new DmsArticle();
+//        List<Map<String,String>> page = new ArrayList<>();
+//        Map<String,String> m1 = new HashMap<>();
+//        m1.put("id", "Page_1");
+//        m1.put("src", "http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2");
+//        m1.put("width", 1030+"");
+//        m1.put("height", 1832+"");
+//        page.add(m1);
+//        Map<String,String> m2 = new HashMap<>();
+////        m2.put("id", "Page_2");
+////        m2.put("src", "http://211.87.232.197:8081/sdudoc/img/get_by_id?id=2");
+////        m2.put("width", 1030+"");
+////        m2.put("height", 1832+"");
+//        page.add(m2);
+//        System.out.println(page);
+//        dmsArticle.set_id("111");
+//        dmsArticle.setPage(page);
+//        System.out.println(dmsArticle);
+//        solrClient.addBean("dms_article",dmsArticle);
+//        solrClient.commit("dms_article");
+//        System.out.println("添加成功"+dmsArticle);
+
     }
 
 //    @Test

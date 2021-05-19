@@ -1,21 +1,21 @@
 package cn.edu.sdu.service.impl;
 
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 import cn.edu.sdu.service.DocService;
+import cn.edu.sdu.util.OkHttpUtil;
 import cn.edu.sdu.util.ParserObject;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class DocServiceImpl implements DocService {
@@ -70,6 +70,26 @@ public class DocServiceImpl implements DocService {
                 continue;
             wordss.add(m.saveWord(h,article));
         }
+        try {
+            Map<String, String> map = new HashMap<>();
+            map.put("core", "dms_article");
+            map.put("o", JSON.toJSONString(article));
+            System.out.println(map);
+            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+
+            map.clear();
+            map.put("core", "dms_character");
+            map.put("o", JSON.toJSONString(characterss));
+            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+
+            map.clear();
+            map.put("core", "dms_word");
+            map.put("o", JSON.toJSONString(wordss));
+            OkHttpUtil.doPost("http://localhost:8081/audit/insert", map, "POST");
+        } catch (HttpStatusException e) {
+            e.printStackTrace();
+        }
+
         return "文章添加mongoDB成功";
     }
 

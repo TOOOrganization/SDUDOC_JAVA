@@ -19,22 +19,43 @@ public class SolrInput {
     public DataOutput dataOutput;
 
     public void addData(String core, Object o) throws SolrServerException, IOException {
-        if (core.equals("dms_article")){
-            System.out.println(o);
-            solrClient.addBean("dms_article",o);
-            solrClient.commit("dms_article");
-            System.out.println("添加成功"+o);
-        }else if(core.equals("dms_character")){
-            System.out.println(o);
-            solrClient.addBeans("dms_character", (Collection<?>) o);
-            solrClient.commit("dms_character");
-            System.out.println("添加成功"+o);
-        }else if(core.equals("dms_word")){
-            System.out.println(o);
-            solrClient.addBeans("dms_word", (Collection<?>) o);
-            solrClient.commit("dms_word");
-            System.out.println("添加成功"+o);
+        switch (core){
+            case "dms_article":
+                System.out.println(o);
+                solrClient.addBean("dms_article", o);
+                solrClient.commit("dms_article");
+                System.out.println("添加成功"+o);
+                break;
+            case "dms_character":
+                System.out.println(o);
+                solrClient.addBeans("dms_character", (Collection<?>) o);
+                solrClient.commit("dms_character");
+                System.out.println("添加成功"+o);
+                break;
+            case "dms_word":
+                System.out.println(o);
+                solrClient.addBeans("dms_word", (Collection<?>) o);
+                solrClient.commit("dms_word");
+                System.out.println("添加成功"+o);
+                break;
+            default:
         }
+//        if (core.equals("dms_article")){
+//            System.out.println(o);
+//            solrClient.addBean("dms_article", o);
+//            solrClient.commit("dms_article");
+//            System.out.println("添加成功"+o);
+//        }else if(core.equals("dms_character")){
+//            System.out.println(o);
+//            solrClient.addBeans("dms_character", (Collection<?>) o);
+//            solrClient.commit("dms_character");
+//            System.out.println("添加成功"+o);
+//        }else if(core.equals("dms_word")){
+//            System.out.println(o);
+//            solrClient.addBeans("dms_word", (Collection<?>) o);
+//            solrClient.commit("dms_word");
+//            System.out.println("添加成功"+o);
+//        }
     }
 
     public void addDataDmsArticle() throws SolrServerException, IOException {
