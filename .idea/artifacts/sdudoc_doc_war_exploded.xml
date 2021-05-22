@@ -14,7 +14,9 @@
           <element id="module-output" name="sdudoc-doc" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: cn.edu.sdu:sdudoc-mbg:1.0-SNAPSHOT" />
+          <element id="archive" name="sdudoc-mbg-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="sdudoc-mbg" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-mongodb:2.4.3" />
           <element id="library" level="project" name="Maven: org.mongodb:mongodb-driver-sync:4.1.1" />
           <element id="library" level="project" name="Maven: org.mongodb:bson:4.1.1" />

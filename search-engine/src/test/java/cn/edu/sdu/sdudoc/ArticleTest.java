@@ -140,7 +140,7 @@ public class ArticleTest {
         //solrServiceImpl.queryOne("dms_word", "article", "609de5f98b052b0d5ab049e6");
 
         //System.out.println(solrController.query("dms_word","","","",0,5));
-        //solrService.getSVG("60a3bc782c8a3f0862e43f8f","后","500","700");
+        solrService.getSVG("609de5f98b052b0d5ab049e6","一","500","700");
     }
 
     @Test

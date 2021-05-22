@@ -8,7 +8,6 @@ import cn.edu.sdu.service.DocService;
 import cn.edu.sdu.util.OkHttpUtil;
 import cn.edu.sdu.util.ParserObject;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,14 +90,5 @@ public class DocServiceImpl implements DocService {
         }
 
         return "文章添加mongoDB成功";
-    }
-
-    private void insertMySQL(Map<String, Object> object, DmsArticle article){
-        //在mysql插入文章头信息
-        m.saveArticleHead(object,article.get_id());
-    }
-
-    private void insertMongoDB(Map<String, Object> object){
-
     }
 }

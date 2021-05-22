@@ -177,25 +177,6 @@ public class SolrServiceImpl implements SolrService {
     }
 
 
-    @Override
-    public String getSVG(String aid, String keyword, String width) throws SolrServerException, IOException {
-        JSONArray article_array = this.queryArticle("dms_article","_id", aid);
-        SolrDocument article = (SolrDocument) article_array.get(0);
-
-        List<Object> listObject = JSONObject.parseArray(JSON.toJSONString(article.get("page")));
-        List<HashMap<String, String>> list = this.getPageInfo(o2s(listObject));
-        ArrayList<PageInfo> page_list = new ArrayList<>();
-        for (HashMap<String, String> stringStringHashMap : list) {
-            PageInfo info = new PageInfo(stringStringHashMap);
-            info.setScale(width, (Double.parseDouble(width) / info.getWidth() * info.getHeight()) + "");
-            page_list.add(info);
-        }
-
-        solrQueryCharacter(aid, keyword, article, page_list);
-
-        return page_list.toString();
-    }
-
     private void solrQueryCharacter(String aid, String keyword, SolrDocument article, ArrayList<PageInfo> page_list) throws SolrServerException, IOException {
         JSONArray char_array = this.queryCharacter("dms_character","character", keyword, aid);
         List<SolrDocument> char_list = new ArrayList<>();

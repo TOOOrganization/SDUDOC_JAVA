@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/sdudoc-doc" />
+    <file type="web" url="file://$PROJECT_DIR$/sdudoc-manager" />
     <file type="web" url="file://$PROJECT_DIR$/sdudoc-mbg" />
     <file type="web" url="file://$PROJECT_DIR$/sdudoc-mysql" />
     <file type="web" url="file://$PROJECT_DIR$/search-engine" />
@@ -16,6 +17,7 @@
         <option value="$PROJECT_DIR$/search-engine/pom.xml" />
         <option value="$PROJECT_DIR$/sdudoc-mysql/pom.xml" />
         <option value="$PROJECT_DIR$/sdudoc-mbg/pom.xml" />
+        <option value="$PROJECT_DIR$/sdudoc-manager/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

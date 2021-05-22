@@ -1,19 +1,15 @@
-package cn.edu.sdu.sdudoc.controller;
+package cn.edu.sdu.sdudoc.sdudocmanager.controller;
 
-import cn.edu.sdu.sdudoc.result.QueryResults;
-import cn.edu.sdu.sdudoc.service.SolrService;
-import cn.edu.sdu.sdudoc.util.PageInfo;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import cn.edu.sdu.sdudoc.sdudocmanager.service.SolrService;
+import cn.edu.sdu.sdudoc.sdudocmanager.result.QueryResults;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @RestController
 @RequestMapping("/solr")
@@ -32,7 +28,7 @@ public class SolrController {
      * @param start 起始位置
      * @param rows 返回条数
      * @param filterQueries 补充查询条件 格式：字段:keyword
-    */
+     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
     public QueryResults query(String coreName,
@@ -45,10 +41,4 @@ public class SolrController {
                               String... filterQueries) throws SolrServerException, IOException {
         return solrService.query(coreName, defaultField, query, sortField, order, start, rows, filterQueries);
     }
-
-    @RequestMapping(value = "/getSVG", method = RequestMethod.POST)
-    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
-        return solrService.getSVG(aid, keyword, width, height);
-    }
-
 }

@@ -1,12 +1,12 @@
-package cn.edu.sdu.sdudoc.service;
+package cn.edu.sdu.sdudoc.sdudocmanager.service;
 
-import cn.edu.sdu.sdudoc.result.QueryResults;
+import cn.edu.sdu.sdudoc.sdudocmanager.result.QueryResults;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.common.SolrDocumentList;
 
 import java.io.IOException;
 
 public interface SolrService {
+
     QueryResults query(String coreName,
                        String defaultField,
                        String query,
@@ -15,6 +15,4 @@ public interface SolrService {
                        Integer start,
                        Integer rows,
                        String... filterQueries) throws SolrServerException, IOException;
-
-    String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException;
 }
