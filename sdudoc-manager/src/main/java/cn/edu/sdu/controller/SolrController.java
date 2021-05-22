@@ -1,7 +1,7 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.controller;
+package cn.edu.sdu.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmanager.service.SolrService;
-import cn.edu.sdu.sdudoc.sdudocmanager.result.QueryResults;
+import cn.edu.sdu.result.QueryResults;
+import cn.edu.sdu.service.SolrService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

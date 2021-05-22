@@ -1,6 +1,6 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.service.serviceImpl;
+package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocmanager.service.DmsArticleService;
+import cn.edu.sdu.service.DmsArticleService;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

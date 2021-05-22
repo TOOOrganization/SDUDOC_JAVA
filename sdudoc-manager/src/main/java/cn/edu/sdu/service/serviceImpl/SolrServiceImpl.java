@@ -1,8 +1,8 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.service.serviceImpl;
+package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocmanager.service.SolrService;
-import cn.edu.sdu.sdudoc.sdudocmanager.component.SolrQueryBuilder;
-import cn.edu.sdu.sdudoc.sdudocmanager.result.QueryResults;
+import cn.edu.sdu.service.SolrService;
+import cn.edu.sdu.component.SolrQueryBuilder;
+import cn.edu.sdu.result.QueryResults;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;

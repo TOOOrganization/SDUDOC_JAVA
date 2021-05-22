@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmanager;
+package cn.edu.sdu;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

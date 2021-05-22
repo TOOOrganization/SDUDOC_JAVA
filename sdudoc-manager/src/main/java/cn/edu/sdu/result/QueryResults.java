@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.result;
+package cn.edu.sdu.result;
 
 import org.apache.solr.common.SolrDocumentList;
 

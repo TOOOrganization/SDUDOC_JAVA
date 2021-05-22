@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.service;
+package cn.edu.sdu.service;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 

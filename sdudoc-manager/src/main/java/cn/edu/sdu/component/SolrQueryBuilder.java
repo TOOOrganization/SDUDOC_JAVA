@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.component;
+package cn.edu.sdu.component;
 
 import org.apache.solr.client.solrj.SolrQuery;
 

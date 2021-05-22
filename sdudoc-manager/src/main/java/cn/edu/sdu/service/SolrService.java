@@ -1,6 +1,6 @@
-package cn.edu.sdu.sdudoc.sdudocmanager.service;
+package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocmanager.result.QueryResults;
+import cn.edu.sdu.result.QueryResults;
 import org.apache.solr.client.solrj.SolrServerException;
 
 import java.io.IOException;
