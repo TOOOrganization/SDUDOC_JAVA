@@ -60,5 +60,6 @@ public class LoginTest {
     @Test
     public void setPhone() {
         System.out.println(login.setPhone("123", "18212312345"));
+        System.out.println(login.setBirthday("123", "2000-12-12"));
     }
 }

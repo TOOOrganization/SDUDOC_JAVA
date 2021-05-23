@@ -196,9 +196,9 @@ public class LoginController {
         }
         if (birthday.length() != 10
                 || birthday.indexOf('-') == -1
-                || birthday.substring(0, 4).matches("[0-9]*")
-                || birthday.substring(5, 7).matches("[0-9]*")
-                || birthday.substring(8).matches("[0-9]*")) {
+                || !birthday.substring(0, 4).matches("[0-9]*")
+                || !birthday.substring(5, 7).matches("[0-9]*")
+                || !birthday.substring(8).matches("[0-9]*")) {
             return "生日格式应为 yyyy-MM-dd";
         }
         UmsUser user = new UmsUser();
