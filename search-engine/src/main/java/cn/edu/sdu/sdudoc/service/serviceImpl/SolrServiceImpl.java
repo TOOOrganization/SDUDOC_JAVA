@@ -1,11 +1,13 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
 import cn.edu.sdu.sdudoc.component.SolrQueryBuilder;
+import cn.edu.sdu.sdudoc.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 import cn.edu.sdu.sdudoc.service.SolrService;
+import cn.edu.sdu.sdudoc.util.OkHttpUtil;
 import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.ParserObject;
 import cn.edu.sdu.sdudoc.util.SolrInput;
@@ -249,6 +251,12 @@ public class SolrServiceImpl implements SolrService {
         System.out.println(page_list);
 
         return page_list.toString();
+    }
+
+    @Override
+    public String getPNG(String pid) throws HttpStatusException {
+
+        return "data:image/png;base64," + OkHttpUtil.doGet("http://211.87.232.199:8080/mysql/img/get_by_id?id=" + pid, "GET");
     }
 
     private List<String> o2s(List<Object> list) {

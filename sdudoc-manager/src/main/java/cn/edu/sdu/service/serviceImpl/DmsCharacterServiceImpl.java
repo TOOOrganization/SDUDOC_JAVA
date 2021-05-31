@@ -1,8 +1,10 @@
 package cn.edu.sdu.service.serviceImpl;
 
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsCharacterRepository;
 import cn.edu.sdu.service.DmsCharacterService;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +72,16 @@ public class DmsCharacterServiceImpl implements DmsCharacterService {
                 result = dmsCharacterRepository.findByPage(keyword);
                 break;
         }
+        return result;
+    }
+
+    @Override
+    public List<DmsCharacter> findMany(String field, String keyword) {
+        List<String> article_ids = JSONArray.parseArray(keyword, String.class);
+        List<DmsCharacter> result = new ArrayList<>();
+        for (int i=0; i< article_ids.size(); i++)
+            for (DmsCharacter dmsCharacter : find(field, article_ids.get(i)))
+                result.add(dmsCharacter);
         return result;
     }
 }

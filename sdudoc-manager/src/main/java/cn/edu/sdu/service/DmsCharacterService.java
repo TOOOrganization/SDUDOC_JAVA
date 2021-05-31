@@ -22,4 +22,6 @@ public interface DmsCharacterService {
     Set<String> findAllArticle();
 
     List<DmsCharacter> find(String field, String keyword);
+
+    List<DmsCharacter> findMany(String field, String keyword);
 }

@@ -1,6 +1,6 @@
 package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.exception.HttpStatusException;
+import cn.edu.sdu.util.HttpStatusException;
 import cn.edu.sdu.service.SolrService;
 import cn.edu.sdu.component.SolrQueryBuilder;
 import cn.edu.sdu.result.QueryResults;

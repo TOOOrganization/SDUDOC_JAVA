@@ -1,5 +1,6 @@
 package cn.edu.sdu.service;
 
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface DmsWordService {
     Set<String> findAllArticle();
 
     List<DmsWord> find(String field, String keyword);
+
+    List<DmsWord> findMany(String field, String keyword);
 }

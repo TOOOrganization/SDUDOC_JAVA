@@ -159,6 +159,8 @@
           <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.15.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.11.0" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.14.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

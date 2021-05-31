@@ -1,6 +1,6 @@
 package cn.edu.sdu.service;
 
-import cn.edu.sdu.exception.HttpStatusException;
+import cn.edu.sdu.util.HttpStatusException;
 import cn.edu.sdu.result.QueryResults;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.GroupCommand;

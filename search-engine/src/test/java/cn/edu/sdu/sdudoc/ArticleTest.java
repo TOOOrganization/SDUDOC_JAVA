@@ -1,6 +1,7 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.SolrController;
+import cn.edu.sdu.sdudoc.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;
@@ -134,13 +135,14 @@ public class ArticleTest {
 //    }
 
     @Test
-    public void getSVG() throws SolrServerException, IOException {
+    public void getSVG() throws SolrServerException, IOException, HttpStatusException {
 //        solrService.getSVG("60973c77a17e0d7165506cb3","李克","515");
         //solrService.getSVG("609de5f98b052b0d5ab049e6","斗罗","515","916");
         //solrServiceImpl.queryOne("dms_word", "article", "609de5f98b052b0d5ab049e6");
 
         //System.out.println(solrController.query("dms_word","","","",0,5));
-        solrService.getSVG("60b48c9b00b7b93c56b72d57","唐门","500","700");
+        //solrService.getSVG("60b48c9b00b7b93c56b72d57","唐门","500","700");
+        System.out.println(solrService.getPNG("9"));
     }
 
     @Test

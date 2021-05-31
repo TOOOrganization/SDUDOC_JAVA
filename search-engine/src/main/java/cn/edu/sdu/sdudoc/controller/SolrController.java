@@ -1,5 +1,6 @@
 package cn.edu.sdu.sdudoc.controller;
 
+import cn.edu.sdu.sdudoc.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;
@@ -51,4 +52,8 @@ public class SolrController {
         return solrService.getSVG(aid, keyword, width, height);
     }
 
+    @RequestMapping(value = "/getPNG", method = RequestMethod.POST)
+    public String getPNG(String pid) throws SolrServerException, IOException, HttpStatusException {
+        return solrService.getPNG(pid);
+    }
 }

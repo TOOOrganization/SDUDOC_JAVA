@@ -1,8 +1,10 @@
 package cn.edu.sdu.service.serviceImpl;
 
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsWordRepository;
 import cn.edu.sdu.service.DmsWordService;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +72,16 @@ public class DmsWordServiceImpl implements DmsWordService {
                 result = dmsWordRepository.findByPage(keyword);
                 break;
         }
+        return result;
+    }
+
+    @Override
+    public List<DmsWord> findMany(String field, String keyword) {
+        List<String> article_ids = JSONArray.parseArray(keyword, String.class);
+        List<DmsWord> result = new ArrayList<>();
+        for (int i=0; i< article_ids.size(); i++)
+            for (DmsWord dmsWord : find(field, article_ids.get(i)))
+                result.add(dmsWord);
         return result;
     }
 }

@@ -2,6 +2,7 @@ package cn.edu.sdu.controller;
 
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
 import cn.edu.sdu.service.DmsWordService;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +35,14 @@ public class DmsWordController {
     @ResponseBody
     public List<DmsWord> find(String field, String keyword) {
         return dmsWordService.find(field, keyword);
+    }
+
+    @RequestMapping("/findMany")
+    @ResponseBody
+    public String findMany(String field, String keyword) {
+        System.out.println(field);
+        System.out.println(keyword);
+        return JSON.toJSONString(dmsWordService.findMany(field, keyword));
     }
 
     @RequestMapping("/delete")

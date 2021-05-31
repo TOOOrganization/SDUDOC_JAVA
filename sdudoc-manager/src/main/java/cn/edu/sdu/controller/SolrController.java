@@ -1,6 +1,6 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.exception.HttpStatusException;
+import cn.edu.sdu.util.HttpStatusException;
 import cn.edu.sdu.result.QueryResults;
 import cn.edu.sdu.service.SolrService;
 import com.alibaba.fastjson.JSON;
