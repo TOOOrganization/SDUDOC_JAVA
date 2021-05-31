@@ -21,7 +21,7 @@ public interface DmsArticleService {
 
     List<DmsArticle> findAll();
 
-    List<DmsArticle> findBybookname(String bookname);
+    List<DmsArticle> findByBookname(String bookname);
 
     List<DmsArticle> findByTitle(String title);
 

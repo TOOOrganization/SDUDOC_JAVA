@@ -66,7 +66,7 @@ public class ArticleTest {
 
     @Test
     public void findBybookname(){
-        System.out.println(JSONObject.toJSONString(dmsArticleService.findBybookname("123")));
+        System.out.println(JSONObject.toJSONString(dmsArticleService.findByBookname("123")));
     }
 
     @Test
@@ -140,7 +140,7 @@ public class ArticleTest {
         //solrServiceImpl.queryOne("dms_word", "article", "609de5f98b052b0d5ab049e6");
 
         //System.out.println(solrController.query("dms_word","","","",0,5));
-        solrService.getSVG("609de5f98b052b0d5ab049e6","一","500","700");
+        solrService.getSVG("60a396f779de4d09f1d2f261","地","500","700");
     }
 
     @Test

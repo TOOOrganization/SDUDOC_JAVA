@@ -64,8 +64,8 @@ public class DmsArticleServiceImpl implements DmsArticleService {
     }
 
     @Override
-    public List<DmsArticle> findBybookname(String bookname) {
-        return dmsArticleRepository.findBybookname(bookname);
+    public List<DmsArticle> findByBookname(String bookname) {
+        return dmsArticleRepository.findByBookname(bookname);
     }
 
     @Override

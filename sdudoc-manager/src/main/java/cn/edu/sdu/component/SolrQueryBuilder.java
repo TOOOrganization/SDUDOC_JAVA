@@ -2,13 +2,17 @@ package cn.edu.sdu.component;
 
 import org.apache.solr.client.solrj.SolrQuery;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SolrQueryBuilder {
     private String defaultField = "";
     private String query = "*:*";
-    private String sortField = null;
-    private SolrQuery.ORDER order = null;
+    private List<SolrQuery.SortClause> sort = new ArrayList<>();
     private Integer start = 0;
     private Integer rows = Integer.MAX_VALUE;
+    private String group = "";
+    private List<String> fields = new ArrayList<>();
     private String[] filterQueries = null;
 
 
@@ -18,11 +22,25 @@ public class SolrQueryBuilder {
         solrQuery.set("df", defaultField);
         solrQuery.setQuery(query);
 
-        if (sortField != null && order != null)
-            solrQuery.setSort(sortField, order);
+        if (sort != null){
+            for (SolrQuery.SortClause sortClause : sort){
+                solrQuery.addSort(sortClause);
+            }
+        }
 
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
+
+        if (!group.equals("")){
+            solrQuery.set("group",true);
+            solrQuery.set("group.field", group);
+        }
+
+        if (fields != null){
+            for (String field : fields)
+                solrQuery.addField(field);
+        }
+
         solrQuery.setFilterQueries(filterQueries);
 
         return solrQuery;
@@ -41,18 +59,17 @@ public class SolrQueryBuilder {
         return this;
     }
 
-    public SolrQueryBuilder setSortField(String sortField) {
-        if (sortField != null)
-            this.sortField = sortField;
-        return this;
-    }
-
-    public SolrQueryBuilder setOrder(String order) {
-        if (order != null){
-            if (order.equals("asc")){
-                this.order = SolrQuery.ORDER.asc;
-            }else if (order.equals("desc")){
-                this.order = SolrQuery.ORDER.desc;
+    public SolrQueryBuilder setSort(String sort) {
+        if (sort != null && !sort.equals("")){
+            String[] sortArray = sort.split(",");
+            for (String sortStr : sortArray){
+                if(!sortStr.isEmpty()){
+                    String[] sortClause = sortStr.split(" ");
+                    if (sortClause[1].equals("asc"))
+                        this.sort.add(new SolrQuery.SortClause(sortClause[0], SolrQuery.ORDER.asc));
+                    else if (sortClause[1].equals("desc"))
+                        this.sort.add(new SolrQuery.SortClause(sortClause[0], SolrQuery.ORDER.desc));
+                }
             }
         }
         return this;
@@ -70,6 +87,23 @@ public class SolrQueryBuilder {
             this.rows = rows;
         else if (rows != null)
             this.rows = Integer.MAX_VALUE - start;
+        return this;
+    }
+
+    public SolrQueryBuilder setGroup(String group) {
+        if (group != null && !group.equals(""))
+            this.group = group;
+        return this;
+    }
+
+    public SolrQueryBuilder setFields(String fields){
+        if (fields != null && !fields.equals("")){
+            String[] fieldsArray = fields.split(" ");
+            for (String field : fieldsArray){
+                if (!field.equals(""))
+                    this.fields.add(field);
+            }
+        }
         return this;
     }
 
