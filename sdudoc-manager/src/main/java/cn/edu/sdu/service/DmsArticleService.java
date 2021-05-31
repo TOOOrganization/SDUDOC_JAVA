@@ -13,6 +13,8 @@ public interface DmsArticleService {
 
     void delete(String id);
 
+    void deleteMany(String entities);
+
     void update(DmsArticle dmsArticle);
 
     Optional<DmsArticle> findOne(DmsArticle dmsArticle);
@@ -21,9 +23,19 @@ public interface DmsArticleService {
 
     List<DmsArticle> findAll();
 
-    List<DmsArticle> findBybookname(String bookname);
+    List<String> findAll_id();
 
-    List<DmsArticle> findByTitle(String title);
+    List<DmsArticle> find(String field, String keyword);
 
-    List<DmsArticle> findByArticleAuthor(String articleAuthor);
+    List<DmsArticle> findMany(String field, String keyword);
+
+//    List<DmsArticle> findByBookname(String bookname);
+//
+//    List<DmsArticle> findByTitle(String title);
+//
+//    List<DmsArticle> findByArticleAuthor(String articleAuthor);
+//
+//    List<DmsArticle> findByDynasty(String dynasty);
+//
+//    List<DmsArticle> findByContent(String content);
 }

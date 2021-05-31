@@ -14,9 +14,13 @@ public interface DmsArticleRepository extends MongoRepository<DmsArticle,String>
 
     List<DmsArticle> findAll();
 
-    List<DmsArticle> findBybookname(String bookname);
+    List<DmsArticle> findByBookname(String bookname);
 
     List<DmsArticle> findByTitle(String title);
 
     List<DmsArticle> findByArticleAuthor(String articleAuthor);
+
+    List<DmsArticle> findByDynasty(String dynasty);
+
+    List<DmsArticle> findByContent(String content);
 }
