@@ -231,7 +231,7 @@ public class LoginController {
                     return "用户不存在";
                 } else {
                     user = one.get();
-                    imgFilePath += "/userimg/picture/" + one.get().getUsername() + ".jpg";
+                    imgFilePath += "/userimg/picture/"+one.get().getUsername() + ".jpg";
                     user.setImgurl(imgFilePath);
 
                     BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));

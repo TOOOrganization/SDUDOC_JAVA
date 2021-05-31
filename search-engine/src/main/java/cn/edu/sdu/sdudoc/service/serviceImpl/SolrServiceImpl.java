@@ -189,7 +189,7 @@ public class SolrServiceImpl implements SolrService {
 
             for(PageInfo page_info : page_list){
                 if(page_info.getId().equals(page)){
-                    page_info.addPolygon(position);
+                    page_info.addCharPolygon(position);
                 }
             }
         }
@@ -235,7 +235,7 @@ public class SolrServiceImpl implements SolrService {
                         }
                         for(PageInfo page_info : page_list){
                             if(page_info.getId().equals(page)){
-                                page_info.addPolygon(position);
+                                page_info.addWordPolygon(position);
                             }
                         }
                     }

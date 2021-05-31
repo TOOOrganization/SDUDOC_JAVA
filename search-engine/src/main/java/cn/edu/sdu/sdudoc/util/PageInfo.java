@@ -49,7 +49,8 @@ public class PageInfo{
         this.y = (max_height - scale_height) / 2;
     }
 
-    public void addPolygon(List<String> list){
+    public void addCharPolygon(List<String> list){
+        System.out.println(list);
         this.polygons += "<polygon points=\"";
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
@@ -58,6 +59,22 @@ public class PageInfo{
             String[] point_xy = a_point_xy.split(",");
             double x = this.x + Double.parseDouble(point_xy[0]) * this.scale;
             double y = this.y + Double.parseDouble(point_xy[1]) * this.scale;
+            this.polygons += x + "," + y + " ";
+//        for (int i = 0; i < list.size(); i+=2) {
+//            double x = this.x + Double.parseDouble(list.get(i)) * this.scale;
+//            double y = this.y + Double.parseDouble(list.get(i + 1)) * this.scale;
+//            this.polygons += x + "," + y + " ";
+        }
+        this.polygons = this.polygons.substring(0, this.polygons.length() - 1);
+        this.polygons += "\" style=\"fill:red;fill-opacity:0.5\"/>\n";
+    }
+
+    public void addWordPolygon(List<String> list){
+        System.out.println(list);
+        this.polygons += "<polygon points=\"";
+        for (int i = 0; i < list.size(); i+=2) {
+            double x = this.x + Double.parseDouble(list.get(i)) * this.scale;
+            double y = this.y + Double.parseDouble(list.get(i + 1)) * this.scale;
             this.polygons += x + "," + y + " ";
         }
         this.polygons = this.polygons.substring(0, this.polygons.length() - 1);
