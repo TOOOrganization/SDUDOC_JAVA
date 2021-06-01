@@ -56,4 +56,9 @@ public class SolrController {
     public String getPNG(String pid) throws SolrServerException, IOException, HttpStatusException {
         return solrService.getPNG(pid);
     }
+
+    @RequestMapping(value = "/getPNGs", method = RequestMethod.POST)
+    public List<String> getPNGs(String pids) throws SolrServerException, IOException, HttpStatusException {
+        return solrService.getPNGs(pids);
+    }
 }

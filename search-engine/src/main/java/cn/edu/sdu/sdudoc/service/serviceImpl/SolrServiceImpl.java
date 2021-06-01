@@ -255,8 +255,17 @@ public class SolrServiceImpl implements SolrService {
 
     @Override
     public String getPNG(String pid) throws HttpStatusException {
-
         return "data:image/png;base64," + OkHttpUtil.doGet("http://211.87.232.199:8080/mysql/img/get_by_id?id=" + pid, "GET");
+    }
+
+    @Override
+    public List<String> getPNGs(String pids) throws HttpStatusException {
+        List<String> result = new ArrayList<>();
+        List<String> pidList = JSONArray.parseArray(pids, String.class);
+        for (String pid : pidList){
+            result.add("data:image/png;base64," + OkHttpUtil.doGet("http://211.87.232.199:8080/mysql/img/get_by_id?id=" + pid, "GET"));
+        }
+        return result;
     }
 
     private List<String> o2s(List<Object> list) {

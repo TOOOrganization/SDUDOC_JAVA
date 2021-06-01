@@ -2,9 +2,7 @@ package cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "ds2SmsSearchHistory")
@@ -12,6 +10,7 @@ import java.io.Serializable;
 public class SmsSearchHistory implements Serializable {
     @Id
     @ApiModelProperty(value = "搜索历史id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hid;
 
     @ApiModelProperty(value = "用户名")

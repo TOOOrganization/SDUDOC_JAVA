@@ -21,4 +21,6 @@ public interface SolrService {
     String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException;
 
     String getPNG(String pid) throws HttpStatusException;
+
+    List<String> getPNGs(String pids) throws HttpStatusException;
 }

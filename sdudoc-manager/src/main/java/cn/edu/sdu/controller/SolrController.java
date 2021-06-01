@@ -45,7 +45,6 @@ public class SolrController {
                               String sort,
                               Integer start,
                               Integer rows,
-                              String group,
                               String fields,
                               String... filterQueries) throws SolrServerException, IOException {
         return solrService.query(coreName, defaultField, query, sort, start, rows, fields, filterQueries);
