@@ -7,10 +7,7 @@ import cn.edu.sdu.sdudoc.service.TokenService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
@@ -214,8 +211,10 @@ public class LoginController {
         }
     }
 
-    @PostMapping("/set_avatar")
-    public String setAvatar(String username, MultipartFile img) {
+    @PostMapping(value = "/set_avatar", produces = "application/json")
+    public String setAvatar(@RequestBody JSONObject data) {
+        String username = data.getString("username");
+        String img = data.getString("img");
         if (!img.isEmpty()) {
             try {
                 String imgFilePath = System.getProperty("user.dir");
@@ -231,7 +230,7 @@ public class LoginController {
                     return "用户不存在";
                 } else {
                     user = one.get();
-                    imgFilePath += "/userimg/picture/"+one.get().getUsername() + ".jpg";
+                    imgFilePath += "/userimg/picture/" + one.get().getUsername() + ".jpg";
                     user.setImgurl(imgFilePath);
 
                     BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));
