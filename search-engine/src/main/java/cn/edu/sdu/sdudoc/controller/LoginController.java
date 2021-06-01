@@ -4,11 +4,11 @@ import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsUser;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2.UmsUserRepository;
 import cn.edu.sdu.sdudoc.service.TokenService;
+import cn.edu.sdu.sdudoc.util.Base64Util;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -214,8 +214,21 @@ public class LoginController {
     @PostMapping(value = "/set_avatar", produces = "application/json")
     public String setAvatar(@RequestBody JSONObject data) {
         String username = data.getString("username");
-        String img = data.getString("img");
-        if (!img.isEmpty()) {
+        String img = data.getString("img").replaceAll(" ", "+");
+
+        String[] d = img.split("base64,");
+
+        if (d.length == 2) {
+            String b = d[1];
+
+            byte[] bs = Base64Util.base64Decode2Bytes(b);
+            for(int i = 0 ; i < bs.length; ++i) {
+                if(bs[i] < 0) {
+                    //调整异常数据
+                    bs[i] += 256;
+                }
+            }
+
             try {
                 String imgFilePath = System.getProperty("user.dir");
                 File dir = new File(imgFilePath + "/userimg/picture/");
@@ -234,7 +247,7 @@ public class LoginController {
                     user.setImgurl(imgFilePath);
 
                     BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(imgFilePath));
-                    out.write(img.getBytes());
+                    out.write(bs);
                     out.flush();
                     out.close();
 
@@ -246,9 +259,8 @@ public class LoginController {
                 e.printStackTrace();
                 return "图片写入失败";
             }
-        } else {
-            return "图片为空";
         }
+        return "base64格式错误";
     }
 
     @GetMapping("/get_avatar")
