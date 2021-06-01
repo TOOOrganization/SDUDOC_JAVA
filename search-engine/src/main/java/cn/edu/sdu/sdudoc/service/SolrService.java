@@ -16,9 +16,10 @@ public interface SolrService {
                        String order,
                        Integer start,
                        Integer rows,
+                       String mode,
                        String... filterQueries) throws SolrServerException, IOException;
 
-    String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException;
+    String getSVG(String aid, String keyword, String width, String height, String mode) throws SolrServerException, IOException;
 
     String getPNG(String pid) throws HttpStatusException;
 

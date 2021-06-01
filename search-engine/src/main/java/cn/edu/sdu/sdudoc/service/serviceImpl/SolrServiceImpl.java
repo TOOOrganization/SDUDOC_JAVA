@@ -46,6 +46,7 @@ public class SolrServiceImpl implements SolrService {
                                   String order,
                                   Integer start,
                                   Integer rows,
+                                  String mode,
                                   String... filterQueries) throws SolrServerException, IOException {
 
         SolrQueryBuilder solrQueryBuilder = new SolrQueryBuilder();
@@ -55,6 +56,7 @@ public class SolrServiceImpl implements SolrService {
                 .setOrder(order)
                 .setStart(start)
                 .setRows(rows)
+                .setMode(mode)
                 .setFilterQueries(filterQueries)
                 .build();
 
@@ -198,7 +200,7 @@ public class SolrServiceImpl implements SolrService {
     }
 
     @Override
-    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
+    public String getSVG(String aid, String keyword, String width, String height, String mode) throws SolrServerException, IOException {
 
         //获取aid对应的文章
         JSONArray article_array = this.queryArticle("dms_article","_id", aid);
@@ -243,7 +245,7 @@ public class SolrServiceImpl implements SolrService {
                     }
                 }
             }
-        }else{
+        }else if (!mode.equals("precise")){
             //每一个字的信息
             solrQueryCharacter(aid, keyword, article, page_list);
         }

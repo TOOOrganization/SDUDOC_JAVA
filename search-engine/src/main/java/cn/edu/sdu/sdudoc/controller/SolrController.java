@@ -32,6 +32,7 @@ public class SolrController {
      * @param order 排序规则
      * @param start 起始位置
      * @param rows 返回条数
+     * @param mode 搜索模式
      * @param filterQueries 补充查询条件 格式：字段:keyword
     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
@@ -43,13 +44,14 @@ public class SolrController {
                               String order,
                               Integer start,
                               Integer rows,
+                              String mode,
                               String... filterQueries) throws SolrServerException, IOException {
-        return solrService.query(coreName, defaultField, query, sortField, order, start, rows, filterQueries);
+        return solrService.query(coreName, defaultField, query, sortField, order, start, rows, mode, filterQueries);
     }
 
     @RequestMapping(value = "/getSVG", method = RequestMethod.POST)
-    public String getSVG(String aid, String keyword, String width, String height) throws SolrServerException, IOException {
-        return solrService.getSVG(aid, keyword, width, height);
+    public String getSVG(String aid, String keyword, String width, String height, String mode) throws SolrServerException, IOException {
+        return solrService.getSVG(aid, keyword, width, height, mode);
     }
 
     @RequestMapping(value = "/getPNG", method = RequestMethod.POST)

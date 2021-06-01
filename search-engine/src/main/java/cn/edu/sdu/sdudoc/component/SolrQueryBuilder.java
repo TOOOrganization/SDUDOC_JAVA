@@ -10,6 +10,7 @@ public class SolrQueryBuilder {
     private SolrQuery.ORDER order = null;
     private Integer start = 0;
     private Integer rows = Integer.MAX_VALUE;
+    private String mode = "";
     private String[] filterQueries = null;
 
 
@@ -24,6 +25,12 @@ public class SolrQueryBuilder {
 
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
+
+        if (mode.equals("precise")){
+            solrQuery.set("defType","edismax");
+            solrQuery.set("mm","100%");
+        }
+
         solrQuery.setFilterQueries(filterQueries);
 
         return solrQuery;
@@ -71,6 +78,13 @@ public class SolrQueryBuilder {
             this.rows = rows;
         else if (rows != null)
             this.rows = Integer.MAX_VALUE - start;
+        return this;
+    }
+
+    public SolrQueryBuilder setMode(String mode) {
+        if (mode != null && !mode.equals("")){
+            this.mode = mode;
+        }
         return this;
     }
 
