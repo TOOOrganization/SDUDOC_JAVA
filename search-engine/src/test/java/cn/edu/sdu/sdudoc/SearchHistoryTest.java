@@ -18,6 +18,6 @@ public class SearchHistoryTest {
 
     @Test
     public void find(){
-        System.out.println(smsSearchHistoryController.find("link"));
+        System.out.println(smsSearchHistoryController.find("link", 3));
     }
 }

@@ -44,7 +44,6 @@ public class JsonParser {
                 i = readCursor.intValue() + 1;
                 nameStartMark = i;
                 //System.out.println("nameToken:"+nameToken+",valueSegment:"+valueSegment);
-                //TODO::valid nameToken is start and end with '"'
                 final String name = newRange(nameToken.start + 1, nameToken.end - 1).toString();
                 final Object value = processValue(valueSegment);
                 properties.add(Property.of(name, value));

@@ -26,8 +26,8 @@ public class SmsSearchHistoryController {
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String, String>> find(String username){
-        return smsSearchHistoryService.find(username);
+    public List<Map<String, String>> find(String username, Integer type){
+        return smsSearchHistoryService.find(username, type);
     }
 
 }

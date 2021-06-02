@@ -9,5 +9,5 @@ public interface SmsSearchHistoryService {
 
     SmsSearchHistory insert(String username, String word, Integer type);
 
-    List<Map<String, String>> find(String username);
+    List<Map<String, String>> find(String username, Integer type);
 }

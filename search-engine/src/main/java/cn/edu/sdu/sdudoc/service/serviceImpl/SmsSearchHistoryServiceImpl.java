@@ -32,13 +32,23 @@ public class SmsSearchHistoryServiceImpl implements SmsSearchHistoryService {
     }
 
     @Override
-    public List<Map<String, String>> find(String username) {
+    public List<Map<String, String>> find(String username, Integer type) {
         List<Map<String, String>> result = new ArrayList<>();
 //        SmsSearchHistory smsSearchHistory1 = new SmsSearchHistory();
 //        smsSearchHistory1.setUsername(username);
 //        List<SmsSearchHistory> findResult = smsSearchHistoryRepository.findAll(Example.of(smsSearchHistory1));
 //        Sort timeSort = Sort.by(Sort.Direction.DESC, "addTime");
-        List<SmsSearchHistory> findResult = smsSearchHistoryRepository.findTop20ByUsernameOrderByAddTimeDesc(username);
+        List<SmsSearchHistory> findResult = new ArrayList<>();
+        switch (type){
+            case 1 :
+                findResult = smsSearchHistoryRepository.findTop20ByUsernameOrderByAddTimeDesc(username);
+                break;
+            case 2 :
+                findResult = smsSearchHistoryRepository.findTop20ByUsernameAndTypeLessThanOrderByAddTimeDesc(username, 7);
+                break;
+            case 3 :
+                findResult = smsSearchHistoryRepository.findTop20ByUsernameAndTypeOrderByAddTimeDesc(username, 7);
+        }
         for (SmsSearchHistory smsSearchHistory : findResult){
             Map<String, String> map = new HashMap<>();
             map.put("username", smsSearchHistory.getUsername());

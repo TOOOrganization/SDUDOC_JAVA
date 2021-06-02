@@ -12,4 +12,8 @@ public interface SmsSearchHistoryRepository extends JpaRepository<SmsSearchHisto
     List<SmsSearchHistory> findByUsername(String username);
 
     List<SmsSearchHistory> findTop20ByUsernameOrderByAddTimeDesc(String username);
+
+    List<SmsSearchHistory> findTop20ByUsernameAndTypeLessThanOrderByAddTimeDesc(String username, Integer type);
+
+    List<SmsSearchHistory> findTop20ByUsernameAndTypeOrderByAddTimeDesc(String username, Integer type);
 }
