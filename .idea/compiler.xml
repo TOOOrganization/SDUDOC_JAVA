@@ -7,12 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="search-engine" />
-        <module name="sdudoc-doc" />
         <module name="sdudoc-mysql" />
+        <module name="sdudoc-manager" />
+        <module name="search-engine" />
+        <module name="sdudoc-common" />
+        <module name="sdudoc-doc" />
         <module name="sdudoc-mbg" />
         <module name="sdudoc-security" />
-        <module name="sdudoc-manager" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

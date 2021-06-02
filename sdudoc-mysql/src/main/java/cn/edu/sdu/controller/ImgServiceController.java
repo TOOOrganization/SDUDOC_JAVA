@@ -1,7 +1,7 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.util.Base64Util;
 import cn.edu.sdu.service.ImgService;
+import cn.edu.sdu.util.Base64Util;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

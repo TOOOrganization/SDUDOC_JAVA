@@ -3,7 +3,6 @@ package cn.edu.sdu.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class FileChecksum {

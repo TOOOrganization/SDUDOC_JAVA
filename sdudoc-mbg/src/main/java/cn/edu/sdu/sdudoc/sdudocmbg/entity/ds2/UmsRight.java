@@ -15,7 +15,7 @@ public class UmsRight implements Serializable {
     private Integer rightId;
 
     @ApiModelProperty(value = "父权限id")
-    private Integer parentTightId;
+    private Integer parentRightId;
 
     @ApiModelProperty(value = "权限名称")
     private String name;
@@ -33,12 +33,12 @@ public class UmsRight implements Serializable {
         this.rightId = rightId;
     }
 
-    public Integer getParentTightId() {
-        return parentTightId;
+    public Integer getParentRightId() {
+        return parentRightId;
     }
 
-    public void setParentTightId(Integer parentTightId) {
-        this.parentTightId = parentTightId;
+    public void setParentRightId(Integer parentTightId) {
+        this.parentRightId = parentTightId;
     }
 
     public String getName() {
@@ -64,7 +64,7 @@ public class UmsRight implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", rightId=").append(rightId);
-        sb.append(", parentTightId=").append(parentTightId);
+        sb.append(", parentTightId=").append(parentRightId);
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);

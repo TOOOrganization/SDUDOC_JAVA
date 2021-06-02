@@ -1,6 +1,6 @@
 package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.util.HttpStatusException;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.service.SolrService;
 import cn.edu.sdu.component.SolrQueryBuilder;
 import cn.edu.sdu.result.QueryResults;
@@ -12,7 +12,6 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.GroupCommand;
 import org.apache.solr.client.solrj.response.GroupResponse;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

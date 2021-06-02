@@ -1,14 +1,10 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.util.HttpStatusException;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.result.QueryResults;
 import cn.edu.sdu.service.SolrService;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.GroupCommand;
-import org.apache.solr.client.solrj.response.GroupResponse;
-import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
