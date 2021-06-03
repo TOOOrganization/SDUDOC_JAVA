@@ -1,9 +1,9 @@
 package cn.edu.sdu.service.serviceImpl;
 
 import cn.edu.sdu.component.JpaRightForRoleVo;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsRight;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsRole;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.component.JpaRoleForUserVo;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.*;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.*;
 import cn.edu.sdu.service.AuthorityManagementService;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
@@ -21,6 +21,21 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
 
     @Autowired
     EntityManager entityManager;
+
+    @Autowired
+    UmsRoleRepository roleRepository;
+
+    @Autowired
+    UmsUserRepository userRepository;
+
+    @Autowired
+    UmsRightRepository rightRepository;
+
+    @Autowired
+    UmsUserRoleRelationRepository userRoleRelationRepository;
+
+    @Autowired
+    UmsRoleRightRelationRepository roleRightRelationRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -78,7 +93,7 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
 
         sql_select_right_for_role
                 .append("select ")
-                .append("r.rid rid, r.`name` `role_name`, a.right_id right_id, a.`name` right_name, r.description role_description, a.description right_description ")
+                .append("r.rid rid, r.`name` `role_name`, a.right_id right_id, a.`name` right_name, r.description role_description, a.description right_description, rr.right_type right_type ")
                 .append("from ")
                 .append("ums_role r ")
                 .append("left join ums_role_right_relation rr on r.rid = rr.rid ")
@@ -100,8 +115,8 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
     }
 
     @Override
-    public List<UmsRole> selectRoleForUser(Integer userId) {
-        List<UmsRole> resultList = new ArrayList<>();
+    public List<JpaRoleForUserVo> selectRoleForUser(Integer userId) {
+        List<JpaRoleForUserVo> resultList = new ArrayList<>();
         StringBuilder sql_select_role_for_user = new StringBuilder();
 
         sql_select_role_for_user
@@ -117,11 +132,11 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
 
         Query query = entityManager.createNativeQuery(sql_select_role_for_user.toString());
         List list = query.unwrap(NativeQueryImpl.class)
-                .setResultTransformer(Transformers.aliasToBean(UmsRole.class))
+                .setResultTransformer(Transformers.aliasToBean(JpaRoleForUserVo.class))
                 .getResultList();
 
         list.forEach(item -> {
-            resultList.add((UmsRole) item);
+            resultList.add((JpaRoleForUserVo) item);
         });
 
         return resultList;
@@ -129,21 +144,83 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
 
     @Override
     public Integer saveRole(UmsRole role, Integer... rightIds) {
-        return null;
+
+        UmsRole resultRole = insertRole(role);
+        Integer result = resultRole.getRid();
+
+        for (Integer rightId : rightIds) {
+            UmsRoleRightRelation relation = new UmsRoleRightRelation();
+
+            relation.setRid(result);
+            relation.setRightId(rightId);
+            relation.setRightType(false);
+
+            insertRoleRightRelation(relation);
+        }
+
+        return result;
     }
 
     @Override
     public Integer saveUser(UmsUser user, Integer... roleIds) {
-        return null;
+
+        UmsUser resultUser = insertUser(user);
+        Integer result = resultUser.getUid();
+
+        for (Integer roleId : roleIds) {
+            if (!authorizeUser(result, roleId)) {
+                return -1;
+            }
+        }
+
+        return result;
     }
 
     @Override
     public Boolean authorizeUser(Integer userId, Integer roleId) {
-        return null;
+
+        UmsUserRoleRelation relation = new UmsUserRoleRelation();
+
+        relation.setUid(userId);
+        relation.setRid(roleId);
+
+        return insertUserRoleRelation(relation).getUrid() != null;
     }
 
     @Override
     public Boolean authorizeRole(Integer roleId, Integer rightId) {
-        return null;
+
+        UmsRoleRightRelation relation = new UmsRoleRightRelation();
+
+        relation.setRid(roleId);
+        relation.setRightId(rightId);
+        relation.setRightType(false);
+        
+        return insertRoleRightRelation(relation).getRrid() != null;
+    }
+
+    private UmsRole insertRole(UmsRole role) {
+
+        return roleRepository.save(role);
+    }
+
+    private UmsUser insertUser(UmsUser user) {
+
+        return userRepository.save(user);
+    }
+
+    private UmsRight insertRight(UmsRight right) {
+
+        return rightRepository.save(right);
+    }
+
+    private UmsUserRoleRelation insertUserRoleRelation(UmsUserRoleRelation relation) {
+
+        return userRoleRelationRepository.save(relation);
+    }
+
+    private UmsRoleRightRelation insertRoleRightRelation(UmsRoleRightRelation relation) {
+
+        return roleRightRelationRepository.save(relation);
     }
 }

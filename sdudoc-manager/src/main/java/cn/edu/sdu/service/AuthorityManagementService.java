@@ -1,6 +1,7 @@
 package cn.edu.sdu.service;
 
 import cn.edu.sdu.component.JpaRightForRoleVo;
+import cn.edu.sdu.component.JpaRoleForUserVo;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsRight;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsRole;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
@@ -43,7 +44,7 @@ public interface AuthorityManagementService {
      * @return 用户的所有角色
      *
      * */
-    List<UmsRole> selectRoleForUser(Integer userId);
+    List<JpaRoleForUserVo> selectRoleForUser(Integer userId);
 
     /**
      * 插入角色并指定权限

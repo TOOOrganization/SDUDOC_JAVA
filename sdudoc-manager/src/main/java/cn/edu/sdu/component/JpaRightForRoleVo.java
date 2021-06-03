@@ -12,4 +12,6 @@ public class JpaRightForRoleVo {
     String roleDescription;
 
     String rightDescription;
+
+    Integer rightType;
 }
