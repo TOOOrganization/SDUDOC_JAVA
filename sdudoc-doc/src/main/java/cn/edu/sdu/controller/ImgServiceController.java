@@ -1,5 +1,7 @@
 package cn.edu.sdu.controller;
 
+import cn.edu.sdu.api.CommonResult;
+import cn.edu.sdu.api.ResultCode;
 import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.service.ImgService;
 import cn.edu.sdu.util.Base64Util;
@@ -19,29 +21,31 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/img")
-public class ImgServiceController {
+public class ImgServiceController{
 
     @Autowired
     ImgService service;
 
     @RequestMapping(value = "/get_latest_id", method = RequestMethod.POST)
-    public Long getLatestNewId() {
-        return service.getLatestId() + 1;
+    public CommonResult<Long> getLatestNewId() {
+        Long latestId = service.getLatestId() + 1;
+        return CommonResult.success(latestId);
     }
 
     @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST, produces = "application/json")
-    public Long save(@RequestBody JSONObject data) {
-        Map<String, String> map = new HashMap<>();
-        map.put("data", data.toJSONString());
-
+    public CommonResult<String> save(@RequestBody JSONObject data) {
+        String url = "http://211.87.232.199:8080/mysql/img/save_by_base64";
         String response;
         try {
-            response = OkHttpUtil.doPost("http://211.87.232.199:8080/mysql/img/save_by_base64", data.toJSONString(), null, "POST");
+            response = OkHttpUtil.doPost(url, data.toJSONString(), null, "POST");
+            return CommonResult.success(response);
         } catch (HttpStatusException e) {
             e.printStackTrace();
-            response = "-5";
+            return CommonResult.failed(
+                    ResultCode.PICTURE_GET_FAILURE,
+                    ResultCode.PICTURE_GET_FAILURE.getMessage()
+            );
         }
-        return Long.valueOf(response);
     }
 
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)

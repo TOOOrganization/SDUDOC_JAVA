@@ -1,14 +1,11 @@
 package cn.edu.sdu.controller;
 
-
+import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.service.DocService;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -19,9 +16,11 @@ public class DocController {
     @Autowired
     private DocService docService;
 
+    @ResponseBody
     @RequestMapping(value = "/insert_sdudoc", method = RequestMethod.POST, produces = "application/json")
-    public String insertSdudoc(@RequestBody JSONObject json) throws SolrServerException, IOException {
-        return docService.insertSdudoc(json);
+    public CommonResult<String> insertSdudoc(@RequestBody JSONObject json) throws SolrServerException, IOException {
+        String insertSdudoc = docService.insertSdudoc(json);
+        return CommonResult.success(insertSdudoc);
     }
 
 }
