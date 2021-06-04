@@ -1,7 +1,7 @@
 package cn.edu.sdu.sdudoc;
 
 import cn.edu.sdu.sdudoc.controller.SolrController;
-import cn.edu.sdu.sdudoc.exception.HttpStatusException;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
 import cn.edu.sdu.sdudoc.service.DmsArticleService;

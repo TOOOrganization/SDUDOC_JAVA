@@ -4,10 +4,11 @@ import cn.edu.sdu.component.JpaRightForRoleVo;
 import cn.edu.sdu.component.JpaRoleForUserVo;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.*;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.*;
-import cn.edu.sdu.service.AuthorityManagementService;
+import cn.edu.sdu.service.Ds1AuthorityManagementService;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +17,10 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service(value = "AuthorityManagementService")
-public class AuthorityManagementServiceImpl implements AuthorityManagementService {
+@Service(value = "Ds1AuthorityManagementService")
+public class Ds1AuthorityManagementServiceImpl implements Ds1AuthorityManagementService {
 
+    @Qualifier("ds1EntityManager")
     @Autowired
     EntityManager entityManager;
 
@@ -149,13 +151,9 @@ public class AuthorityManagementServiceImpl implements AuthorityManagementServic
         Integer result = resultRole.getRid();
 
         for (Integer rightId : rightIds) {
-            UmsRoleRightRelation relation = new UmsRoleRightRelation();
-
-            relation.setRid(result);
-            relation.setRightId(rightId);
-            relation.setRightType(false);
-
-            insertRoleRightRelation(relation);
+            if (!authorizeRole(result, rightId)) {
+                return -1;
+            }
         }
 
         return result;

@@ -4,6 +4,7 @@ import cn.edu.sdu.sdudoc.annonations.UserLoginToken;
 import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsUser;
 import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2.UmsUserRepository;
 import cn.edu.sdu.sdudoc.service.TokenService;
+import cn.edu.sdu.util.Base64Util;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
