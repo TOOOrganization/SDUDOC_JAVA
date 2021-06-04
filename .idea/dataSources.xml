@@ -59,5 +59,16 @@
       <jdbc-url>jdbc:mysql://localhost:3306/sdudoc?useUnicode=true&amp;characterEncoding=utf-8</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="sdudoc-search/Hibernate" uuid="817e7517-71a2-4cec-b933-3377244c2ea1">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://211.87.232.198:3306/sdudoc</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

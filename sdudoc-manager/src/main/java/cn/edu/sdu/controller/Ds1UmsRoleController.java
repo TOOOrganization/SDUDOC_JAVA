@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/role")
-public class UmsRoleController {
+@RequestMapping("/ds1_role")
+public class Ds1UmsRoleController {
 
     @Autowired
     UmsRoleRepository repository;

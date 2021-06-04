@@ -1,6 +1,6 @@
 package cn.edu.sdu.sdudoc.controller;
 
-import cn.edu.sdu.sdudoc.exception.HttpStatusException;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;

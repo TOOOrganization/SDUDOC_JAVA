@@ -1,12 +1,13 @@
 package cn.edu.sdu.sdudoc.service.serviceImpl;
 
 import cn.edu.sdu.sdudoc.component.SolrQueryBuilder;
-import cn.edu.sdu.sdudoc.exception.HttpStatusException;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.sdudoc.result.QueryResults;
 import cn.edu.sdu.sdudoc.service.SolrService;
 import cn.edu.sdu.sdudoc.util.PageInfo;
 import cn.edu.sdu.sdudoc.util.ParserObject;
 import cn.edu.sdu.sdudoc.util.SolrInput;
+import cn.edu.sdu.util.OkHttpUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
