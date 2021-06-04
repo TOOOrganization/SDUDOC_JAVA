@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocsecurity;
+package cn.edu.sdu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

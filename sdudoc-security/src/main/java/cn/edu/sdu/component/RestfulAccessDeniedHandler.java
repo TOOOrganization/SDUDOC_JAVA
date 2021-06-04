@@ -1,4 +1,4 @@
-package cn.edu.sdu.sdudoc.sdudocsecurity.component;
+package cn.edu.sdu.component;
 
 import cn.edu.sdu.api.CommonResult;
 import cn.hutool.json.JSONUtil;

@@ -1,5 +1,6 @@
 package cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -43,9 +44,11 @@ public class UmsUser implements Serializable {
     @ApiModelProperty(value = "用户的身份")
     private String role;
 
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "用户创建时间")
     private Date createTime;
 
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "最后一次登录时间")
     private Date loginTime;
 

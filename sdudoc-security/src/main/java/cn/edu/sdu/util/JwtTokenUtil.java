@@ -1,6 +1,6 @@
-package cn.edu.sdu.sdudoc.sdudocsecurity.util;
+package cn.edu.sdu.util;
 
-import cn.edu.sdu.sdudoc.sdudocsecurity.component.SecurityUserDetails;
+import cn.edu.sdu.component.SecurityUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Clock;
 import io.jsonwebtoken.Jwts;

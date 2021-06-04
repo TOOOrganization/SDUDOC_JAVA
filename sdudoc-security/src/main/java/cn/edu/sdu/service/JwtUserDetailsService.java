@@ -1,6 +1,9 @@
-package cn.edu.sdu.sdudoc.sdudocsecurity.service;
+package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocsecurity.component.SecurityUserDetails;
+import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
+import cn.edu.sdu.component.SecurityUserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,13 +16,18 @@ import java.util.List;
 
 @Service(value = "jwtUserDetailsService")
 public class JwtUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    UmsUserRepository repository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("UserDetailsService: " + username);
+        UmsUser user = repository.findByUsername(username).get(0);
 
         List<GrantedAuthority> authorityList = new ArrayList<>();
+        // 查出来user的role放到authorityList里
         authorityList.add(new SimpleGrantedAuthority("ROLE_user"));
 
-        return new SecurityUserDetails(username, authorityList);
+        return new SecurityUserDetails(user, authorityList);
     }
 }
