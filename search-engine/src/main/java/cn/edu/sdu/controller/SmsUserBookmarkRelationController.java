@@ -1,5 +1,6 @@
 package cn.edu.sdu.controller;
 
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
 import cn.edu.sdu.entity.ds2.SmsUserBookmarkRelation;
 import cn.edu.sdu.service.SmsUserBookmarkRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +27,14 @@ public class SmsUserBookmarkRelationController {
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String, String>> find(String username){
+    public List<SmsArticleHead> find(String username){
         return smsUserBookmarkRelationService.find(username);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String delete(String username, String aid){
-        try{
-            smsUserBookmarkRelationService.delete(username, aid);
-            return "200";
-        }catch (Exception e){
-            return e.toString();
-        }
-
+    public void delete(String username, String aid){
+        smsUserBookmarkRelationService.delete(username, aid);
     }
 
     @RequestMapping(value = "/exist", method = RequestMethod.POST)

@@ -26,6 +26,11 @@ public class MarkTest {
     }
 
     @Test
+    public void delete(){
+        smsUserBookmarkRelationController.delete("123","111");
+    }
+
+    @Test
     public void exist(){
         System.out.println(smsUserBookmarkRelationController.exist("12345", "111"));
     }

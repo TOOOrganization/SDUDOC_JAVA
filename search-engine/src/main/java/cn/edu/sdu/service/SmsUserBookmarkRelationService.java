@@ -1,5 +1,6 @@
 package cn.edu.sdu.service;
 
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
 import cn.edu.sdu.entity.ds2.SmsUserBookmarkRelation;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface SmsUserBookmarkRelationService {
 
     SmsUserBookmarkRelation insert(String username, String aid);
 
-    List<Map<String, String>> find(String username);
+    List<SmsArticleHead> find(String username);
 
     void delete(String username, String aid);
 

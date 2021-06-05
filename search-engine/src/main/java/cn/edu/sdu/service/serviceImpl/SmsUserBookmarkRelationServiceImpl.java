@@ -31,17 +31,17 @@ public class SmsUserBookmarkRelationServiceImpl implements SmsUserBookmarkRelati
     }
 
     @Override
-    public List<Map<String, String>> find(String username) {
-        List<Map<String, String>> result = new ArrayList<>();
+    public List<SmsArticleHead> find(String username) {
+        List<SmsArticleHead> result = new ArrayList<>();
         List<SmsUserBookmarkRelation> findResult = smsUserBookmarkRelationRepository.findByUsername(username);
         for (SmsUserBookmarkRelation smsUserBookmarkRelation : findResult){
-            Map<String, String> map = new HashMap<>();
+//            Map<String, String> map = new HashMap<>();
             SmsArticleHead smsArticleHead = smsArticleHeadRepository.findById(smsUserBookmarkRelation.getAid()).get();
-            map.put("title", smsArticleHead.getTitle());
-            map.put("articleAuthor", smsArticleHead.getArticleauthor());
-            map.put("bookname", smsArticleHead.getBookname());
-            map.put("dynasty", smsArticleHead.getDynasty());
-            result.add(map);
+//            map.put("title", smsArticleHead.getTitle());
+//            map.put("articleAuthor", smsArticleHead.getArticleauthor());
+//            map.put("bookname", smsArticleHead.getBookname());
+//            map.put("dynasty", smsArticleHead.getDynasty());
+            result.add(smsArticleHead);
         }
         return result;
     }
