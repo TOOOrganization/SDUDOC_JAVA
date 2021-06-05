@@ -33,6 +33,29 @@
           <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.11.0" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.14.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.12.0" />
+          <element id="archive" name="sdudoc-security-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="sdudoc-security" />
+          </element>
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.2" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.22" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.4.5" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.4" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.4.5" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.8" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.4.3" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.4.5" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.9.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" />
+          <element id="library" level="project" name="Maven: cn.hutool:hutool-all:5.6.2" />
           <element id="archive" name="sdudoc-mbg-1.0-SNAPSHOT.jar">
             <element id="module-output" name="sdudoc-mbg" />
           </element>
@@ -94,7 +117,6 @@
           <element id="library" level="project" name="Maven: org.eclipse.jetty.http2:http2-hpack:9.4.24.v20191120" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty.http2:http2-http-client-transport:9.4.24.v20191120" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.24" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.24" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.4.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.4.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.3" />
@@ -108,24 +130,14 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.11.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.4.3" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.3" />
           <element id="library" level="project" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" />
           <element id="library" level="project" name="Maven: org.glassfish:jakarta.el:3.0.3" />
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" />
           <element id="library" level="project" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" />
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.10.18" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.4" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.4" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.4.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.4.3" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.4.3" />
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:3.4.5" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.4" />
@@ -155,9 +167,6 @@
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.2.5" />
           <element id="library" level="project" name="Maven: javax.annotation:javax.annotation-api:1.3.2" />
           <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.15.0" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.75" />
         </element>
       </element>

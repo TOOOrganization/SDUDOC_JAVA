@@ -25,11 +25,11 @@
             <artifactId>sdudoc-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>cn.edu.sdu</groupId>-->
-<!--            <artifactId>sdudoc-security</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>cn.edu.sdu</groupId>
+            <artifactId>sdudoc-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>cn.edu.sdu</groupId>
             <artifactId>sdudoc-mbg</artifactId>

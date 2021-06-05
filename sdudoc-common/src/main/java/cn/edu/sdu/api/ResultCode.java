@@ -13,7 +13,7 @@ public enum ResultCode implements IErrorCode {
     FORBIDDEN(403, "没有相关权限"),
 
     /**
-     * 用户错误码
+     * 用户码
      */
     USERNAME_NOT_FOUND(10000, "用户名未找到"),
 
@@ -25,8 +25,20 @@ public enum ResultCode implements IErrorCode {
 
     ROLE_SAVE_FAILURE(10004, "角色存储失败"),
 
+    PASSWORD_NOT_MATCH(10005, "密码错误"),
+
+    LOGIN_SUCCESS(10006, "登录成功"),
+
+    USER_ALREADY_EXIST(10007, "用户已存在"),
+
+    PASSWORD_IS_NULL(10008, "密码为空"),
+
+    PASSWORD_IS_NOT_EQUAL(10009, "两次密码不匹配"),
+
+    PASSWORD_UPDATE_SUCCESS(10010, "密码更新成功"),
+
     /**
-     * 网络请求错误码
+     * 网络请求码
      * */
     PICTURE_GET_FAILURE(10003, "服务器内部网络波动，图片请求失败");
 
