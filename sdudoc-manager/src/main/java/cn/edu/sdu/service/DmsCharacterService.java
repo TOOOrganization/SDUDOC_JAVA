@@ -1,6 +1,6 @@
 package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
+import cn.edu.sdu.entity.ds1.DmsCharacter;
 
 import java.util.List;
 import java.util.Optional;

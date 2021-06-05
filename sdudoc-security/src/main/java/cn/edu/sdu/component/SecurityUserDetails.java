@@ -1,6 +1,6 @@
 package cn.edu.sdu.component;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.entity.ds1.UmsUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

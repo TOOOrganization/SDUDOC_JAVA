@@ -1,13 +1,13 @@
 package cn.edu.sdu.util;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.SmsArticleHead;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsCharacterRepository;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsWordRepository;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.SmsArticleHeadRepository;
+import cn.edu.sdu.entity.ds1.DmsArticle;
+import cn.edu.sdu.entity.ds1.DmsCharacter;
+import cn.edu.sdu.entity.ds1.DmsWord;
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
+import cn.edu.sdu.repository.ds1.DmsArticleRepository;
+import cn.edu.sdu.repository.ds1.DmsCharacterRepository;
+import cn.edu.sdu.repository.ds1.DmsWordRepository;
+import cn.edu.sdu.repository.ds1.SmsArticleHeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
 package cn.edu.sdu.service.impl;
 
 import cn.edu.sdu.exception.HttpStatusException;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
+import cn.edu.sdu.entity.ds1.DmsArticle;
+import cn.edu.sdu.entity.ds1.DmsCharacter;
+import cn.edu.sdu.entity.ds1.DmsWord;
 import cn.edu.sdu.service.DocService;
 import cn.edu.sdu.util.OkHttpUtil;
 import cn.edu.sdu.util.ParserObject;

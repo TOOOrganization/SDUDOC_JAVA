@@ -1,7 +1,7 @@
 package cn.edu.sdu.service.impl;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.Img;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.ImgRepository;
+import cn.edu.sdu.entity.ds1.Img;
+import cn.edu.sdu.repository.ds1.ImgRepository;
 import cn.edu.sdu.service.ImgService;
 import cn.edu.sdu.util.Base64Util;
 import cn.edu.sdu.util.FileChecksum;

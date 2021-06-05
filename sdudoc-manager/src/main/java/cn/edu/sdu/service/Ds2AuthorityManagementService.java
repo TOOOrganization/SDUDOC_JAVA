@@ -2,9 +2,9 @@ package cn.edu.sdu.service;
 
 import cn.edu.sdu.component.JpaRightForRoleVo;
 import cn.edu.sdu.component.JpaRoleForUserVo;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsRight;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsRole;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsUser;
+import cn.edu.sdu.entity.ds2.UmsRight;
+import cn.edu.sdu.entity.ds2.UmsRole;
+import cn.edu.sdu.entity.ds2.UmsUser;
 
 import java.util.List;
 

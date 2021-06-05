@@ -1,8 +1,7 @@
 package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsCharacter;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsWord;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsWordRepository;
+import cn.edu.sdu.entity.ds1.DmsWord;
+import cn.edu.sdu.repository.ds1.DmsWordRepository;
 import cn.edu.sdu.service.DmsWordService;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;

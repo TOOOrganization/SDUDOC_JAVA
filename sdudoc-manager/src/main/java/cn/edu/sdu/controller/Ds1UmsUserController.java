@@ -1,7 +1,7 @@
 package cn.edu.sdu.controller;
 
 import cn.edu.sdu.api.CommonResult;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
+import cn.edu.sdu.repository.ds1.UmsUserRepository;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

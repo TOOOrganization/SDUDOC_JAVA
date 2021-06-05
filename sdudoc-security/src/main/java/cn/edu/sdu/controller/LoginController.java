@@ -1,6 +1,6 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.entity.ds1.UmsUser;
 import cn.edu.sdu.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

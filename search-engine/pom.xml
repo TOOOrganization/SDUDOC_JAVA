@@ -201,7 +201,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>cn.edu.sdu.sdudoc.SearchEngineApplication</mainClass>
+                    <mainClass>cn.edu.sdu.SearchEngineApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,7 +1,7 @@
 package cn.edu.sdu.service.serviceImpl;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.SmsArticleHead;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.SmsArticleHeadRepository;
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
+import cn.edu.sdu.repository.ds1.SmsArticleHeadRepository;
 import cn.edu.sdu.service.SmsArticleHeadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;

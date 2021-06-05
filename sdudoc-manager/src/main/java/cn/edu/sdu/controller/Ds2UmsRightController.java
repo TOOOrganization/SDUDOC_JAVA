@@ -3,8 +3,8 @@ package cn.edu.sdu.controller;
 
 import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.api.ResultCode;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds2.UmsRight;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds2.UmsRightRepository;
+import cn.edu.sdu.entity.ds2.UmsRight;
+import cn.edu.sdu.repository.ds2.UmsRightRepository;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

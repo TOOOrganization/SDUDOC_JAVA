@@ -1,7 +1,7 @@
 package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsUserRepository;
+import cn.edu.sdu.entity.ds1.UmsUser;
+import cn.edu.sdu.repository.ds1.UmsUserRepository;
 import cn.edu.sdu.component.SecurityUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

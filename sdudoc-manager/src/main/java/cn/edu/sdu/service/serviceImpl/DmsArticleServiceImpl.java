@@ -1,10 +1,9 @@
 package cn.edu.sdu.service.serviceImpl;
 
 import cn.edu.sdu.service.DmsArticleService;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.DmsArticle;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.DmsArticleRepository;
+import cn.edu.sdu.entity.ds1.DmsArticle;
+import cn.edu.sdu.repository.ds1.DmsArticleRepository;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

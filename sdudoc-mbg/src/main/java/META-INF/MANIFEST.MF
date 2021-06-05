@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Main-Class: cn.edu.sdu.sdudoc.SearchEngineApplication
+Main-Class: SearchEngineApplication
 Class-Path: mongodb-driver-core-4.1.1.jar springfox-core-2.9.2.jar commo
  ns-math3-3.6.1.jar spring-boot-starter-data-solr-2.4.4.jar springfox-sp
  i-2.9.2.jar spring-boot-starter-json-2.4.3.jar spring-aop-5.3.4.jar spr

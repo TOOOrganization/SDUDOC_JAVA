@@ -1,7 +1,7 @@
 package cn.edu.sdu.controller;
 
 import cn.edu.sdu.annonations.UserLoginToken;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsUser;
+import cn.edu.sdu.entity.ds1.UmsUser;
 import cn.edu.sdu.service.TokenService;
 import cn.edu.sdu.service.UmsUserService;
 import com.alibaba.fastjson.JSONObject;

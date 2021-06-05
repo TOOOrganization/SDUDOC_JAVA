@@ -2,8 +2,8 @@ package cn.edu.sdu.service.serviceImpl;
 
 import cn.edu.sdu.component.JpaRightForRoleVo;
 import cn.edu.sdu.component.JpaRoleForUserVo;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.*;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.*;
+import cn.edu.sdu.entity.ds1.*;
+import cn.edu.sdu.repository.ds1.*;
 import cn.edu.sdu.service.Ds1AuthorityManagementService;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;

@@ -2,8 +2,8 @@ package cn.edu.sdu.controller;
 
 import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.api.ResultCode;
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.UmsRole;
-import cn.edu.sdu.sdudoc.sdudocmbg.repository.ds1.UmsRoleRepository;
+import cn.edu.sdu.entity.ds1.UmsRole;
+import cn.edu.sdu.repository.ds1.UmsRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

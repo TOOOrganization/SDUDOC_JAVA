@@ -1,7 +1,6 @@
 package cn.edu.sdu.service;
 
-import cn.edu.sdu.sdudoc.sdudocmbg.entity.ds1.SmsArticleHead;
-import org.apache.zookeeper.Op;
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
 
 import java.util.List;
 import java.util.Optional;
