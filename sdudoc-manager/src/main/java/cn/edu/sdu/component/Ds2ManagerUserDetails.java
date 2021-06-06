@@ -1,27 +1,37 @@
 package cn.edu.sdu.component;
 
-import cn.edu.sdu.entity.ds1.UmsUser;
+import cn.edu.sdu.entity.ds2.UmsUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class SecurityUserDetails extends UmsUser implements UserDetails {
+public class Ds2ManagerUserDetails implements UserDetails {
+
+    private UmsUser umsUser;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    private UmsUser user;
+    public Ds2ManagerUserDetails(){};
+
+    public Ds2ManagerUserDetails(UmsUser umsUser, Collection<? extends GrantedAuthority> authorities) {
+        this.umsUser = umsUser;
+        this.authorities = authorities;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
-    public SecurityUserDetails(UmsUser user, Collection<? extends GrantedAuthority> authorities){
-        this.user = user;
-        this.setUsername(user.getUsername());
-        this.setPassword(user.getPassword());
-        this.setAuthorities(authorities);
+    @Override
+    public String getPassword() {
+        return umsUser.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return umsUser.getPassword();
     }
 
     @Override
@@ -42,14 +52,5 @@ public class SecurityUserDetails extends UmsUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public SecurityUserDetails setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
-        return this;
-    }
-
-    public UmsUser getUser() {
-        return user;
     }
 }

@@ -1,6 +1,5 @@
 package cn.edu.sdu.util;
 
-import cn.edu.sdu.component.SecurityUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Clock;
 import io.jsonwebtoken.Jwts;
@@ -54,9 +53,8 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        SecurityUserDetails user = (SecurityUserDetails) userDetails;
         final String username = getUsernameFromToken(token);
-        return (username.equals(user.getUsername())
+        return (username.equals(userDetails.getUsername())
                 && !isTokenExpired(token)
         );
     }
