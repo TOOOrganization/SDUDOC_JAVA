@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value = "editorUserDetailsService")
 public interface EditorUserDetailsService extends UserDetailsService {
 
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
