@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
@@ -30,6 +31,7 @@ public class Ds2UmsUserController {
     @Autowired
     Ds2AuthorityManagementService ds2AuthorityManagementService;
 
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<String> findAll(){
@@ -51,6 +53,7 @@ public class Ds2UmsUserController {
         return CommonResult.success(JSON.toJSONString(result));
     }
 
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> insert(@RequestBody JSONObject user){
@@ -126,6 +129,7 @@ public class Ds2UmsUserController {
         return CommonResult.success("添加成功");
     }
 
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public void delete(Integer userId){
