@@ -2,12 +2,12 @@ package cn.edu.sdu.service.serviceImpl;
 
 import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.api.ResultCode;
-import cn.edu.sdu.component.Ds2ManagerUserDetails;
+import cn.edu.sdu.component.Ds1ManagerUserDetails;
 import cn.edu.sdu.component.JpaRoleForUserVo;
-import cn.edu.sdu.entity.ds2.UmsUser;
-import cn.edu.sdu.repository.ds2.UmsUserRepository;
-import cn.edu.sdu.service.Ds2AuthorityManagementService;
-import cn.edu.sdu.service.Ds2ManagerUserDetailsService;
+import cn.edu.sdu.entity.ds1.UmsUser;
+import cn.edu.sdu.repository.ds1.UmsUserRepository;
+import cn.edu.sdu.service.Ds1AuthorityManagementService;
+import cn.edu.sdu.service.Ds1ManagerUserDetailsService;
 import cn.edu.sdu.util.JwtTokenUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Ds2ManagerUserDetailsServiceImpl implements Ds2ManagerUserDetailsService {
+public class Ds1ManagerUserDetailsServiceImpl implements Ds1ManagerUserDetailsService {
 
     @Autowired
     UmsUserRepository umsUserRepository;
 
     @Autowired
-    Ds2AuthorityManagementService ds2AuthorityManagementService;
+    Ds1AuthorityManagementService ds1AuthorityManagementService;
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
@@ -39,12 +39,12 @@ public class Ds2ManagerUserDetailsServiceImpl implements Ds2ManagerUserDetailsSe
         UmsUser umsUser = umsUserRepository.findByUsername(username).get(0);
 
         List<GrantedAuthority> authorityList = new ArrayList<>();
-        List<JpaRoleForUserVo> jpaRoleForUserVos = ds2AuthorityManagementService.selectRoleForUser(umsUser.getUid());
+        List<JpaRoleForUserVo> jpaRoleForUserVos = ds1AuthorityManagementService.selectRoleForUser(umsUser.getUid());
 
         jpaRoleForUserVos.forEach( role -> {
             authorityList.add(new SimpleGrantedAuthority(role.getRole_name()));
         });
-        return new Ds2ManagerUserDetails(umsUser, authorityList);
+        return new Ds1ManagerUserDetails(umsUser, authorityList);
     }
 
     @Override

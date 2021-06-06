@@ -1,7 +1,7 @@
 package cn.edu.sdu.service;
 
 import cn.edu.sdu.api.CommonResult;
-import cn.edu.sdu.entity.ds2.UmsUser;
+import cn.edu.sdu.entity.ds1.UmsUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service(value = "ds2ManagerUserDetailsService")
-public interface Ds2ManagerUserDetailsService extends UserDetailsService {
+public interface Ds1ManagerUserDetailsService extends UserDetailsService {
 
     @Override
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;

@@ -126,7 +126,7 @@ public class Ds1AuthorityManagementServiceImpl implements Ds1AuthorityManagement
                 .append("u.uid uid, u.username username, r.rid rid, r.`name` role_name, r.description role_description ")
                 .append("from ")
                 .append("ums_user u ")
-                .append("left join ums_user_role_relation ur on r.uid = ur.uid ")
+                .append("left join ums_user_role_relation ur on u.uid = ur.uid ")
                 .append("left join ums_role r on ur.rid = r.rid ")
                 .append("where ")
                 .append("u.uid = ")

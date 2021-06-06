@@ -4,6 +4,7 @@ import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.api.ResultCode;
 import cn.edu.sdu.entity.ds1.UmsRole;
 import cn.edu.sdu.repository.ds1.UmsRoleRepository;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,11 @@ public class Ds1UmsRoleController {
     @Autowired
     UmsRoleRepository repository;
 
-    @RequestMapping(value = "/find_all", method = RequestMethod.GET)
-    public CommonResult<List<UmsRole>> findAll() {
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    public CommonResult<String> findAll() {
         List<UmsRole> all = repository.findAll();
 
-        return CommonResult.success(all);
+        return CommonResult.success(JSON.toJSONString(all));
     }
 
     @RequestMapping(value = "/find_by_id", method = RequestMethod.GET)
