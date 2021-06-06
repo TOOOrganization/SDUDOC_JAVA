@@ -11,22 +11,26 @@ import cn.edu.sdu.service.EditorUserDetailsService;
 import cn.edu.sdu.util.JwtTokenUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Service(value = "editorUserDetailsService")
 public class EditorUserDetailsServiceImpl implements EditorUserDetailsService {
 
     @Autowired
     private UmsUserRepository userRepository;
 
     @Autowired
+    @Qualifier(value = "editorAuthorityService")
     private EditorAuthorityService authorityService;
 
     @Autowired
@@ -71,7 +75,7 @@ public class EditorUserDetailsServiceImpl implements EditorUserDetailsService {
                 resultJsonObject.put("token", token);
                 resultJsonObject.put("user", user);
 
-                CommonResult.success(resultJsonObject, ResultCode.LOGIN_SUCCESS.getMessage());
+                return CommonResult.success(resultJsonObject.toJSONString(), ResultCode.LOGIN_SUCCESS.getMessage());
             }
         }else{
             return CommonResult.failed(
@@ -79,11 +83,6 @@ public class EditorUserDetailsServiceImpl implements EditorUserDetailsService {
                     ResultCode.USER_NOT_EXIST.getMessage()
             );
         }
-
-        return CommonResult.failed(
-                ResultCode.USER_NOT_EXIST,
-                ResultCode.USER_NOT_EXIST.getMessage()
-        );
     }
 
     @Override

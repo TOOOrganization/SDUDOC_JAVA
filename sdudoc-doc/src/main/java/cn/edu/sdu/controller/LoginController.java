@@ -6,6 +6,7 @@ import cn.edu.sdu.entity.ds1.UmsUser;
 import cn.edu.sdu.service.EditorUserDetailsService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Example;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class LoginController {
 
     @Autowired
+    @Qualifier(value = "editorUserDetailsService")
     EditorUserDetailsService userDetailsService;
 
     @PostMapping("/login")
@@ -29,25 +31,25 @@ public class LoginController {
         return userDetailsService.register(username, password, nickname);
     }
 
-    @PreAuthorize("hasAnyRole('author')")
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @PostMapping("/set_password")
     public CommonResult<String> setPassword(String username, String password, String confirmPassword) {
         return userDetailsService.setPassword(username, password, confirmPassword);
     }
 
-    @PreAuthorize("hasAnyRole('author')")
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @PostMapping("/get_by_username")
     public CommonResult<UmsUser> getByUsername(String username) {
         return userDetailsService.getByUsername(username);
     }
 
-    @PreAuthorize("hasAnyRole('author')")
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @PostMapping("/get_by_id")
     public CommonResult<UmsUser> getById(Integer id) {
         return userDetailsService.getById(id);
     }
 
-    @PreAuthorize("hasAnyRole('author')")
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @PostMapping("/update_user_info")
     public CommonResult<UmsUser> updateUserInfo(@RequestBody UmsUser user) {
         return userDetailsService.updateUserInfo(user);

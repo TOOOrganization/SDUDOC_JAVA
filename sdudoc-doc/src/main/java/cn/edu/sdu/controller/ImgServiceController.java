@@ -8,6 +8,7 @@ import cn.edu.sdu.util.Base64Util;
 import cn.edu.sdu.util.OkHttpUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,12 +27,14 @@ public class ImgServiceController{
     @Autowired
     ImgService service;
 
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @RequestMapping(value = "/get_latest_id", method = RequestMethod.POST)
     public CommonResult<Long> getLatestNewId() {
         Long latestId = service.getLatestId() + 1;
         return CommonResult.success(latestId);
     }
 
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @RequestMapping(value = "/save_by_base64", method = RequestMethod.POST, produces = "application/json")
     public CommonResult<String> save(@RequestBody JSONObject data) {
         String url = "http://211.87.232.199:8080/mysql/img/save_by_base64";
@@ -48,6 +51,7 @@ public class ImgServiceController{
         }
     }
 
+    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
     public void getImgById(HttpServletResponse response, Long id) {
         OutputStream os = null;
