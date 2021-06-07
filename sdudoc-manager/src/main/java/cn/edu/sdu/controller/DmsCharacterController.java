@@ -49,4 +49,10 @@ public class DmsCharacterController {
     public void delete(String id) {
         dmsCharacterService.delete(id);
     }
+
+    @RequestMapping("/deleteMany")
+    @ResponseBody
+    public void deleteMany(String entities) {
+        dmsCharacterService.deleteMany(entities);
+    }
 }

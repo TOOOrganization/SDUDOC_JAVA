@@ -31,6 +31,14 @@ public class DmsCharacterServiceImpl implements DmsCharacterService {
     }
 
     @Override
+    public void deleteMany(String entities) {
+        System.out.println(entities);
+        List<DmsCharacter> entitiesList = JSONArray.parseArray(entities, DmsCharacter.class);
+        System.out.println(entitiesList);
+        dmsCharacterRepository.deleteAll(entitiesList);
+    }
+
+    @Override
     public void update(DmsCharacter dmsCharacter) {
         dmsCharacterRepository.save(dmsCharacter);
     }

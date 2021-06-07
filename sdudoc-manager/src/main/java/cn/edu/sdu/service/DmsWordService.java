@@ -14,6 +14,8 @@ public interface DmsWordService {
 
     void delete(String id);
 
+    void deleteMany(String entities);
+
     void update(DmsWord dmsWord);
 
     Optional<DmsWord> findById(String id);

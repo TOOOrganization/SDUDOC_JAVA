@@ -4,6 +4,7 @@ import cn.edu.sdu.entity.ds1.DmsArticle;
 import cn.edu.sdu.entity.ds1.DmsCharacter;
 import cn.edu.sdu.entity.ds1.DmsWord;
 import cn.edu.sdu.entity.ds1.SmsArticleHead;
+import cn.edu.sdu.exception.HttpStatusException;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,7 +121,7 @@ public class ParserObject {
         return result;
     }
 
-    public SmsArticleHead saveArticleHead(Map<String, Object> map, String article_id){
+    public String saveArticleHead(Map<String, Object> map, String article_id) throws HttpStatusException {
         Map<String, Object> header = getHeader(map);
         SmsArticleHead smsArticleHead = new SmsArticleHead();
 
@@ -130,7 +131,7 @@ public class ParserObject {
         smsArticleHead.setBookname(getString(header, Header.BOOK));
         smsArticleHead.setDynasty(getString(header, Header.DYNASTY));
 
-        SmsArticleHead result = mongoInput.saveArticleHead(smsArticleHead);
+        String result = mongoInput.saveArticleHead(smsArticleHead);
         System.out.println(result);
         return result;
     }

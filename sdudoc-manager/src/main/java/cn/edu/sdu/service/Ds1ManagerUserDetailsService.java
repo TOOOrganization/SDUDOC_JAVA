@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value = "ds2ManagerUserDetailsService")
+@Service(value = "ds1ManagerUserDetailsService")
 public interface Ds1ManagerUserDetailsService extends UserDetailsService {
 
     @Override
