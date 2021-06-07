@@ -41,9 +41,23 @@ public class SmsArticleHeadController {
         return CommonResult.success(JSON.toJSONString(smsArticleHeadService.find(field, keyword)));
     }
 
+    @RequestMapping("/findMany")
+    @ResponseBody
+    public CommonResult<String> findMany(String field, String keyword) {
+        System.out.println(field);
+        System.out.println(keyword);
+        return CommonResult.success(JSON.toJSONString(smsArticleHeadService.findMany(field, keyword)));
+    }
+
     @RequestMapping("/delete")
     @ResponseBody
     public void delete(String id) {
         smsArticleHeadService.delete(id);
+    }
+
+    @RequestMapping("/deleteMany")
+    @ResponseBody
+    public void deleteMany(String entities) {
+        smsArticleHeadService.deleteMany(entities);
     }
 }

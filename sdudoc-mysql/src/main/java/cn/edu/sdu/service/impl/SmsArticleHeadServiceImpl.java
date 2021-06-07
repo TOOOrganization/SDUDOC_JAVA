@@ -1,8 +1,10 @@
 package cn.edu.sdu.service.impl;
 
+import cn.edu.sdu.entity.ds1.DmsArticle;
 import cn.edu.sdu.entity.ds1.SmsArticleHead;
 import cn.edu.sdu.repository.ds1.SmsArticleHeadRepository;
 import cn.edu.sdu.service.SmsArticleHeadService;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,14 @@ public class SmsArticleHeadServiceImpl implements SmsArticleHeadService {
     @Override
     public void delete(String id) {
         smsArticleHeadRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteMany(String entities) {
+        System.out.println(entities);
+        List<SmsArticleHead> entitiesList = JSONArray.parseArray(entities, SmsArticleHead.class);
+        System.out.println(entitiesList);
+        smsArticleHeadRepository.deleteAll(entitiesList);
     }
 
     @Override
@@ -82,6 +92,16 @@ public class SmsArticleHeadServiceImpl implements SmsArticleHeadService {
                 result = smsArticleHeadRepository.findByDynasty(keyword);
                 break;
         }
+        return result;
+    }
+
+    @Override
+    public List<SmsArticleHead> findMany(String field, String keyword) {
+        List<String> _ids = JSONArray.parseArray(keyword, String.class);
+        List<SmsArticleHead> result = new ArrayList<>();
+        for (int i=0; i< _ids.size(); i++)
+            for (SmsArticleHead smsArticleHead : find(field, _ids.get(i)))
+                result.add(smsArticleHead);
         return result;
     }
 }

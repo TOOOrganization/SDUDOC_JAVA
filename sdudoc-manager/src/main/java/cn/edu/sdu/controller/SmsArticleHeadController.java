@@ -29,7 +29,7 @@ public class SmsArticleHeadController {
     public CommonResult<String> findAll() throws HttpStatusException {
         String url = "http://211.87.232.199:8080/mysql/article_head/findAll";
         String result = OkHttpUtil.doGet(url,"GET");
-        return CommonResult.success(JSON.toJSONString(result));
+        return CommonResult.success(result);
     }
 
     @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
@@ -38,7 +38,7 @@ public class SmsArticleHeadController {
     public CommonResult<String> findAll_id() throws HttpStatusException {
         String url = "http://211.87.232.199:8080/mysql/article_head/findAll_id";
         String result = OkHttpUtil.doGet(url,"GET");
-        return CommonResult.success(JSON.toJSONString(result));
+        return CommonResult.success(result);
     }
 
     @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
@@ -50,7 +50,19 @@ public class SmsArticleHeadController {
         map.put("field", field);
         map.put("keyword", keyword);
         String result = OkHttpUtil.doPost(url, map, "POST");
-        return CommonResult.success(JSON.toJSONString(result));
+        return CommonResult.success(result);
+    }
+
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
+    @RequestMapping("/findMany")
+    @ResponseBody
+    public CommonResult<String> findMany(String field, String keyword) throws HttpStatusException {
+        String url = "http://211.87.232.199:8080/mysql/article_head/findMany";
+        Map<String, String> map = new HashMap<>();
+        map.put("field", field);
+        map.put("keyword", keyword);
+        String result = OkHttpUtil.doPost(url, map, "POST");
+        return CommonResult.success(result);
     }
 
     @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
@@ -61,6 +73,15 @@ public class SmsArticleHeadController {
         Map<String, String> map = new HashMap<>();
         map.put("id", id);
         String result = OkHttpUtil.doPost(url, map, "POST");
-        smsArticleHeadService.delete(id);
+    }
+
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
+    @RequestMapping("/deleteMany")
+    @ResponseBody
+    public void deleteMany(String entities) throws HttpStatusException {
+        String url = "http://211.87.232.199:8080/mysql/article_head/deleteMany";
+        Map<String, String> map = new HashMap<>();
+        map.put("entities", entities);
+        String result = OkHttpUtil.doPost(url, map, "POST");
     }
 }

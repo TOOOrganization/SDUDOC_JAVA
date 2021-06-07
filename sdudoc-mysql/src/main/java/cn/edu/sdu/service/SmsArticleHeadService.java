@@ -1,5 +1,6 @@
 package cn.edu.sdu.service;
 
+import cn.edu.sdu.entity.ds1.DmsArticle;
 import cn.edu.sdu.entity.ds1.SmsArticleHead;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface SmsArticleHeadService {
 
     void delete(String id);
 
+    void deleteMany(String entities);
+
     void update(SmsArticleHead smsArticleHead);
 
     Optional<SmsArticleHead> findOne(SmsArticleHead smsArticleHead);
@@ -24,4 +27,6 @@ public interface SmsArticleHeadService {
     List<String> findAll_id();
 
     List<SmsArticleHead> find(String field, String keyword);
+
+    List<SmsArticleHead> findMany(String field, String keyword);
 }
