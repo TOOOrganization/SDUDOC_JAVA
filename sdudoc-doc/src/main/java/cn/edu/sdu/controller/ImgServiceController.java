@@ -51,7 +51,6 @@ public class ImgServiceController{
         }
     }
 
-    @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
     public void getImgById(HttpServletResponse response, Long id) {
         OutputStream os = null;
