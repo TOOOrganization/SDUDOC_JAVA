@@ -40,7 +40,7 @@ public enum ResultCode implements IErrorCode {
     /**
      * 网络请求码
      * */
-    PICTURE_GET_FAILURE(10003, "服务器内部网络波动，图片请求失败");
+    PICTURE_GET_FAILURE(20001, "服务器内部网络波动，图片请求失败");
 
     private long code;
 
