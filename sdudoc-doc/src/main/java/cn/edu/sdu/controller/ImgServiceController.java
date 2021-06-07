@@ -55,6 +55,7 @@ public class ImgServiceController{
     public void getImgById(HttpServletResponse response, Long id) {
         OutputStream os = null;
         try {
+            response.setContentType("image/png");
             os = response.getOutputStream();
 
             String base64;

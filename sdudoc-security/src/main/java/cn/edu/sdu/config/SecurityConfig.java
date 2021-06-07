@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 放行login，register
                 .authorizeRequests()
                 .antMatchers("/login", "/register").permitAll()
-                .antMatchers("/hello", "/haha").permitAll()
+                .antMatchers("/hello", "/img/get_by_id").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .and()
                 // 关闭跨域攻击
