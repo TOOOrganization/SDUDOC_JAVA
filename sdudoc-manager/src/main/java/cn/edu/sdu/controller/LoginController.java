@@ -1,23 +1,14 @@
 package cn.edu.sdu.controller;
 
-import cn.edu.sdu.annonations.UserLoginToken;
 import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.entity.ds1.UmsUser;
 import cn.edu.sdu.repository.ds1.UmsUserRepository;
 import cn.edu.sdu.service.Ds1ManagerUserDetailsService;
 import cn.edu.sdu.service.TokenService;
-import cn.edu.sdu.util.Base64Util;
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.math.BigInteger;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")

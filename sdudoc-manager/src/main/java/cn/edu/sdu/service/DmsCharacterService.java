@@ -13,6 +13,8 @@ public interface DmsCharacterService {
 
     void delete(String id);
 
+    void deleteMany(String entities);
+
     void update(DmsCharacter dmsCharacter);
 
     Optional<DmsCharacter> findById(String id);

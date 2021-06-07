@@ -1,6 +1,7 @@
 package cn.edu.sdu.controller;
 
 import cn.edu.sdu.api.CommonResult;
+import cn.edu.sdu.entity.ds1.SmsArticleHead;
 import cn.edu.sdu.service.SmsArticleHeadService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ public class SmsArticleHeadController {
 
     @Autowired
     SmsArticleHeadService smsArticleHeadService;
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<String> save(String smsArticleHead){
+        return CommonResult.success(JSON.toJSONString(smsArticleHeadService.save(JSON.parseObject(smsArticleHead, SmsArticleHead.class))));
+    }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody

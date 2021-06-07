@@ -1,5 +1,6 @@
 package cn.edu.sdu.service.serviceImpl;
 
+import cn.edu.sdu.entity.ds1.DmsCharacter;
 import cn.edu.sdu.entity.ds1.DmsWord;
 import cn.edu.sdu.repository.ds1.DmsWordRepository;
 import cn.edu.sdu.service.DmsWordService;
@@ -28,6 +29,14 @@ public class DmsWordServiceImpl implements DmsWordService {
     @Override
     public void delete(String id) {
         dmsWordRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteMany(String entities) {
+        System.out.println(entities);
+        List<DmsWord> entitiesList = JSONArray.parseArray(entities, DmsWord.class);
+        System.out.println(entitiesList);
+        dmsWordRepository.deleteAll(entitiesList);
     }
 
     @Override
