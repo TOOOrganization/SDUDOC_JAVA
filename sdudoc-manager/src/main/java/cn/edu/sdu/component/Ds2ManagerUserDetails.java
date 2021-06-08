@@ -31,7 +31,7 @@ public class Ds2ManagerUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return umsUser.getPassword();
+        return umsUser.getUsername();
     }
 
     @Override
