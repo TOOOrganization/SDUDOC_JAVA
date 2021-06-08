@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@PreAuthorize("hasAnyRole('administrator', 'administrator_mysql')")
 @RestController
 @RequestMapping("/article_head")
 public class SmsArticleHeadController {
@@ -23,7 +24,6 @@ public class SmsArticleHeadController {
     @Autowired
     SmsArticleHeadService smsArticleHeadService;
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<String> findAll() throws HttpStatusException {
@@ -32,7 +32,6 @@ public class SmsArticleHeadController {
         return CommonResult.success(result);
     }
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/findAll_id", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<String> findAll_id() throws HttpStatusException {
@@ -41,7 +40,6 @@ public class SmsArticleHeadController {
         return CommonResult.success(result);
     }
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> find(String field, String keyword) throws HttpStatusException {
@@ -53,7 +51,6 @@ public class SmsArticleHeadController {
         return CommonResult.success(result);
     }
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping("/findMany")
     @ResponseBody
     public CommonResult<String> findMany(String field, String keyword) throws HttpStatusException {
@@ -66,7 +63,6 @@ public class SmsArticleHeadController {
         return CommonResult.success(result);
     }
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping("/delete")
     @ResponseBody
     public void delete(String id) throws HttpStatusException {
@@ -76,7 +72,6 @@ public class SmsArticleHeadController {
         String result = OkHttpUtil.doPost(url, map, "POST");
     }
 
-    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping("/deleteMany")
     @ResponseBody
     public void deleteMany(String entities) throws HttpStatusException {

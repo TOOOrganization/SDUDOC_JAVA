@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
 @RestController
 @RequestMapping("/solr")
 public class SolrController {
@@ -34,6 +33,8 @@ public class SolrController {
      * @param filterQueries 补充查询条件 格式：字段:keyword
      * @return
      */
+
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search', 'reader')")
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> query(String coreName,
@@ -59,6 +60,7 @@ public class SolrController {
      * @param filterQueries 补充查询条件 格式：字段:keyword
      * @return
      */
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search', 'reader')")
     @RequestMapping(value = "/groupQuery", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> groupQuery(String coreName,
@@ -73,12 +75,14 @@ public class SolrController {
         return CommonResult.success(JSON.toJSONString(solrService.groupQuery(coreName, defaultField, query, sort, start, rows, group, fields, filterQueries)));
     }
 
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> delete(String coreName, String id) throws SolrServerException, IOException, HttpStatusException {
         return CommonResult.success(solrService.delete(coreName, id));
     }
 
+    @PreAuthorize("hasAnyRole('administrator', 'administrator_search')")
     @RequestMapping(value = "/deleteMany", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<String> deleteMany(String coreName, String _id) throws SolrServerException, IOException, HttpStatusException {

@@ -36,6 +36,7 @@ public class Ds1ManagerUserDetailsServiceImpl implements Ds1ManagerUserDetailsSe
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("Username="+username);
         UmsUser umsUser = umsUserRepository.findByUsername(username).get(0);
 
         List<GrantedAuthority> authorityList = new ArrayList<>();
