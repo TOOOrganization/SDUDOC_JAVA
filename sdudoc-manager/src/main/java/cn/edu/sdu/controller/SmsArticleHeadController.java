@@ -62,6 +62,7 @@ public class SmsArticleHeadController {
         map.put("field", field);
         map.put("keyword", keyword);
         String result = OkHttpUtil.doPost(url, map, "POST");
+        System.out.println(result);
         return CommonResult.success(result);
     }
 
