@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/article_head")
 public class SmsArticleHeadController {
@@ -27,6 +29,12 @@ public class SmsArticleHeadController {
     @ResponseBody
     public CommonResult<String> findAll(){
         return CommonResult.success(JSON.toJSONString(smsArticleHeadService.findAll()));
+    }
+
+    @RequestMapping(value = "/findAllById", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<String> findAllById(String ids){
+        return CommonResult.success(JSON.toJSONString(smsArticleHeadService.findAllById(ids)));
     }
 
     @RequestMapping(value = "/findAll_id", method = RequestMethod.GET)

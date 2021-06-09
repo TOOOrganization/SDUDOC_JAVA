@@ -64,6 +64,12 @@ public class SmsArticleHeadServiceImpl implements SmsArticleHeadService {
     }
 
     @Override
+    public List<SmsArticleHead> findAllById(String ids) {
+        List<String> idList = JSONArray.parseArray(ids, String.class);
+        return smsArticleHeadRepository.findAllById(idList);
+    }
+
+    @Override
     public List<String> findAll_id() {
         List<String> _idList = new ArrayList<>();
         List<SmsArticleHead> smsArticleHeadList = smsArticleHeadRepository.findAll();

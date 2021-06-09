@@ -24,6 +24,8 @@ public interface SmsArticleHeadService {
 
     List<SmsArticleHead> findAll();
 
+    List<SmsArticleHead> findAllById(String ids);
+
     List<String> findAll_id();
 
     List<SmsArticleHead> find(String field, String keyword);

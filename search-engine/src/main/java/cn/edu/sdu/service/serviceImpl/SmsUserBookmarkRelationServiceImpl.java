@@ -2,9 +2,13 @@ package cn.edu.sdu.service.serviceImpl;
 
 import cn.edu.sdu.entity.ds1.SmsArticleHead;
 import cn.edu.sdu.entity.ds2.SmsUserBookmarkRelation;
+import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.repository.ds1.SmsArticleHeadRepository;
 import cn.edu.sdu.repository.ds2.SmsUserBookmarkRelationRepository;
 import cn.edu.sdu.service.SmsUserBookmarkRelationService;
+import cn.edu.sdu.util.OkHttpUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,19 +35,19 @@ public class SmsUserBookmarkRelationServiceImpl implements SmsUserBookmarkRelati
     }
 
     @Override
-    public List<SmsArticleHead> find(String username) {
-        List<SmsArticleHead> result = new ArrayList<>();
+    public List<SmsArticleHead> find(String username) throws HttpStatusException {
         List<SmsUserBookmarkRelation> findResult = smsUserBookmarkRelationRepository.findByUsername(username);
+        List<String> ids = new ArrayList<>();
         for (SmsUserBookmarkRelation smsUserBookmarkRelation : findResult){
-//            Map<String, String> map = new HashMap<>();
-            SmsArticleHead smsArticleHead = smsArticleHeadRepository.findById(smsUserBookmarkRelation.getAid()).get();
-//            map.put("title", smsArticleHead.getTitle());
-//            map.put("articleAuthor", smsArticleHead.getArticleauthor());
-//            map.put("bookname", smsArticleHead.getBookname());
-//            map.put("dynasty", smsArticleHead.getDynasty());
-            result.add(smsArticleHead);
+            ids.add(smsUserBookmarkRelation.getAid());
         }
-        return result;
+        String url = "http://211.87.232.199:8080/mysql/article_head/findAllById";
+        Map<String, String> map = new HashMap<>();
+        map.put("ids", JSON.toJSONString(ids));
+        String httpResult = OkHttpUtil.doPost(url, map, "POST");
+        //        SmsArticleHead smsArticleHead = smsArticleHeadRepository.findById(smsUserBookmarkRelation.getAid()).get();
+//        result.add(smsArticleHead);
+        return JSONArray.parseArray(httpResult, SmsArticleHead.class);
     }
 
     @Override
