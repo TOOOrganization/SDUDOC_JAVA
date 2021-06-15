@@ -65,11 +65,11 @@ public class ParserObject {
         return getMap(map, HEADER);
     }
 
-    public List<Map<String, Object>> getCharacter(Map<String, Object> map){
+    public List<Map<String, Object>> getCharacter(Map<String, Object> map) throws NullPointerException{
         return getListMap(map, CHARACTER);
     }
 
-    public List<Map<String, Object>> getWord(Map<String, Object> map){
+    public List<Map<String, Object>> getWord(Map<String, Object> map) throws NullPointerException{
         return getListMap(map, WORD);
     }
 
@@ -181,7 +181,7 @@ public class ParserObject {
         return JSONObject.parseArray(JSON.toJSONString(map.get(field)), String.class);
     }
 
-    public List<Map<String, Object>> getListMap(Map<String, Object> map, String field) {
+    public List<Map<String, Object>> getListMap(Map<String, Object> map, String field) throws NullPointerException{
         List<Object> temp = JSONObject.parseArray(JSON.toJSONString(map.get(field)));
         List<Map<String, Object>> result = new ArrayList<>();
 

@@ -1,0 +1,600 @@
+<!DOCTYPE html><html><head>
+      <title>工作内容</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\awaqua\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="file:///C:\Users\awaqua\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <ul>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9">工作内容</a>
+<ul>
+<li><a href="#%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91">后端开发</a></li>
+<li><a href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1">架构设计</a>
+<ul>
+<li><a href="#%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A7%88">后端架构和功能概览</a>
+<ul>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B">项目简介</a></li>
+<li><a href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B">技术选型</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0">功能实现</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8">数据库表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E7%BB%B4">运维</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9">工作内容</h2>
+
+<p>主要是做了三个方面的工作，开发+架构+运维</p>
+<h3 class="mume-header" id="%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91">后端开发</h3>
+
+<p>开发方面主要是封装了图片请求处理服务、用户授权与认证模块</p>
+<ul>
+<li>图片请求处理服务
+<ul>
+<li>采用文件上传和下载的技术</li>
+<li>针对nginx被隔离的二进制流，指定返回为图片并且不下载</li>
+<li>上传采用了接受json对象的方式，绕过了代理的POST最大长度限制</li>
+</ul>
+</li>
+<li>用户授权与认证模块
+<ul>
+<li>建立了经典且应用广泛的 用户——角色——权限 模型</li>
+<li>采用了spring security框架整合JWT管理，企业级解决方案</li>
+<li>采用了单次生命周期的过滤链条，基本实现了单点登录设计</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1">架构设计</h3>
+
+<blockquote>
+<p>最初整个项目设计为知网模式，上传与搜索查阅为并行的两个子项目，但这访问公共的数据库，可能会发生由于访问公共资源而导致的冲突，即使是有中间的审核阶段也不能完全避免，所以我决定进行项目级的重构。<br>
+第一次重构基本解决了数据访问层发生冲突的问题，采用的做法是抽象出一个数据访问模块，在解耦的同时实现数据库的读写分离。</p>
+</blockquote>
+<blockquote>
+<p>后来由于功能的扩展，我发现系统实际上并没有两条并行的逻辑，而是一个整体的从数据输入再到输出的大循环，一边是输入（上传），一边是输出（查阅）。我发现原有的结构不足以承载项目真正的体量，无法处理大量的数据流循环，所以我听取了指导老师的意见，建立HTTP通讯，在数据库方面建立HTTP服务，然后仿照分布式的方法（可以拓展成为分布式，但服务器数量比较少，而且HTTP服务延迟比较高，只能是伪分布式）进行访问和调用。</p>
+</blockquote>
+<blockquote>
+<p>又由于需求的变更，为了更加直观的管理数据库中的基本内容，指导老师要求开发一个后台管理，我们把它命名为sdudoc-manager模块。从项目设计的角度上来讲，这在一定程度上影响了系统原有的结构，因为这个用于管理模块拥有查阅和修改文档数据库和用户数据的权限，所以我们采用了多数据源的方案，使manager模块可以访问和控制所有的服务器数据库资源。</p>
+</blockquote>
+<blockquote>
+<p>因为manager模块的存在，本来分别存储在editor服务器和search portal服务器中的用户信息，在manager访问权限授予的过程中发生了冲突。这主要表现在editor是数据输入的入口，本应只有上传的权限，但需要编写所有访问控制的HTTP服务，search端也是如此，系统的安全性在一定程度遭到了破坏，即便是另外重写一套HTTP服务，但访问时需要多数据源，部署时不能暴露给非法权限者。在这个条件下，我们决定进行调整性质的重构，抽象出安全模块，并且对用户权限进行管理。</p>
+</blockquote>
+<p>2、规定了后端使用的所有技术、框架、库和规范</p>
+<h4 class="mume-header" id="%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A7%88">后端架构和功能概览</h4>
+
+<h5 class="mume-header" id="%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B">项目简介</h5>
+
+<ol>
+<li>sdudoc是一套古籍古文字编辑上传系统，包括前端编辑器和后端管理系统，采用docker容器化部署。前端编辑器包括前端编辑器引擎和图片编辑、文档编辑等编辑器插件。后端管理系统包括图片管理模块、文档管理模块、权限管理等。</li>
+<li>sdudocsearch是一套古籍古文字检索系统，包括前端搜索展示和后端数据库，采用docker容器化部署。前端主要功能包括首页门户、搜索查询、搜索结果展示、会员中心、订单中心。后端包括搜索引擎、会员系统、积分系统、订单管理、支付系统等。</li>
+</ol>
+<h5 class="mume-header" id="%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B">技术选型</h5>
+
+<table>
+<thead>
+<tr>
+<th>技术点</th>
+<th>版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>springboot</td>
+<td>2.4.3</td>
+<td>mvc框架</td>
+</tr>
+<tr>
+<td>hibernate</td>
+<td>5.4.32</td>
+<td>orm框架</td>
+</tr>
+<tr>
+<td>springbootJpa</td>
+<td>2.4.3</td>
+<td>orm实现</td>
+</tr>
+<tr>
+<td>spring security</td>
+<td>5.4.5</td>
+<td>认证和授权框架</td>
+</tr>
+<tr>
+<td>pagehelper</td>
+<td>5.1.8</td>
+<td>mybatis分页插件</td>
+</tr>
+<tr>
+<td>swagger-ui</td>
+<td>2.9.2</td>
+<td>文档工具</td>
+</tr>
+<tr>
+<td>solr</td>
+<td>7.7.3</td>
+<td>搜索引擎</td>
+</tr>
+<tr>
+<td>redis</td>
+<td>6.2.1</td>
+<td>分布式缓存</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>8.0</td>
+<td>关系型数据库</td>
+</tr>
+<tr>
+<td>mongodb</td>
+<td>4.4</td>
+<td>非关系型数据库</td>
+</tr>
+<tr>
+<td>docker</td>
+<td>20.10.5</td>
+<td>应用容器引擎</td>
+</tr>
+<tr>
+<td>druid</td>
+<td>1.2.5</td>
+<td>数据库连接池</td>
+</tr>
+<tr>
+<td>OSS</td>
+<td></td>
+<td>对象存储</td>
+</tr>
+<tr>
+<td>JWT</td>
+<td>3.14</td>
+<td>登录管理</td>
+</tr>
+<tr>
+<td>springbootTest</td>
+<td>2.4.3</td>
+<td>测试框架</td>
+</tr>
+<tr>
+<td>JUnit</td>
+<td>5.x</td>
+<td>单元测试框架</td>
+</tr>
+</tbody>
+</table>
+<h5 class="mume-header" id="%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0">功能实现</h5>
+
+<p>1、sdudoc</p>
+<ul>
+<li>文档模块
+<ul>
+<li>文档创建</li>
+<li>文档解析</li>
+<li>文档上传</li>
+</ul>
+</li>
+<li>会员模块
+<ul>
+<li>会员注册（未授权）</li>
+<li>会员管理</li>
+<li>会员设置</li>
+</ul>
+</li>
+</ul>
+<p>2、sdudoc-search</p>
+<ul>
+<li>搜索模块
+<ul>
+<li>检索文档</li>
+<li>检索图片</li>
+</ul>
+</li>
+<li>会员模块
+<ul>
+<li>会员注册</li>
+<li>会员管理</li>
+<li>会员设置</li>
+</ul>
+</li>
+</ul>
+<p>3、sdudoc-mysql</p>
+<ul>
+<li>http服务
+<ul>
+<li>文件上传服务</li>
+<li>文档头存储服务</li>
+</ul>
+</li>
+</ul>
+<p>4、sdudoc-manager</p>
+<ul>
+<li>文档模块
+<ul>
+<li>所有文档删除</li>
+<li>所有文档查看</li>
+<li>删除非法数据</li>
+</ul>
+</li>
+<li>会员模块
+<ul>
+<li>会员
+<ul>
+<li>会员注册</li>
+<li>会员授权</li>
+<li>会员删除</li>
+</ul>
+</li>
+<li>角色
+<ul>
+<li>添加角色</li>
+<li>角色授权</li>
+<li>更改会员的角色</li>
+</ul>
+</li>
+<li>权限
+<ul>
+<li>添加权限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 class="mume-header" id="%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8">数据库表</h5>
+
+<p>ams_<em>:文档模块相关表<br>
+ums_</em>:会员模块相关表<br>
+sms_<em>:搜索引擎相关表<br>
+pms_</em>:积分模块相关表</p>
+<h3 class="mume-header" id="%E8%BF%90%E7%BB%B4">运维</h3>
+
+<p>主要是维护后端共五台服务器，选用了http服务的架构</p>
+<p>数据流向，起点——&gt;终点</p>
+<div class="mermaid">graph LR
+editor(editor)--&gt;mysql(mysql)
+editor--&gt;mongo(mongo)
+mysql--&gt;search-portal(search-portal)
+mongo--&gt;solr(solr)--&gt;search-portal
+mysql--&gt;mongo
+mongo--&gt;mysql
+</div><p>服务器软件配置</p>
+<ul>
+<li>editor和search portal
+<ul>
+<li>nginx反向代理服务器</li>
+<li>Apache tomcat服务运行容器</li>
+<li>MySQL关系型数据库</li>
+</ul>
+</li>
+<li>mysql
+<ul>
+<li>Apache tomcat服务运行容器</li>
+<li>MySQL关系型数据库</li>
+</ul>
+</li>
+<li>mongo
+<ul>
+<li>Apache tomcat服务运行容器</li>
+<li>mongodb非关系型数据库</li>
+</ul>
+</li>
+<li>solr
+<ul>
+<li>Apache tomcat服务运行容器</li>
+<li>Apache solr搜索引擎
+<ul>
+<li>solr搜索引擎数据库</li>
+<li>solr中文分词器</li>
+<li>solr搜索统计工具</li>
+<li>solr索引优化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>服务器防火墙</p>
+<p>均采用的firewall系统实现，入规则采用的白名单，出规则直接放行</p>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>

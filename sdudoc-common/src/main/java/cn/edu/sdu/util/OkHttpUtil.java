@@ -150,10 +150,10 @@ public class OkHttpUtil {
         logger.info("URI          : {}", url);
         logger.info("Method       : {}", method);
         if (StringUtils.isNotBlank(body)) {
-            logger.info("Request body : {}", body);
+//            logger.info("Request body : {}", body);
         }
         if (StringUtils.isNotBlank(formParam)) {
-            logger.info("Request param: {}", formParam);
+//            logger.info("Request param: {}", formParam);
         }
         logger.info("---------------------------request end--------------------------------------------------");
     }
@@ -161,7 +161,7 @@ public class OkHttpUtil {
     private static void addResponseLog(int httpCode, String result, long startTime) {
         long endTime = System.currentTimeMillis();
         logger.info("Status       : {}", httpCode);
-        logger.info("Response     : {}", result);
+//        logger.info("Response     : {}", result);
         logger.info("Time         : {} ms", endTime - startTime);
         logger.info("===========================response end================================================");
     }

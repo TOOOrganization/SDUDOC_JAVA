@@ -21,8 +21,7 @@ public class DocController {
     @PreAuthorize("hasAnyRole('administrator_editor', 'author')")
     @RequestMapping(value = "/insert_sdudoc", method = RequestMethod.POST, produces = "application/json")
     public CommonResult<String> insertSdudoc(@RequestBody JSONObject json) throws SolrServerException, IOException {
-        String insertSdudoc = docService.insertSdudoc(json);
-        return CommonResult.success(insertSdudoc);
+        return docService.insertSdudoc(json);
     }
 
 }

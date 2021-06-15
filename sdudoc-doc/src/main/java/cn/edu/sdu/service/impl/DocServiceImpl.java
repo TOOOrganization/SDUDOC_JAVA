@@ -1,5 +1,6 @@
 package cn.edu.sdu.service.impl;
 
+import cn.edu.sdu.api.CommonResult;
 import cn.edu.sdu.exception.HttpStatusException;
 import cn.edu.sdu.entity.ds1.DmsArticle;
 import cn.edu.sdu.entity.ds1.DmsCharacter;
@@ -24,7 +25,7 @@ public class DocServiceImpl implements DocService {
 
 
     @Override
-    public String insertSdudoc(JSONObject json) throws SolrServerException, IOException {
+    public CommonResult<String> insertSdudoc(JSONObject json) throws SolrServerException, IOException {
         Map<String, Object> object = JSONObject.parseObject(JSON.toJSONString(json));
         DmsArticle article;
         try{
@@ -32,28 +33,33 @@ public class DocServiceImpl implements DocService {
             article = m.saveArticle(object);
         }catch (Exception e){
             e.printStackTrace();
-            return "插入article失败";
+            return CommonResult.failed("插入article失败");
         }
 
         if(article == null){
-            return "错误，文章已存在";
+            return CommonResult.failed("错误，文章已存在");
         }
         try{
             m.saveArticleHead(object, article.get_id());
         }catch (Exception e){
             e.printStackTrace();
-            return "写入MySQL失败";
+            return CommonResult.failed("写入MySQL失败");
         }
         List<Map<String, Object>> characters;
-        List<Map<String, Object>> words;
+        List<Map<String, Object>> words = new ArrayList<>();
         try{
             //在mongodb插入字
             characters = m.getCharacter(object);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            return CommonResult.failed("未插入字");
+        }
+
+        try{
             //在mongodb插入词
             words = m.getWord(object);
         }catch (Exception e){
             e.printStackTrace();
-            return "写入mongoDB失败";
         }
 
         Collection<DmsCharacter> characterss = new ArrayList<>();
@@ -89,6 +95,6 @@ public class DocServiceImpl implements DocService {
             e.printStackTrace();
         }
 
-        return "文章添加mongoDB成功";
+        return CommonResult.success("文章添加mongoDB成功");
     }
 }
