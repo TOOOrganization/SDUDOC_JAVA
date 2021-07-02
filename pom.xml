@@ -15,7 +15,8 @@
     <module>sdudoc-mysql</module>
     <module>sdudoc-mbg</module>
     <module>sdudoc-manager</module>
-      <module>sdudoc-common</module>
+    <module>sdudoc-common</module>
+    <module>sdudoc-dao</module>
   </modules>
 
   <properties>

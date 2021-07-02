@@ -1,6 +1,6 @@
 package cn.edu.sdu.component;
 
-import cn.edu.sdu.api.CommonResult;
+import cn.edu.sdu.common.api.CommonResult;
 import cn.hutool.json.JSONUtil;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

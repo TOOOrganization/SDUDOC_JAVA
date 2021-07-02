@@ -86,7 +86,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>cn.edu.sdu.SdudocMysqlApplication</mainClass>
+                    <mainClass>cn.edu.sdu.mysql.SdudocMysqlApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

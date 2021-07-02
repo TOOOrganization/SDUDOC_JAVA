@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 @Entity(name = "ds1SmsUserBookmarkRelation")
 @Table(name = "sms_user_bookmark_relation")

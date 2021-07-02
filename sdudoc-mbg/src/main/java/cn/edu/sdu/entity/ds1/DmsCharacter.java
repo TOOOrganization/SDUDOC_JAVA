@@ -1,13 +1,11 @@
 package cn.edu.sdu.entity.ds1;
 
-import com.alibaba.fastjson.JSONArray;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

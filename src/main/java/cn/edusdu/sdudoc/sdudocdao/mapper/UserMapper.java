@@ -1,7 +1,7 @@
 package cn.edusdu.sdudoc.sdudocdao.mapper;
 
-import cn.edu.sdu.sdudocdao.entity.User;
-import cn.edu.sdu.sdudocdao.entity.UserExample;
+import cn.edu.sdu.entity.User;
+import cn.edu.sdu.entity.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

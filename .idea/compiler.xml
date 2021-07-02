@@ -14,6 +14,7 @@
         <module name="sdudoc-doc" />
         <module name="sdudoc-mbg" />
         <module name="sdudoc-security" />
+        <module name="sdudoc-dao" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

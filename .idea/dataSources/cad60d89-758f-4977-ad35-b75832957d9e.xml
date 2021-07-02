@@ -1213,7 +1213,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="339" parent="294" name="parent_tight_id">
+    <column id="339" parent="294" name="parent_right_id">
       <Position>2</Position>
       <Comment>父权限id</Comment>
       <DataType>int|0s</DataType>
